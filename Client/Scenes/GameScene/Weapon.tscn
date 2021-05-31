@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GameScene/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player Sprite/playerandgun.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GameScene/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/allSprites_default.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "muzzle_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource( 1 )
+Bullet = ExtResource( 3 )
+
+[node name="Weapons" type="Sprite" parent="."]
+position = Vector2( 17.9542, 4.42482 )
+scale = Vector2( 0.281, 0.122 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 90, 220, 180, 70 )
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( 41.6511, 6.05826 )
+
+[node name="GunDirection" type="Position2D" parent="."]
+position = Vector2( 46.1382, 6.15515 )
+
+[node name="CoolDown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="MuzzleFlash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 45.7139, 5.72277 )
+rotation = -1.5708
+scale = Vector2( 0.266325, 0.469948 )
+texture = ExtResource( 4 )
+offset = Vector2( -2.83591, 2.5095 )
+region_enabled = true
+region_rect = Rect2( 510, 290, 20, 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/muzzle_flash = SubResource( 1 )

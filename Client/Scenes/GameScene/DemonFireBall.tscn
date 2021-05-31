@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Demon Sprite/fireball.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/GameScene/DemonFireBall.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.04764, 8.07106 )
+
+[node name="DemonFireBall" type="Area2D" groups=[
+"Enemy",
+]]
+position = Vector2( 1.77483, 1.77482 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.870709, -0.697329 )
+scale = Vector2( 0.0876866, 0.0832955 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 60, 50, 100, 30 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.726383, -0.331059 )
+scale = Vector2( 1.00472, 1 )
+shape = SubResource( 1 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

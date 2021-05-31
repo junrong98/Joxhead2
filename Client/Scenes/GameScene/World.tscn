@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/GameScene/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/GameScene/Map01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GameScene/World.gd" type="Script" id=33]
+[ext_resource path="res://Scenes/GameScene/BulletManager.gd" type="Script" id=34]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[node name="World" type="Control"]
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 500.166, 302.608 )
+
+[node name="BulletManager" type="Node2D" parent="."]
+position = Vector2( 0.413544, 1.6542 )
+scale = Vector2( 0.997358, 1.00698 )
+script = ExtResource( 34 )
+
+[node name="Difficulty_spawn_timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="Map01" parent="." instance=ExtResource( 4 )]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ScoreContainer" type="MarginContainer" parent="GUI"]
+anchor_left = 0.386
+anchor_top = 0.005
+anchor_right = 0.386
+anchor_bottom = 0.005
+margin_left = 100.952
+margin_top = 8.16
+margin_right = 242.952
+margin_bottom = 77.16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GUI/ScoreContainer"]
+margin_top = 9.0
+margin_right = 141.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "30"
+align = 1
+script = ExtResource( 3 )
+
+[connection signal="timeout" from="Difficulty_spawn_timer" to="." method="_on_Difficulty_spawn_timer_timeout"]
