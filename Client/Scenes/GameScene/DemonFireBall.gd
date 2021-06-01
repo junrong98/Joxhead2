@@ -23,8 +23,7 @@ func _on_ShootTimer_timeout():
 	queue_free()
 
 # When the fireball hits the player, only players will take damage
-func _on_Bullet_body_entered(body):
+func _on_DemonFireBall_body_entered(body):
 	if body.is_in_group("Players"):
 		body.demon_fireball()
 		queue_free()
-

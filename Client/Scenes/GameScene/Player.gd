@@ -6,8 +6,9 @@ signal fired_bullet(bullet, position, direction)
 
 export (int) var speed = 100
 
-onready var weapon = $Weapon
-onready var health_stat = $Health
+onready var weapon = $PlayerSprite/Weapon
+onready var health_stat = $HealthBar
+onready var player_sprite = $PlayerSprite
 
 var gameoverscreen = preload("res://Scenes/GameScene/GameOverScreen.tscn")
 var screensize
@@ -37,7 +38,8 @@ func _physics_process(delta) -> void:
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
 	move_and_slide(movement_direction * speed);
-	look_at(get_global_mouse_position())
+	player_sprite.look_at(get_global_mouse_position())
+	
 
 # When the client press left mouse button
 func _unhandled_input(event):
@@ -50,15 +52,15 @@ func shoot(bullet_instance, location: Vector2, direction: Vector2):
 
 # function when the player got attacked by zombie
 func zombie_attack():
-	health_stat.health -= 20
-	if health_stat.health <= 0:
+	health_stat.health_deducted(10)
+	if health_stat.players_health <= 0:
 		player_lost()
 		
 
 # function when the player got attacked by demon fireball
 func demon_fireball():
-	health_stat.health -= 30
-	if health_stat.health <= 0:
+	health_stat.health_deducted(20)
+	if health_stat.players_health <= 0:
 		player_lost()
 
 # Show gameover menu when the player dies.

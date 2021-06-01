@@ -3,11 +3,11 @@ extends KinematicBody2D
 export var animations = []
 export (int) var attackDistance = 50
 
-onready var health_stat = $Health
 onready var player = get_node("/root/World/Player")
 
 var speed = 40
 var isAttack = false
+var health_stat = 100
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
 
 func _ready() -> void:
@@ -15,10 +15,10 @@ func _ready() -> void:
 
 # when zombie got hit by bullet
 func handle_hit():
-	health_stat.health -= 100
+	health_stat -= 100
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(player.global_position)
-	if health_stat.health <= 0:
+	if health_stat <= 0:
 		Global.game_highscore += 1
 		queue_free()
 

@@ -4,11 +4,11 @@ onready var bullet_manager = $BulletManager
 onready var player: Player = $Player
 onready var zombie_spawn_timing = $Zombie_spawn_timer
 onready var demon_spawn_timing = $Demon_spawn_timer
+onready var wave_notification = $GUI/WaveNotificationLabel
 
 var zombies = preload("res://Scenes/GameScene/Zombie.tscn")
 var demons = preload("res://Scenes/GameScene/Demon.tscn")
-var map = preload("res://Scenes/GameScene/Map01.tscn")
-var wave_num = 0
+var wave_num = 1
 var zombie_spawn_number = 20
 var demon_spawn_number = 3
 
@@ -16,8 +16,9 @@ var demon_spawn_number = 3
 func _ready():
 	#For bullets
 	player.connect("fired_bullet", bullet_manager, "handle_bullet_spwaned")
-	map
 	zombie_wave()
+	wave_notification.text = "Wave " + str(wave_num) + " started"
+	wave_num += 1
 
 # Randomly spawn zombie outside of the screen size area
 func zombie_wave():
@@ -47,7 +48,13 @@ func demon_wave():
 func _on_Difficulty_spawn_timer_timeout():
 	zombie_wave()
 	demon_wave()
+	wave_notification.text = "Wave " + str(wave_num) + " started"
+	wave_notification.visible = true
 	wave_num += 1
 	zombie_spawn_number += 2
 	demon_spawn_number += 2
 	
+
+
+func _on_WaveNotification_timer_timeout():
+	wave_notification.visible = false
