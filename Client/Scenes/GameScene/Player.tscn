@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/GameScene/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player Sprite/playerandgun.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GameScene/Weapon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/GameScene/Health.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GameScene/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.3675, 15.5699 )
@@ -11,7 +11,7 @@ extents = Vector2( 19.3675, 15.5699 )
 [node name="Player" type="KinematicBody2D" groups=[
 "Players",
 ]]
-position = Vector2( 565.406, 294.239 )
+position = Vector2( 424.946, 297.935 )
 script = ExtResource( 1 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
@@ -21,21 +21,25 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 89.96, -2.446, 249, 218.166 )
 
+[node name="Weapon" parent="PlayerSprite" instance=ExtResource( 3 )]
+position = Vector2( -47.4395, -13.5033 )
+scale = Vector2( 6.32911, 6.94444 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 6.12559, 1.59986 )
 shape = SubResource( 1 )
 
-[node name="Health" parent="." instance=ExtResource( 4 )]
-position = Vector2( 7.02613, 3.34277 )
-
-[node name="Weapon" parent="." instance=ExtResource( 3 )]
-
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 2.77216, -0.924164 )
 scale = Vector2( -2.39789, 1.75916 )
 current = true
 zoom = Vector2( 0.6, 0.6 )
-limit_left = 0
-limit_top = 0
-limit_right = 1000
-limit_bottom = 600
+limit_right = 1340
+limit_bottom = 750
 limit_smoothed = true
+
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -36.3004
+margin_top = -41.3004
+margin_right = 64.6996
+margin_bottom = -25.3004
