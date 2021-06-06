@@ -25,7 +25,10 @@ var ak47 = preload("res://Resources/Weapon_Sprite/AK-47.png")
 var mp5 = preload("res://Resources/Weapon_Sprite/MP-5.png")
 var spa12 = preload("res://Resources/Weapon_Sprite/Spas-12.png")
 
-# Single player
+# Mode selection
+onready var msContainer = get_node("ModeSelection")
+
+# Single player lobby
 onready var spContainer = get_node("SinglePlayerLobby")
 onready var hsLabel = get_node("SinglePlayerLobby/VBoxContainer/HBoxContainer/HSValueLabel")
 
@@ -35,8 +38,6 @@ var currWeapon
 
 # Scene load, update game with existing values stored in global script.
 func _ready():
-	LoadoutBtn.disabled = true
-	SettingBtn.disabled = true
 	updateGame()
 
 # Update the game with existing/newest data.
@@ -75,14 +76,47 @@ func _on_LoadoutButton_pressed():
 
 func _on_StartButton_pressed():
 	mainLobbyContainer.visible = false
+	msContainer.visible = true
+
+# Mode selection
+func _on_msBackButton_pressed():
+	mainLobbyContainer.visible = true
+	msContainer.visible = false
+
+func _on_SingleplayerButton_pressed():
+	msContainer.visible = false
 	spContainer.visible = true
 
-# Game menu
+func _on_MultiplayerButton_pressed():
+	Server.getRooms()
+
+# Single Player Lobby
 func _on_SinglePlayerButton_mouse_entered():
 	hoverAudio.play()
 
 func _on_MultiPlayerButton_mouse_entered():
 	hoverAudio.play()
+
+func _on_sp_BackButton_mouse_entered():
+	hoverAudio.play()
+
+func _on_sp_BackButton_pressed():
+	msContainer.visible = true
+	spContainer.visible = false
+
+func _on_StartMapButton_mouse_entered():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color("FF8784"))
+	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
+
+func _on_StartMapButton_mouse_exited():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color(1,1,1))
+	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
+
+func _on_StartMapButton_pressed():
+	Global.game_highscore = 0
+	get_tree().change_scene("res://Scenes/GameScene/" + "World.tscn")
 
 # Inventory
 func _on_LeftButton_mouse_entered():
@@ -116,34 +150,15 @@ func _on_RightButton_pressed():
 	dmgLabel.text = str(invData[currWeapon + "_Dmg"])
 	rangeLabel.text = str(invData[currWeapon + "_Range"])
 	ammoLabel.text = str(invData[currWeapon + "_Ammo"])
-
+	
 func _on_BackButton_pressed():
 	mainLobbyContainer.visible = true
 	inventoryContainer.visible = false
 	invStartPos = 0
 
-func _on_sp_BackButton_mouse_entered():
-	hoverAudio.play()
-
-func _on_sp_BackButton_pressed():
-	mainLobbyContainer.visible = true
-	spContainer.visible = false
-
-func _on_StartMapButton_mouse_entered():
-	var new_style = StyleBoxFlat.new()
-	new_style.set_bg_color(Color("FF8784"))
-	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
-
-func _on_StartMapButton_mouse_exited():
-	var new_style = StyleBoxFlat.new()
-	new_style.set_bg_color(Color(1,1,1))
-	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
-
-func _on_StartMapButton_pressed():
-	Global.game_highscore = 0
-	get_tree().change_scene("res://Scenes/GameScene/" + "World.tscn")
-
 func _on_ExitButton_pressed():
+	rpc_id(1, "removePlayer", Global.uuid)
 	Server.logout()
 
-
+func _on_Test_pressed():
+	Server.test()

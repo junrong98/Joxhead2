@@ -1,5 +1,10 @@
 extends Node
 
+# Multiplayer
+var roomArr
+var roomName = ""
+var isLeader = false
+
 var uuid
 var highscore
 var game_highscore
