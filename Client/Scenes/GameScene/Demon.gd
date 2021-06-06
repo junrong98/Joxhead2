@@ -5,16 +5,51 @@ export (int) var attackDistance = 150
 
 onready var player = get_node("/root/World/Player")
 onready var fire_ball = preload("res://Scenes/GameScene/DemonFireBall.tscn")
+onready var nav_2d = get_node("/root/World/Navigation2D")
 onready var gun_end = $EndOfGun
 onready var gun_direction = $GunDirection
 
+var path = PoolVector2Array() setget set_path
 var health = 150
 var speed = 40
 var isAttack = false
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
+var med_kit_scene = preload("res://Scenes/GameScene/DropItems/MedKitItem.tscn")
+var ammo_pack_scence = preload("res://Scenes/GameScene/DropItems/AmmoPackItem.tscn")
 
+# randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
-	pass
+	set_process(false)
+	randomize()
+	
+
+# Movement of the demon. move_along_path() and set_path() is part of the pathfinding algo
+# for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 
+# have navigation highlighted then it can work
+func _physics_process(delta):
+	var new_path = nav_2d.get_simple_path(self.global_position, player.global_position)
+	self.path = new_path 
+	var move_distance = speed * delta
+	demon_movement()
+	move_along_path(move_distance)
+
+func move_along_path(distance):
+	var start_position = position
+	for i in range(path.size()):
+		var distance_to_next = start_position.distance_to(path[0])
+		if distance <= distance_to_next and distance >= 0.0:
+			position = start_position.linear_interpolate(path[0],distance/distance_to_next)
+		elif distance < 0.0:
+			move_and_slide(Vector2.ZERO)
+		distance -= distance_to_next
+		start_position = path[0]
+		path.remove(0)
+
+func set_path(value):
+	path = value
+	if value.size() == 0:
+		return
+	set_process(true)
 
 # when demon got hit by bullet. Whn the demon is killed, it will add 5 points
 # to the highscores and disappear
@@ -23,16 +58,10 @@ func handle_hit():
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(player.global_position)
 	if health <= 0:
-		Global.game_highscore += 5 
+		Global.game_highscore += 5
+		death_drop_loots()
 		queue_free()
 
-# Movement of the demon
-func _physics_process(delta):
-	var move = Vector2.ZERO
-	move = (player.position - position).normalized()
-	demon_movement()
-	move_and_slide(move * speed)
-		
 # Changing the animation of the Demon Sprite
 # 0 -> Walk animation
 # 1 -> Attack animation	
@@ -74,3 +103,15 @@ func instance_blood_particles():
 	get_tree().current_scene.add_child(blood_instance)
 	blood_instance.global_position = global_position
 	return blood_instance
+
+# After death, the loots will drop with randomized chances.
+func death_drop_loots():
+	var i = rand_range(1,11)
+	if i >= 1 and i <= 2.5:
+		var medkit = med_kit_scene.instance()
+		medkit.global_position = global_position
+		get_tree().get_root().add_child(medkit)
+	elif i > 2 and i <= 3.5:
+		var ammoPack = ammo_pack_scence.instance()
+		ammoPack.global_position = global_position
+		get_tree().get_root().add_child(ammoPack)

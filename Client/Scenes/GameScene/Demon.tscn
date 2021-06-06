@@ -152,6 +152,7 @@ rotation = 1.5708
 scale = Vector2( 0.98514, 0.970281 )
 frames = SubResource( 25 )
 animation = "Attack"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -26,5 +26,5 @@ shape = SubResource( 1 )
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_DemonFireBall_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
