@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Large-Zombie-Horde-www.fesliyanstudios.com (online-audio-converter.com).mp3-d4b2cd2140ba780d77b3627345230c7c.mp3str"
+
+[deps]
+
+source_file="res://Resources/Music/Large-Zombie-Horde-www.fesliyanstudios.com (online-audio-converter.com).mp3"
+dest_files=[ "res://.import/Large-Zombie-Horde-www.fesliyanstudios.com (online-audio-converter.com).mp3-d4b2cd2140ba780d77b3627345230c7c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

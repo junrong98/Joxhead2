@@ -55,6 +55,7 @@ func _on_Difficulty_spawn_timer_timeout():
 func spawn_waves():
 	zombie_wave()
 	demon_wave()
+	$Incoming_monster_sound.play()
 	wave_notification.visible = true
 	wave_notification.text = "Wave " + str(wave_num) + " started"
 	wave_noti_timer.start(2.5)
