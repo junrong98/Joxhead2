@@ -2,10 +2,7 @@
 
 # Changes made
 
-1. Added Drop items. Medkit and ammopack will be randomly drop upon monsters death
-2. Added number of ammo in weapon.gd file for now. Should connect database 
-3. Blood will fade out
-4. Map added floor tiles for pathfinding purpose. Cuurent map has expand to fix the size of the screen
-5. Waves system changed to when all enemies in that waves died, then new waves will start.**
-6. Improved AI. Enemy will try to locate player's location and prevent the enemy from stuck at the wall**
+1. Added guns and out_of_ammo sound effect. Zombie scream sound effect when each waves start
+
+2. Added drop loots items into group so that it can be cleared when players press restart button
 
