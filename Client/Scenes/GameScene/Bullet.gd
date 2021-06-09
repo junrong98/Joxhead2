@@ -1,14 +1,16 @@
 extends Area2D
 class_name Bullet
 
-export (int) var speed = 3
+export (float) var speed = 15
 
 onready var kill_timer = $ShootTimer
 var direction := Vector2.ZERO
+var bullet_dmg
+var range_time
 
 # Starting of the Shoot timer timer so that the bullet will dissapear
 func _ready():
-	kill_timer.start()
+	pass
 
 func _process(delta):
 	if direction != Vector2.ZERO:
@@ -28,7 +30,13 @@ func _on_ShootTimer_timeout():
 # from the enemy.
 func _on_Bullet_body_entered(body):
 	if body.is_in_group("Enemy"):
-		body.handle_hit()
+		body.handle_hit(bullet_dmg)
 		queue_free()
 	else:
 		queue_free()
+
+func set_weapon_damage(dmg):
+	bullet_dmg = dmg
+
+func set_range_time(time):
+	kill_timer.start(time/20)

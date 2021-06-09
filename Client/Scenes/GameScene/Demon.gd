@@ -10,12 +10,14 @@ onready var gun_end = $EndOfGun
 onready var gun_direction = $GunDirection
 
 var path = PoolVector2Array() setget set_path
-var health = 150
+var health = 120
 var speed = 40
 var isAttack = false
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
 var med_kit_scene = preload("res://Scenes/GameScene/DropItems/MedKitItem.tscn")
 var ammo_pack_scence = preload("res://Scenes/GameScene/DropItems/AmmoPackItem.tscn")
+var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
+
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
@@ -39,8 +41,8 @@ func move_along_path(distance):
 		var distance_to_next = start_position.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
 			position = start_position.linear_interpolate(path[0],distance/distance_to_next)
-		elif distance < 0.0:
 			move_and_slide(Vector2.ZERO)
+			break
 		distance -= distance_to_next
 		start_position = path[0]
 		path.remove(0)
@@ -53,8 +55,8 @@ func set_path(value):
 
 # when demon got hit by bullet. Whn the demon is killed, it will add 5 points
 # to the highscores and disappear
-func handle_hit():
-	health -= 20
+func handle_hit(dmg_amt):
+	health -= dmg_amt
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(player.global_position)
 	if health <= 0:
@@ -111,7 +113,10 @@ func death_drop_loots():
 		var medkit = med_kit_scene.instance()
 		medkit.global_position = global_position
 		get_tree().get_root().add_child(medkit)
-	elif i > 2 and i <= 3.5:
+	elif i > 2.5 and i <= 4:
 		var ammoPack = ammo_pack_scence.instance()
 		ammoPack.global_position = global_position
 		get_tree().get_root().add_child(ammoPack)
+	elif i > 4 and i <= 5.5:
+		var coins = coins_scence.instance()
+		coins.global_position = global_position

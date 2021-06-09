@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/GameScene/Weapon.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player Sprite/playerandgun.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GameScene/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/allSprites_default.png" type="Texture" id=4]
 
@@ -22,21 +21,19 @@ tracks/0/keys = {
 }
 
 [node name="Weapon" type="Node2D"]
+position = Vector2( 69.451, 39.01 )
 script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
-[node name="Weapons" type="Sprite" parent="."]
-position = Vector2( 17.9542, 4.42482 )
-scale = Vector2( 0.281, 0.122 )
-texture = ExtResource( 2 )
-region_enabled = true
+[node name="WeaponSprite" type="Sprite" parent="."]
+position = Vector2( 4.78777, -8.63422 )
 region_rect = Rect2( 90, 220, 180, 70 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( 41.6511, 6.05826 )
+position = Vector2( 128.378, -5.08927 )
 
 [node name="GunDirection" type="Position2D" parent="."]
-position = Vector2( 46.1382, 6.15515 )
+position = Vector2( 103.759, -5.64697 )
 
 [node name="CoolDown" type="Timer" parent="."]
 wait_time = 0.5
@@ -44,9 +41,9 @@ one_shot = true
 
 [node name="MuzzleFlash" type="Sprite" parent="."]
 visible = false
-position = Vector2( 45.7139, 5.72277 )
+position = Vector2( 140.306, -6.19571 )
 rotation = -1.5708
-scale = Vector2( 0.266325, 0.469948 )
+scale = Vector2( 0.865156, 1.74021 )
 texture = ExtResource( 4 )
 offset = Vector2( -2.83591, 2.5095 )
 region_enabled = true

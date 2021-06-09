@@ -2,6 +2,7 @@ extends Control
 
 onready var bullet_manager = $BulletManager
 onready var player: Player = $Player
+onready var weapon_manager = $Player/PlayerSprite/WeaponManager
 onready var zombie_spawn_timing = $Zombie_spawn_timer
 onready var demon_spawn_timing = $Demon_spawn_timer
 onready var wave_notification = $GUI/WaveNotificationLabel
@@ -18,9 +19,8 @@ var screensize
 # to automatically spawn the first wave.
 func _ready():
 	#For bullets
-	player.connect("fired_bullet", bullet_manager, "handle_bullet_spwaned")
+	weapon_manager.connect("fired_bullet", bullet_manager, "handle_bullet_spwaned")
 	screensize = get_viewport_rect().size
-	spawn_waves()
 
 # Randomly spawn zombie outside of the screen size area
 func zombie_wave():

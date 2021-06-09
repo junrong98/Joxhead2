@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/GameScene/GameOverScreen.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Fonts/REGISTER.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -15,6 +16,14 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=3]
 size = 31
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 3 )
 
 [node name="GameOverScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -31,10 +40,10 @@ __meta__ = {
 }
 
 [node name="HSContainer" type="VBoxContainer" parent="."]
-margin_left = 404.0
-margin_top = 166.0
-margin_right = 1008.0
-margin_bottom = 293.0
+margin_left = 403.51
+margin_top = 156.69
+margin_right = 1007.51
+margin_bottom = 283.69
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
@@ -60,10 +69,10 @@ align = 1
 script = ExtResource( 4 )
 
 [node name="RestartButton" type="Button" parent="."]
-margin_left = 626.498
-margin_top = 341.508
-margin_right = 795.498
-margin_bottom = 404.508
+margin_left = 622.578
+margin_top = 368.459
+margin_right = 791.578
+margin_bottom = 431.459
 custom_fonts/font = SubResource( 3 )
 text = "RESTART"
 __meta__ = {
@@ -71,12 +80,35 @@ __meta__ = {
 }
 
 [node name="ExitButton" type="Button" parent="."]
-margin_left = 627.997
-margin_top = 434.404
-margin_right = 796.997
-margin_bottom = 497.404
+margin_left = 621.627
+margin_top = 443.224
+margin_right = 790.627
+margin_bottom = 506.224
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinearnedLabel" type="Label" parent="."]
+margin_left = 577.11
+margin_top = 311.499
+margin_right = 724.11
+margin_bottom = 335.499
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.960784, 0.956863, 0.956863, 1 )
+text = "Coin earned:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coinearnedvalue" type="Label" parent="."]
+margin_left = 748.16
+margin_top = 310.969
+margin_right = 815.16
+margin_bottom = 336.969
+custom_fonts/font = SubResource( 5 )
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
