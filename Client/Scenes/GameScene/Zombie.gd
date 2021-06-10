@@ -12,10 +12,11 @@ var path = PoolVector2Array() setget set_path
 
 var speed = 40.0
 var isAttack = false
-var health_stat = 100
+var health_stat = 60
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
 var med_kit_scene = preload("res://Scenes/GameScene/DropItems/MedKitItem.tscn")
 var ammo_pack_scence = preload("res://Scenes/GameScene/DropItems/AmmoPackItem.tscn")
+var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	path = new_path 
 	var move_distance = speed * delta
 	zomebie_movement()
-	move_along_path(move_distance)	
+	move_along_path(move_distance)
 
 
 func move_along_path(distance):
@@ -38,9 +39,9 @@ func move_along_path(distance):
 	for i in range(path.size()):
 		var distance_to_next = start_position.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
-			position = start_position.linear_interpolate(path[0],distance/distance_to_next)
-		elif distance < 0.0:
+			position = start_position.linear_interpolate(path[0], distance/distance_to_next)
 			move_and_slide(Vector2.ZERO)
+			break
 		distance -= distance_to_next
 		start_position = path[0]
 		path.remove(0)
@@ -53,8 +54,8 @@ func set_path(value):
 
 
 # when zombie got hit by bullet
-func handle_hit():
-	health_stat -= 100
+func handle_hit(dmg_amt):
+	health_stat -= dmg_amt
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(players.global_position)
 	if health_stat <= 0:
@@ -62,7 +63,7 @@ func handle_hit():
 		death_drop_loots()
 		queue_free()
 
-# Chaning the animation of the Zombie Sprite
+# Changing the animation of the Zombie Sprite
 # 0 -> Walk animation
 # 1 -> Attack animation	
 func play_zombie_ani(aniIndex:int):
@@ -98,7 +99,6 @@ func instance_blood_particles():
 # After death, the loots will drop with randomized chances.
 func death_drop_loots():
 	var i = rand_range(1,11)
-	print(i)
 	if i >= 1 and i <= 2:
 		var medkit = med_kit_scene.instance()
 		medkit.global_position = global_position
@@ -107,3 +107,7 @@ func death_drop_loots():
 		var ammoPack = ammo_pack_scence.instance()
 		ammoPack.global_position = global_position
 		get_tree().get_root().add_child(ammoPack)
+	elif i > 3.5 and i <= 4.5:
+		var coins = coins_scence.instance()
+		coins.global_position = global_position
+		get_tree().get_root().add_child(coins)

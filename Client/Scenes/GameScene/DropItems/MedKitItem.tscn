@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.245, 18.382 )
 
-[node name="MedKitItem" type="Area2D"]
+[node name="MedKitItem" type="Area2D" groups=[
+"DropLoot",
+]]
 position = Vector2( 210.142, 171.701 )
 z_index = -3
 script = ExtResource( 2 )

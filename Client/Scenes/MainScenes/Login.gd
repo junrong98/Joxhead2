@@ -53,3 +53,15 @@ func on_FirebaseAuth_login_failed(error_code, message):
 	if error_code == 400:
 		get_node("MainPage/PopoutLabel").text = "Invalid E-mail or password"
 		
+
+func _on_ForgetPasswordButton_pressed():
+	var email = username.text
+	if username.text.empty():
+		notification.text = "Enter your email first"
+		return
+	Firebase.Auth.send_password_reset_email(email)
+	notification.text = "Reset password email sent"
+
+
+func _on_ForgetPasswordButton_mouse_entered():
+	mouse_hoversound.play()

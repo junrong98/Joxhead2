@@ -21,8 +21,9 @@ onready var dmgLabel = get_node("Inventory/StatsPanel/WpnDamageValue")
 onready var rangeLabel = get_node("Inventory/StatsPanel/WpnRangeValue")
 onready var ammoLabel = get_node("Inventory/StatsPanel/WpnAmmoValue" )
 
+var basic = preload("res://Resources/Weapon_Sprite/Basic.png")
 var ak47 = preload("res://Resources/Weapon_Sprite/AK-47.png")
-var mp5 = preload("res://Resources/Weapon_Sprite/MP-5.png")
+var uzi = preload("res://Resources/Weapon_Sprite/MP-5.png")
 var spa12 = preload("res://Resources/Weapon_Sprite/Spas-12.png")
 
 # Mode selection
@@ -107,12 +108,12 @@ func _on_sp_BackButton_pressed():
 func _on_StartMapButton_mouse_entered():
 	var new_style = StyleBoxFlat.new()
 	new_style.set_bg_color(Color("FF8784"))
-	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
 
 func _on_StartMapButton_mouse_exited():
 	var new_style = StyleBoxFlat.new()
 	new_style.set_bg_color(Color(1,1,1))
-	get_node("SinglePlayerLobby/sp_BackButton/BackgroundPanel").set('custom_styles/panel', new_style)
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
 
 func _on_StartMapButton_pressed():
 	Global.game_highscore = 0
@@ -162,3 +163,6 @@ func _on_ExitButton_pressed():
 
 func _on_Test_pressed():
 	Server.test()
+
+func _on_SettingButton_pressed():
+	pass # Replace with function body.

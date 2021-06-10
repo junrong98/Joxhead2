@@ -56,10 +56,15 @@ position = Vector2( 1.56458, 2.97882 )
 scale = Vector2( 0.365704, 0.341227 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 15
+frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.45776, 3.31079 )
 scale = Vector2( -7.93426, 3.87496 )
 shape = SubResource( 2 )
+
+[node name="LookAhead" type="RayCast2D" parent="."]
+position = Vector2( -0.734131, 7.70929 )
+rotation = -1.58481
+enabled = true

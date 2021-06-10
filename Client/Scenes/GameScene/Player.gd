@@ -2,19 +2,17 @@ extends KinematicBody2D
 
 class_name Player
 
-signal fired_bullet(bullet, position, direction)
-
 export (int) var speed = 100
 
-onready var weapon = $PlayerSprite/Weapon
+onready var weapon = $PlayerSprite/WeaponManager
 onready var health_stat = $HealthBar
 onready var player_sprite = $PlayerSprite
 
 var gameoverscreen = preload("res://Scenes/GameScene/GameOverScreen.tscn")
 var screensize
+var coins_earned = 0
 
 func _ready():
-	weapon.connect("weapon_fired", self, "shoot")
 	screensize = get_viewport_rect().size
 
 #Player movement.
@@ -41,23 +39,14 @@ func _physics_process(delta) -> void:
 	
 	move_and_slide(movement_direction * speed);
 	player_sprite.look_at(get_global_mouse_position())
-	
 
-# When the client press left mouse button
-func _unhandled_input(event):
-	if event.is_action_released("shoot"):
-		weapon.shoot()
-
-# shoot function implementation
-func shoot(bullet_instance, location: Vector2, direction: Vector2):
-	emit_signal("fired_bullet", bullet_instance, location, direction)
 
 # function when the player got attacked by zombie
 func zombie_attack():
 	health_stat.health_deducted(10)
 	if health_stat.players_health <= 0:
 		player_lost()
-		
+
 
 # function when the player got attacked by demon fireball
 func demon_fireball():
@@ -84,4 +73,7 @@ func add_health(recover_amt):
 
 # function to add the ammo when get the ammopack
 func add_ammo(ammo_amt):
-	weapon.num_ammo += ammo_amt
+	weapon.add_ammo_curr_weapon(ammo_amt)
+
+func add_coins():
+	coins_earned += 15
