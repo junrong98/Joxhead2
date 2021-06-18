@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 export var animations = []
-export (int) var attackDistance = 60
+export (int) var attackDistance = 50
 
-
-onready var players = get_node("/root/World/Player")
-onready var nav_2d = get_node("/root/World/Navigation2D")
+var players
+var nav_2d 
 
 #TO BE EDIT IN FUTURE
 var path = PoolVector2Array() setget set_path
 
+var zombie_dmg = 10
 var speed = 40.0
 var isAttack = false
 var health_stat = 60
@@ -20,6 +20,12 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
+	for player_group_node in get_tree().get_nodes_in_group("Players"):
+		players = player_group_node;
+		break;
+	for nav_group_node in get_tree().get_nodes_in_group("LevelNavigation"):
+		nav_2d = nav_group_node;
+		break;
 	set_process(false)
 	randomize()
 
@@ -32,7 +38,6 @@ func _physics_process(delta):
 	var move_distance = speed * delta
 	zomebie_movement()
 	move_along_path(move_distance)
-
 
 func move_along_path(distance):
 	var start_position = position
@@ -52,12 +57,19 @@ func set_path(value):
 		return
 	set_process(true)
 
-
 # when zombie got hit by bullet
 func handle_hit(dmg_amt):
 	health_stat -= dmg_amt
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(players.global_position)
+	if health_stat <= 0:
+		Global.game_highscore += 1
+		death_drop_loots()
+		queue_free()
+
+func bomb_hit(dmg):
+	health_stat -= dmg
+	var blood_particle_instance = instance_blood_particles()
 	if health_stat <= 0:
 		Global.game_highscore += 1
 		death_drop_loots()
@@ -86,7 +98,7 @@ func attack_player():
 	play_zombie_ani(1)
 	self.rotation = dir.angle()
 	yield($ZombieSprite,"animation_finished")
-	players.zombie_attack()
+	players.zombie_attack(zombie_dmg)
 	isAttack = false
 
 # Instance of blood particles

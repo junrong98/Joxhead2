@@ -6,8 +6,8 @@ onready var Basic = $Basic
 onready var AK47 = $AK47
 onready var Uzi = $Uzi
 onready var SPAS12 = $SPAS12
-onready var weapon_name = get_node("/root/World/Player/weapon_GUI/Weapon_name_Label")
-onready var weapon_ammo = get_node("/root/World/Player/weapon_GUI/Weapon_ammo_Label")
+onready var weapon_name = get_parent().get_parent().get_node("weapon_GUI/Weapon_name_Label")
+onready var weapon_ammo = get_parent().get_parent().get_node("weapon_GUI/Weapon_ammo_Label")
 
 var num_ammo
 var invStartPos = 0

@@ -23,8 +23,11 @@ func _on_BackButton_mouse_entered():
 	mouse_hoversound.play()
 
 func _on_CreateButton_pressed():
-	if password.text != confirm.text or username.text.empty() or password.text.empty() or email.text.empty() or confirm.text.empty():
-		notification.text = "Invalid password or username"
+	if  username.text.empty() or password.text.empty() or email.text.empty() or confirm.text.empty():
+		notification.text = "Empty password or username"
+		return
+	elif password.text != confirm.text:
+		notification.text = "Password does not match"
 		return
 	createBtn.disabled = true
 	Firebase.Auth.signup_with_email_and_password(email.text, password.text)
@@ -41,13 +44,18 @@ func _on_FirebaseAuth_signup_succeeded(auth):
 	var add_task2 : FirestoreTask = collection2.add("" + userid, \
 	{"highscore" : 0, "username" : username.text})
 	
+	notification.text = "Account successfully created"
+	yield(get_tree().create_timer(1.5),"timeout")
 	get_tree().change_scene("res://Scenes/MainScenes/Login.tscn")
 	
 func _on_FirebaseAuth_signup_failed(error_code, msg):
 	createBtn.disabled = false
 	if error_code == 400:
 		if msg == "EMAIL_EXISTS":
-			get_node("PopoutLabel").text = "Email already exists"
+			notification.text = "Email already exists"
 		elif msg == "INVALID_EMAIL":
-			get_node("PopoutLabel").text = "Invalid E-mail"
+			notification.text = "Invalid E-mail"
+		elif msg == "WEAK_PASSWORD : Password should be at least 6 characters":
+			notification.text = "Password should be at least 6 characters"
+
 		

@@ -51,7 +51,7 @@ func _on_FirebaseAuth_login_succeeded(auth):
 func on_FirebaseAuth_login_failed(error_code, message):
 	loginBtn.disabled = false
 	if error_code == 400:
-		get_node("MainPage/PopoutLabel").text = "Invalid E-mail or password"
+		notification.text = "Invalid E-mail or password"
 		
 
 func _on_ForgetPasswordButton_pressed():

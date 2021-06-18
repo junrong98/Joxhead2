@@ -1,0 +1,175 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/MainScenes/keybind_button.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/MainScenes/guikeybinding.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Fonts/REGISTER.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 3 )
+
+[node name="guikeybinding" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ControlSettings" type="Control" parent="."]
+visible = false
+anchor_left = 0.000650328
+anchor_right = 0.000650328
+margin_left = 207.31
+margin_top = 266.0
+margin_right = 1087.31
+margin_bottom = 642.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlSettings"]
+margin_left = 38.5825
+margin_top = 39.1285
+margin_right = 78.5825
+margin_bottom = 70.1285
+custom_fonts/font = SubResource( 1 )
+text = "UP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 118.62
+margin_top = 41.8313
+margin_right = 236.62
+margin_bottom = 80.8313
+text = "W"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "up_W"
+
+[node name="Label2" type="Label" parent="ControlSettings"]
+margin_left = 22.7084
+margin_top = 100.554
+margin_right = 102.708
+margin_bottom = 131.554
+custom_fonts/font = SubResource( 1 )
+text = "Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent2" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 120.0
+margin_top = 99.0
+margin_right = 238.0
+margin_bottom = 138.0
+text = "S"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "down_S"
+
+[node name="Label3" type="Label" parent="ControlSettings"]
+margin_left = 21.328
+margin_top = 168.882
+margin_right = 101.328
+margin_bottom = 199.882
+custom_fonts/font = SubResource( 1 )
+text = "Left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent3" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 120.0
+margin_top = 168.0
+margin_right = 236.0
+margin_bottom = 207.0
+text = "A"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "left_A"
+
+[node name="Label4" type="Label" parent="ControlSettings"]
+margin_left = 11.6655
+margin_top = 234.449
+margin_right = 111.666
+margin_bottom = 265.449
+custom_fonts/font = SubResource( 1 )
+text = "Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent4" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 121.0
+margin_top = 232.0
+margin_right = 239.0
+margin_bottom = 271.0
+text = "D"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "right_D"
+
+[node name="Label5" type="Label" parent="ControlSettings"]
+margin_left = 429.914
+margin_top = 38.4384
+margin_right = 649.914
+margin_bottom = 69.4384
+rect_rotation = 0.186348
+custom_fonts/font = SubResource( 1 )
+text = "Next Weapon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent5" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 669.0
+margin_top = 38.0
+margin_right = 788.0
+margin_bottom = 77.0
+text = "E"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "next_weapon"
+
+[node name="Label6" type="Label" parent="ControlSettings"]
+margin_left = 362.967
+margin_top = 97.1035
+margin_right = 662.967
+margin_bottom = 128.104
+custom_fonts/font = SubResource( 1 )
+text = "Previous Weapon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnparent6" type="Button" parent="ControlSettings" groups=[
+"button_keys",
+]]
+margin_left = 672.0
+margin_top = 94.0
+margin_right = 790.0
+margin_bottom = 133.0
+text = "Q"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action_name = "previous_weapon"
