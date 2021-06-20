@@ -180,6 +180,10 @@ Global="*res://Scenes/Singletons/global.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 Firestore="*res://addons/godot-firebase/firestore/firestore.gd"
 
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
+
 [display]
 
 window/size/width=1368

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Resources/Images/Logout_Active.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Images/Logout_Inactive.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Resources/Images/PreviousButton.png" type="Texture" id=21]
 [ext_resource path="res://Resources/Images/Setting_Active.png" type="Texture" id=22]
 [ext_resource path="res://Resources/Images/Loadout_Active.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Images/lock.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -53,8 +54,41 @@ font_data = ExtResource( 17 )
 bg_color = Color( 1, 0.972549, 0.972549, 1 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 30
+size = 25
 font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 19
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 20
+font_data = ExtResource( 17 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.380392, 0.380392, 0.380392, 1 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 60
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 30
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 30
+font_data = ExtResource( 16 )
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 10 )
@@ -83,21 +117,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Test" type="Button" parent="."]
-margin_left = 246.818
-margin_top = 42.6731
-margin_right = 407.821
-margin_bottom = 62.6731
-text = "feafaefaefaefaefea"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="UsernameLabel" type="Label" parent="."]
-margin_left = 1024.81
-margin_top = 172.03
-margin_right = 1238.81
-margin_bottom = 198.03
+margin_left = 250.603
+margin_top = 114.632
+margin_right = 464.603
+margin_bottom = 140.632
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -349,6 +373,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="lock" type="TextureRect" parent="Inventory"]
+visible = false
+margin_left = 369.525
+margin_top = 344.979
+margin_right = 881.525
+margin_bottom = 856.979
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 24 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StatsPanel" type="Panel" parent="Inventory"]
 margin_left = 731.031
 margin_top = 219.098
@@ -367,81 +404,224 @@ custom_fonts/font = SubResource( 9 )
 text = "Stats"
 align = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="WpnDamageLabel" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 16.0
+margin_left = 18.0
 margin_top = 61.0
-margin_right = 156.0
+margin_right = 158.0
 margin_bottom = 92.0
 custom_fonts/font = SubResource( 9 )
 text = "Damage:"
 __meta__ = {
-"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dmgMinusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 167.909
+margin_top = 67.8056
+margin_right = 179.909
+margin_bottom = 87.8056
+text = "-"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WpnDamageValue" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 170.0
+margin_left = 191.0
 margin_top = 64.0
-margin_right = 194.0
+margin_right = 241.0
 margin_bottom = 95.0
 custom_fonts/font = SubResource( 9 )
+align = 1
 __meta__ = {
-"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dmgPlusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 247.795
+margin_top = 67.7462
+margin_right = 259.795
+margin_bottom = 87.7462
+text = "+"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WpnRangeLabel" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 15.0
+margin_left = 17.0
 margin_top = 108.0
-margin_right = 135.0
+margin_right = 157.0
 margin_bottom = 139.0
 custom_fonts/font = SubResource( 9 )
 text = "Range :"
 __meta__ = {
-"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="rangeMinusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 168.909
+margin_top = 112.806
+margin_right = 180.909
+margin_bottom = 132.806
+text = "-"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WpnRangeValue" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 170.0
-margin_top = 106.0
-margin_right = 195.0
-margin_bottom = 137.0
+margin_left = 192.0
+margin_top = 108.0
+margin_right = 242.0
+margin_bottom = 139.0
 custom_fonts/font = SubResource( 9 )
+align = 1
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
+}
+
+[node name="rangePlusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 248.795
+margin_top = 112.746
+margin_right = 260.795
+margin_bottom = 132.746
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="WpnAmmoLabel" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 15.0
+margin_left = 17.0
 margin_top = 156.0
-margin_right = 122.0
+margin_right = 157.0
 margin_bottom = 187.0
 custom_fonts/font = SubResource( 9 )
 text = "Ammo  :"
+
+[node name="ammoMinusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 168.909
+margin_top = 162.806
+margin_right = 180.909
+margin_bottom = 182.806
+text = "-"
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
 
 [node name="WpnAmmoValue" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 170.0
-margin_top = 158.0
-margin_right = 196.0
-margin_bottom = 189.0
+margin_left = 192.0
+margin_top = 156.0
+margin_right = 242.0
+margin_bottom = 187.0
 custom_fonts/font = SubResource( 9 )
+align = 1
 __meta__ = {
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
+
+[node name="ammoPlusBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 248.795
+margin_top = 162.746
+margin_right = 260.795
+margin_bottom = 182.746
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeCostLbl" type="Label" parent="Inventory/StatsPanel"]
+margin_left = 18.0109
+margin_top = 214.974
+margin_right = 187.011
+margin_bottom = 234.974
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Upgrade Cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeCost" type="Label" parent="Inventory/StatsPanel"]
+margin_left = 182.0
+margin_top = 212.941
+margin_right = 257.0
+margin_bottom = 240.941
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlockCostLbl" type="Label" parent="Inventory/StatsPanel"]
+visible = false
+margin_left = 18.0109
+margin_top = 214.974
+margin_right = 187.011
+margin_bottom = 234.974
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Unlock Cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlockCost" type="Label" parent="Inventory/StatsPanel"]
+visible = false
+margin_left = 182.0
+margin_top = 212.941
+margin_right = 257.0
+margin_bottom = 240.941
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmUpBtn" type="Button" parent="Inventory/StatsPanel"]
+margin_left = 59.0
+margin_top = 300.0
+margin_right = 236.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 12 )
+text = "Confirm Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlockBtn" type="Button" parent="Inventory/StatsPanel"]
+visible = false
+margin_left = 59.0
+margin_top = 300.0
+margin_right = 236.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 12 )
+text = "Unlock Weapon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="errLbl" type="Label" parent="Inventory/StatsPanel"]
+visible = false
+margin_left = 52.0588
+margin_top = 264.298
+margin_right = 239.059
+margin_bottom = 281.298
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Not enough credit"
 
 [node name="BackButton" type="TextureButton" parent="Inventory"]
 margin_left = 600.0
@@ -454,11 +634,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="creditLbl" type="Label" parent="Inventory"]
+margin_left = 793.623
+margin_top = 185.543
+margin_right = 884.623
+margin_bottom = 206.543
+custom_fonts/font = SubResource( 14 )
+text = "Credit:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlockCfmPanel" type="Panel" parent="Inventory"]
+visible = false
+margin_left = 276.344
+margin_top = 181.688
+margin_right = 1015.34
+margin_bottom = 682.688
+custom_styles/panel = SubResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/unlockCfmPanel"]
+margin_top = 116.0
+margin_right = 739.0
+margin_bottom = 501.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/unlockCfmPanel/MarginContainer"]
+margin_right = 739.0
+margin_bottom = 385.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unlockCfmLabel" type="Label" parent="Inventory/unlockCfmPanel/MarginContainer/VBoxContainer"]
+margin_right = 739.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 16 )
+text = "Are you sure?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmBtn" type="Button" parent="Inventory/unlockCfmPanel"]
+margin_left = 151.0
+margin_top = 254.0
+margin_right = 297.0
+margin_bottom = 314.0
+custom_fonts/font = SubResource( 18 )
+text = "Yes"
+
+[node name="cancelBtn" type="Button" parent="Inventory/unlockCfmPanel"]
+margin_left = 453.0
+margin_top = 254.0
+margin_right = 599.0
+margin_bottom = 314.0
+custom_fonts/font = SubResource( 19 )
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MouseHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 pitch_scale = 2.0
 
-[connection signal="pressed" from="Test" to="." method="_on_Test_pressed"]
 [connection signal="mouse_entered" from="MainLobby/MainContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_mouse_entered"]
 [connection signal="pressed" from="MainLobby/MainContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="mouse_entered" from="MainLobby/MainContainer/VBoxContainer/LoadoutButton" to="." method="_on_LoadoutButton_mouse_entered"]
@@ -479,5 +724,15 @@ pitch_scale = 2.0
 [connection signal="pressed" from="Inventory/Background/LeftButton" to="." method="_on_LeftButton_pressed"]
 [connection signal="mouse_entered" from="Inventory/Background/RightButton" to="." method="_on_RightButton_mouse_entered"]
 [connection signal="pressed" from="Inventory/Background/RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/dmgMinusBtn" to="." method="_on_dmgMinusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/dmgPlusBtn" to="." method="_on_dmgPlusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/rangeMinusBtn" to="." method="_on_rangeMinusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/rangePlusBtn" to="." method="_on_rangePlusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/ammoMinusBtn" to="." method="_on_ammoMinusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/ammoPlusBtn" to="." method="_on_ammoPlusBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/ConfirmUpBtn" to="." method="_on_ConfirmUpBtn_pressed"]
+[connection signal="pressed" from="Inventory/StatsPanel/unlockBtn" to="." method="_on_unlockBtn_pressed"]
 [connection signal="mouse_entered" from="Inventory/BackButton" to="." method="_on_ExitButton_mouse_entered"]
 [connection signal="pressed" from="Inventory/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Inventory/unlockCfmPanel/cfmBtn" to="." method="_on_cfmBtn_pressed"]
+[connection signal="pressed" from="Inventory/unlockCfmPanel/cancelBtn" to="." method="_on_cancelBtn_pressed"]

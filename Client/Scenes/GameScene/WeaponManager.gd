@@ -23,9 +23,11 @@ func _ready():
 	currWeapon.connect("weapon_ammo", self, "set_current_ammo")
 	currWeapon.visible = true
 	Basic_stat()
+	""""
 	AK_47_stat()
 	Uzi_stat()
 	SPAS12_stat()
+	"""
 	weapon_name.text = str(curr_weapon)
 
 # To ensure that the ammo text will be updated in the UI
@@ -86,10 +88,10 @@ func change_previous_weapon():
 # Below(from basic_stat to SPAS12_stat are stats about each weapons, includes
 # ammo, weapon damage and range
 func Basic_stat():
-	Basic.num_ammo = invData["Basic_Ammo"]
-	Basic.weapon_dmg = invData["Basic_Dmg"]
-	Basic.weapon_range = invData["Basic_Range"]
-
+	Basic.num_ammo = invData["Basic"]["Ammo"]
+	Basic.weapon_dmg = invData["Basic"]["Dmg"]
+	Basic.weapon_range = invData["Basic"]["Range"]
+"""
 func AK_47_stat():
 	AK47.num_ammo = invData["AK47_Ammo"]
 	AK47.weapon_dmg = invData["AK47_Dmg"]
@@ -104,3 +106,4 @@ func SPAS12_stat():
 	SPAS12.num_ammo = invData["SPAS12_Ammo"]
 	SPAS12.weapon_dmg = invData["SPAS12_Dmg"]
 	SPAS12.weapon_range = invData["SPAS12_Range"]
+"""

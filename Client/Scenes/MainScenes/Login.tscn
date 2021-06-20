@@ -58,7 +58,7 @@ __meta__ = {
 margin_top = 37.0
 margin_right = 438.0
 margin_bottom = 61.0
-text = "admin@gmail.com"
+text = "junrong9698@gmail.com"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,7 +78,7 @@ __meta__ = {
 margin_top = 35.0
 margin_right = 442.0
 margin_bottom = 59.0
-text = "password"
+text = "viviva98"
 secret = true
 __meta__ = {
 "_edit_use_anchors_": false
