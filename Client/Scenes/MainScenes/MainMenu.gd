@@ -9,10 +9,6 @@ onready var collection : FirestoreCollection = Firebase.Firestore.collection('us
 # Main menu
 onready var mainLobbyContainer = get_node("MainLobby")
 
-# Button disabled
-onready var LoadoutBtn : TextureButton = $MainLobby/MainContainer/VBoxContainer/LoadoutButton
-onready var SettingBtn : TextureButton = $MainLobby/MainContainer/VBoxContainer/SettingButton
-
 # Inventory
 onready var invCollection : FirestoreCollection = Firebase.Firestore.collection('user_inventory')
 onready var inventoryContainer = get_node("Inventory")
@@ -22,7 +18,6 @@ onready var dmgLabel = get_node("Inventory/StatsPanel/WpnDamageValue")
 onready var rangeLabel = get_node("Inventory/StatsPanel/WpnRangeValue")
 onready var ammoLabel = get_node("Inventory/StatsPanel/WpnAmmoValue" )
 onready var disableIcon = get_node("Inventory/lock")
-onready var unlockPanel = get_node("Inventory/UnlockPanel")
 onready var statsPanel = get_node("Inventory/StatsPanel")
 onready var unlockBtn = get_node("Inventory/StatsPanel/unlockBtn")
 onready var creditLbl = get_node("Inventory/creditLbl")
@@ -56,9 +51,24 @@ onready var msContainer = get_node("ModeSelection")
 onready var spContainer = get_node("SinglePlayerLobby")
 onready var hsLabel = get_node("SinglePlayerLobby/VBoxContainer/HBoxContainer/HSValueLabel")
 
+# Map related variables
+var map_num = 0
+var mapArr = ["SinglePlayerLobby/BackgroundPanel/StartMapButton1", "SinglePlayerLobby/BackgroundPanel/StartMapButton2", "SinglePlayerLobby/BackgroundPanel/StartMapButton3"]
+var curr_map = mapArr[map_num]
+onready var currMap = get_node(curr_map)
+var max_num_map = mapArr.size()
+var previousMap
+
+# Settings
+onready var settingContainer = get_node("Settings")
+onready var gameSetting = get_node("GameSetting")
+onready var controlSetting = get_node("GameSetting/guikeybinding/ControlSettings")
+onready var audioSetting = get_node("GameSetting/AudioSettings")
+
 # Scene load, update game with existing values stored in global script.
 func _ready():
 	updateGame()
+	$BackgroundMusic.play()
 
 # Update the game with existing/newest data.
 func updateGame():
@@ -67,7 +77,6 @@ func updateGame():
 	
 	# Set player data	
 	invData = Global.gamedata
-	print(invData)
 	creditLbl.text = "Credit: " + str(invData["Credit"])
 
 	setWpnLbls()
@@ -136,19 +145,80 @@ func _on_sp_BackButton_pressed():
 	msContainer.visible = true
 	spContainer.visible = false
 
-func _on_StartMapButton_mouse_entered():
+func _on_StartMapButton1_mouse_entered():
 	var new_style = StyleBoxFlat.new()
 	new_style.set_bg_color(Color("FF8784"))
 	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
 
-func _on_StartMapButton_mouse_exited():
+func _on_StartMapButton1_mouse_exited():
 	var new_style = StyleBoxFlat.new()
 	new_style.set_bg_color(Color(1,1,1))
 	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
 
-func _on_StartMapButton_pressed():
+func _on_StartMapButton1_pressed():
 	Global.game_highscore = 0
-	get_tree().change_scene("res://Scenes/GameScene/" + "World.tscn")
+	get_tree().change_scene("res://Scenes/GameScene/" + "World1.tscn")
+
+
+func _on_StartMapButton2_pressed():
+	Global.game_highscore = 0
+	get_tree().change_scene("res://Scenes/GameScene/" + "World2.tscn")
+
+func _on_StartMapButton2_mouse_entered():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color("FF8784"))
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
+
+
+func _on_StartMapButton2_mouse_exited():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color(1,1,1))
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
+
+func _on_NextMapButton_pressed():
+	if map_num == max_num_map - 1:
+		map_num == 0
+	else:
+		map_num += 1
+	curr_map = mapArr[map_num]
+	previousMap = currMap
+	previousMap.visible = false
+	currMap = get_node(curr_map)
+	currMap.visible = true
+
+
+func _on_PreviousMapButton_pressed():
+	if map_num == 0:
+		map_num == max_num_map - 1
+	else:
+		map_num -= 1
+	curr_map = mapArr[map_num]
+	previousMap = currMap
+	previousMap.visible = false
+	currMap = get_node(curr_map)
+	currMap.visible = true
+
+func _on_NextMapButton_mouse_entered():
+	hoverAudio.play()
+
+func _on_PreviousMapButton_mouse_entered():
+	hoverAudio.play()
+
+func _on_StartMapButton3_pressed():
+	Global.game_highscore = 0
+	get_tree().change_scene("res://Scenes/GameScene/" + "World3.tscn")
+
+
+func _on_StartMapButton3_mouse_entered():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color("FF8784"))
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
+
+
+func _on_StartMapButton3_mouse_exited():
+	var new_style = StyleBoxFlat.new()
+	new_style.set_bg_color(Color(1,1,1))
+	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
 
 # Inventory
 func _on_LeftButton_mouse_entered():
@@ -333,6 +403,57 @@ func _on_cfmBtn_pressed():
 func _on_cancelBtn_pressed():
 	unlockCfmPanel.visible = false
 	
+	
 # Settings
+
 func _on_SettingButton_pressed():
-	pass # Replace with function body.
+	mainLobbyContainer.visible = false
+	settingContainer.visible = true
+
+func _on_settingBackButton_pressed():
+	mainLobbyContainer.visible = true
+	settingContainer.visible = false
+
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
+	$GameSetting/AudioSettings/SFXSlider.value = value
+
+
+func _on_GameSettingButton_pressed():
+	settingContainer.visible = false
+	gameSetting.visible = true
+
+func _on_GameSettingButton_mouse_entered():
+	hoverAudio.play()
+
+func _on_AccountSettingButton_mouse_entered():
+	hoverAudio.play()
+
+func _on_gsBackButton_pressed():
+	gameSetting.visible = false
+	settingContainer.visible = true
+	controlSetting.visible = false
+	audioSetting.visible = false
+
+
+func _on_gsBackButton_mouse_entered():
+	hoverAudio.play()
+
+
+func _on_settingBackButton_mouse_entered():
+	hoverAudio.play()
+
+
+func _on_ControlSettingButton_pressed():
+	controlSetting.visible = true
+	audioSetting.visible = false
+
+
+func _on_AudioSettingButton_pressed():
+	controlSetting.visible = false
+	audioSetting.visible = true
+	
+func _on_HSlider2_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
+	$GameSetting/AudioSettings/MusicSlider.value = value

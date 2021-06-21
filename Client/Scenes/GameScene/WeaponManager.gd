@@ -15,6 +15,7 @@ var curr_weapon = Global.invArr[invStartPos]
 onready var currWeapon = get_node(curr_weapon)
 var previousWeapon
 var invData = Global.gamedata
+var currPlayerInv = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,12 @@ func _ready():
 	currWeapon.connect("weapon_fired", self, "shoot")
 	currWeapon.connect("weapon_ammo", self, "set_current_ammo")
 	currWeapon.visible = true
+	
+	for weapon in Global.gamedata:
+		if weapon != "Credit":
+			if Global.gamedata[weapon]["Unlocked"]:
+				currPlayerInv.push_front(weapon)
+	
 	Basic_stat()
 	AK_47_stat()
 	Uzi_stat()
@@ -51,11 +58,11 @@ func add_ammo_curr_weapon(ammo):
 
 # Change next weapons
 func change_next_weapon():
-	if invStartPos == Global.invSize - 1:
+	if invStartPos == currPlayerInv.size() - 1:
 		invStartPos = 0
 	else:
 		invStartPos += 1
-	curr_weapon = Global.invArr[invStartPos]
+	curr_weapon = currPlayerInv[invStartPos]
 	previousWeapon = currWeapon
 	previousWeapon.visible = false
 	currWeapon = get_node(curr_weapon)
@@ -69,10 +76,10 @@ func change_next_weapon():
 # Change previous weapon
 func change_previous_weapon():
 	if invStartPos == 0:
-		invStartPos = Global.invSize - 1
+		invStartPos = currPlayerInv.size() - 1
 	else:
 		invStartPos -= 1
-	curr_weapon = Global.invArr[invStartPos]
+	curr_weapon = currPlayerInv[invStartPos]
 	previousWeapon = currWeapon
 	previousWeapon.visible = false
 	currWeapon = get_node(curr_weapon)
@@ -103,4 +110,4 @@ func Uzi_stat():
 func SPAS12_stat():
 	SPAS12.num_ammo = invData["SPAS12"]["Ammo"]
 	SPAS12.weapon_dmg = invData["SPAS12"]["Dmg"]
-	SPAS12.weapon_range = invData["SPAS12"]["SPAS12Range"]
+	SPAS12.weapon_range = invData["SPAS12"]["Range"]
