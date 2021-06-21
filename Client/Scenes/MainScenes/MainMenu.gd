@@ -67,6 +67,7 @@ func updateGame():
 	
 	# Set player data	
 	invData = Global.gamedata
+	print(invData)
 	creditLbl.text = "Credit: " + str(invData["Credit"])
 
 	setWpnLbls()
