@@ -238,6 +238,7 @@ margin_left = 747.841
 margin_top = 361.821
 margin_right = 1018.84
 margin_bottom = 415.821
+disabled = true
 texture_normal = ExtResource( 15 )
 texture_hover = ExtResource( 19 )
 __meta__ = {
@@ -963,3 +964,12 @@ bus = "Music"
 [connection signal="pressed" from="Inventory/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Inventory/unlockCfmPanel/cfmBtn" to="." method="_on_cfmBtn_pressed"]
 [connection signal="pressed" from="Inventory/unlockCfmPanel/cancelBtn" to="." method="_on_cancelBtn_pressed"]
+[connection signal="pressed" from="Settings/GameSettingButton" to="." method="_on_GameSettingButton_pressed"]
+[connection signal="pressed" from="Settings/AccountSettingButton" to="." method="_on_AccountSettingButton_pressed"]
+[connection signal="pressed" from="Settings/settingBackButton" to="." method="_on_settingBackButton_pressed"]
+[connection signal="pressed" from="GameSetting/ControlSettingButton" to="." method="_on_ControlSettingButton_pressed"]
+[connection signal="pressed" from="GameSetting/AudioSettingButton" to="." method="_on_AudioSettingButton_pressed"]
+[connection signal="value_changed" from="GameSetting/AudioSettings/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="GameSetting/AudioSettings/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="mouse_entered" from="GameSetting/gsBackButton" to="." method="_on_gsBackButton_mouse_entered"]
+[connection signal="pressed" from="GameSetting/gsBackButton" to="." method="_on_gsBackButton_pressed"]

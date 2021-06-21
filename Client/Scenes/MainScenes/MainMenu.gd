@@ -414,12 +414,6 @@ func _on_settingBackButton_pressed():
 	mainLobbyContainer.visible = true
 	settingContainer.visible = false
 
-
-func _on_HSlider_value_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
-	$GameSetting/AudioSettings/SFXSlider.value = value
-
-
 func _on_GameSettingButton_pressed():
 	settingContainer.visible = false
 	gameSetting.visible = true
@@ -449,11 +443,17 @@ func _on_ControlSettingButton_pressed():
 	controlSetting.visible = true
 	audioSetting.visible = false
 
-
 func _on_AudioSettingButton_pressed():
 	controlSetting.visible = false
 	audioSetting.visible = true
+
+func _on_AccountSettingButton_pressed():
+	pass # Replace with function body.
 	
-func _on_HSlider2_value_changed(value):
+func _on_SFXSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
+	$GameSetting/AudioSettings/SFXSlider.value = value
+
+func _on_MusicSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
 	$GameSetting/AudioSettings/MusicSlider.value = value
