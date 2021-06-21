@@ -156,5 +156,5 @@ frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.43239, -3.43774 )
+position = Vector2( -1.97236, -1.00784 )
 shape = SubResource( 26 )

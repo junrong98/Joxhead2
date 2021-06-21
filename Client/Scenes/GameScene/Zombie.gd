@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 export var animations = []
-export (int) var attackDistance = 60
+export (int) var attackDistance = 50
 
-
-onready var players = get_node("/root/World/Player")
-onready var nav_2d = get_node("/root/World/Navigation2D")
+var players
+var nav_2d 
 
 #TO BE EDIT IN FUTURE
-var path = PoolVector2Array() setget set_path
+var path
 
+var zombie_dmg = 10
 var speed = 40.0
 var isAttack = false
 var health_stat = 60
@@ -20,6 +20,12 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
+	for player_group_node in get_tree().get_nodes_in_group("Players"):
+		players = player_group_node;
+		break;
+	for nav_group_node in get_tree().get_nodes_in_group("LevelNavigation"):
+		nav_2d = nav_group_node;
+		break;
 	set_process(false)
 	randomize()
 
@@ -27,37 +33,38 @@ func _ready() -> void:
 # for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 
 # have navigation highlighted then it can work
 func _physics_process(delta):
-	var new_path = nav_2d.get_simple_path(self.global_position, players.global_position, false)
-	path = new_path 
+	path = nav_2d.get_simple_path(get_global_position(), players.get_global_position())
 	var move_distance = speed * delta
-	zomebie_movement()
 	move_along_path(move_distance)
+	zomebie_movement()
 
 
 func move_along_path(distance):
-	var start_position = position
+	var start_position = get_global_position()
 	for i in range(path.size()):
 		var distance_to_next = start_position.distance_to(path[0])
-		if distance <= distance_to_next and distance >= 0.0:
-			position = start_position.linear_interpolate(path[0], distance/distance_to_next)
-			move_and_slide(Vector2.ZERO)
+		if distance <= distance_to_next:
+			var move_rotated = get_angle_to(start_position.linear_interpolate(path[0], distance/distance_to_next))
+			var motion = Vector2(speed, 0).rotated(move_rotated)
+			move_and_slide(motion)
 			break
 		distance -= distance_to_next
 		start_position = path[0]
 		path.remove(0)
-
-func set_path(value):
-	path = value
-	if value.size() == 0:
-		return
-	set_process(true)
-
 
 # when zombie got hit by bullet
 func handle_hit(dmg_amt):
 	health_stat -= dmg_amt
 	var blood_particle_instance = instance_blood_particles()
 	blood_particle_instance.rotation = global_position.angle_to_point(players.global_position)
+	if health_stat <= 0:
+		Global.game_highscore += 1
+		death_drop_loots()
+		queue_free()
+
+func bomb_hit(dmg):
+	health_stat -= dmg
+	var blood_particle_instance = instance_blood_particles()
 	if health_stat <= 0:
 		Global.game_highscore += 1
 		death_drop_loots()
@@ -72,21 +79,20 @@ func play_zombie_ani(aniIndex:int):
 # function about zombie movement
 func zomebie_movement():
 	var distance = players.position.distance_to(position)
-	var dir = players.position - position
+	#var dir = players.position - position
 	if distance > attackDistance:
 		play_zombie_ani(0)
-		self.rotation = dir.angle()
+		$ZombieSprite.look_at(players.global_position)
 	elif !isAttack:
 		attack_player()
 
 # When the zombie attak player
 func attack_player():
-	var dir = players.position - position
 	isAttack = true
 	play_zombie_ani(1)
-	self.rotation = dir.angle()
+	$ZombieSprite.look_at(players.global_position)
 	yield($ZombieSprite,"animation_finished")
-	players.zombie_attack()
+	players.zombie_attack(zombie_dmg)
 	isAttack = false
 
 # Instance of blood particles

@@ -6,8 +6,8 @@ onready var Basic = $Basic
 onready var AK47 = $AK47
 onready var Uzi = $Uzi
 onready var SPAS12 = $SPAS12
-onready var weapon_name = get_node("/root/World/Player/weapon_GUI/Weapon_name_Label")
-onready var weapon_ammo = get_node("/root/World/Player/weapon_GUI/Weapon_ammo_Label")
+onready var weapon_name = get_parent().get_parent().get_node("weapon_GUI/Weapon_name_Label")
+onready var weapon_ammo = get_parent().get_parent().get_node("weapon_GUI/Weapon_ammo_Label")
 
 var num_ammo
 var invStartPos = 0
@@ -23,11 +23,9 @@ func _ready():
 	currWeapon.connect("weapon_ammo", self, "set_current_ammo")
 	currWeapon.visible = true
 	Basic_stat()
-	""""
 	AK_47_stat()
 	Uzi_stat()
 	SPAS12_stat()
-	"""
 	weapon_name.text = str(curr_weapon)
 
 # To ensure that the ammo text will be updated in the UI
@@ -88,10 +86,10 @@ func change_previous_weapon():
 # Below(from basic_stat to SPAS12_stat are stats about each weapons, includes
 # ammo, weapon damage and range
 func Basic_stat():
-	Basic.num_ammo = invData["Basic"]["Ammo"]
-	Basic.weapon_dmg = invData["Basic"]["Dmg"]
-	Basic.weapon_range = invData["Basic"]["Range"]
-"""
+	Basic.num_ammo = invData["Basic_Ammo"]
+	Basic.weapon_dmg = invData["Basic_Dmg"]
+	Basic.weapon_range = invData["Basic_Range"]
+
 func AK_47_stat():
 	AK47.num_ammo = invData["AK47_Ammo"]
 	AK47.weapon_dmg = invData["AK47_Dmg"]
@@ -106,4 +104,3 @@ func SPAS12_stat():
 	SPAS12.num_ammo = invData["SPAS12_Ammo"]
 	SPAS12.weapon_dmg = invData["SPAS12_Dmg"]
 	SPAS12.weapon_range = invData["SPAS12_Range"]
-"""

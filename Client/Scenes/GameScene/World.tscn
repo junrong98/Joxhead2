@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/GameScene/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/GameScene/Map01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Music/Large-Zombie-Horde-www.fesliyanstudios.com (online-audio-converter.com).mp3" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/GameScene/World.gd" type="Script" id=33]
 [ext_resource path="res://Scenes/GameScene/BulletManager.gd" type="Script" id=34]
@@ -37,9 +36,6 @@ autostart = true
 [node name="Navigation2D" type="Navigation2D" parent="." groups=[
 "LevelNavigation",
 ]]
-z_index = -8
-
-[node name="Map01" parent="Navigation2D" instance=ExtResource( 4 )]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 0
@@ -83,6 +79,7 @@ wait_time = 2.5
 
 [node name="Incoming_monster_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "SFX"
 
 [connection signal="timeout" from="Difficulty_spawn_timer" to="." method="_on_Difficulty_spawn_timer_timeout"]
 [connection signal="timeout" from="GUI/WaveNotificationLabel/WaveNotification_timer" to="." method="_on_WaveNotification_timer_timeout"]

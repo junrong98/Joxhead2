@@ -2,7 +2,8 @@
 
 # Changes made
 
-1. Added guns and out_of_ammo sound effect. Zombie scream sound effect when each waves start
+1. Added Fakewalls and Barrel
 
-2. Added drop loots items into group so that it can be cleared when players press restart button
+# Take Note:
+Merge with the files after you done with your part
 
