@@ -17,7 +17,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Firebase="*res://Singleton/Firebase.gd"
-Global="*res://Singleton/Global.gd"
 
 [physics]
 

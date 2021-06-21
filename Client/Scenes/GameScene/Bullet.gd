@@ -32,6 +32,9 @@ func _on_Bullet_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.handle_hit(bullet_dmg)
 		queue_free()
+	elif body.is_in_group("BarricadeObject"):
+		body.destroy_object(bullet_dmg)
+		queue_free()
 	else:
 		queue_free()
 

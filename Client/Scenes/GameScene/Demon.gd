@@ -3,14 +3,14 @@ extends KinematicBody2D
 export var animations = []
 export (int) var attackDistance = 150
 
-onready var player = get_node("/root/World/Player")
+var player 
+var nav_2d 
 onready var fire_ball = preload("res://Scenes/GameScene/DemonFireBall.tscn")
-onready var nav_2d = get_node("/root/World/Navigation2D")
 onready var gun_end = $EndOfGun
 onready var gun_direction = $GunDirection
 
 var path = PoolVector2Array() setget set_path
-var health = 120
+var health = 100
 var speed = 40
 var isAttack = false
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
@@ -21,6 +21,12 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
+	for player_group_node in get_tree().get_nodes_in_group("Players"):
+		player = player_group_node;
+		break;
+	for nav_group_node in get_tree().get_nodes_in_group("LevelNavigation"):
+		nav_2d = nav_group_node;
+		break;
 	set_process(false)
 	randomize()
 	
@@ -61,6 +67,14 @@ func handle_hit(dmg_amt):
 	blood_particle_instance.rotation = global_position.angle_to_point(player.global_position)
 	if health <= 0:
 		Global.game_highscore += 5
+		death_drop_loots()
+		queue_free()
+
+func bomb_hit(dmg):
+	health -= dmg
+	var blood_particle_instance = instance_blood_particles()
+	if health <= 0:
+		Global.game_highscore += 1
 		death_drop_loots()
 		queue_free()
 

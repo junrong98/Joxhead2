@@ -11,7 +11,7 @@ onready var wave_noti_timer = $GUI/WaveNotificationLabel/WaveNotification_timer
 var zombies = preload("res://Scenes/GameScene/Zombie.tscn")
 var demons = preload("res://Scenes/GameScene/Demon.tscn")
 var wave_num = 1
-var zombie_spawn_number = 20
+var zombie_spawn_number = 1
 var demon_spawn_number = 0
 var screensize
 

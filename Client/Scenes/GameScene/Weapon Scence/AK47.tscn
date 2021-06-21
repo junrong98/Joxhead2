@@ -13,7 +13,9 @@ texture = ExtResource( 2 )
 [node name="Out_of_ammo_sound" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource( 3 )
 pitch_scale = 2.0
+bus = "SFX"
 
 [node name="Firing_sound" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 4 )
 volume_db = -8.0
+bus = "SFX"

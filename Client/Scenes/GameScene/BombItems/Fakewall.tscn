@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/BombItem/fakewall.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/GameScene/BombItems/Fakewall.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.9656, 25.1209 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17.0593, 26.4261 )
+
+[node name="Fakewall" type="Node2D"]
+z_index = -1
+script = ExtResource( 2 )
+
+[node name="FakewallStaticBody" type="StaticBody2D" parent="." groups=[
+"BarricadeObject",
+]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="FakewallSprite" type="Sprite" parent="FakewallStaticBody"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakewallStaticBody"]
+position = Vector2( -1.39042, -1.14729 )
+shape = SubResource( 1 )
+
+[node name="FakewallArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakewallArea"]
+position = Vector2( -1.67291, -0.518061 )
+shape = SubResource( 2 )
+
+[connection signal="body_exited" from="FakewallArea" to="." method="_on_FakewallArea_body_exited"]

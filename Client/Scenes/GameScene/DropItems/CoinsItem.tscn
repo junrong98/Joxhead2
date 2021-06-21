@@ -10,6 +10,7 @@ extents = Vector2( 9.45441, 8.77872 )
 "DropLoot",
 ]]
 position = Vector2( 15.1857, 13.158 )
+z_index = -3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
