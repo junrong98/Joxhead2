@@ -23,11 +23,8 @@ func _on_BackButton_mouse_entered():
 	mouse_hoversound.play()
 
 func _on_CreateButton_pressed():
-	if  username.text.empty() or password.text.empty() or email.text.empty() or confirm.text.empty():
-		notification.text = "Empty password or username"
-		return
-	elif password.text != confirm.text:
-		notification.text = "Password does not match"
+	if password.text != confirm.text or username.text.empty() or password.text.empty() or email.text.empty() or confirm.text.empty():
+		notification.text = "Invalid password or username"
 		return
 	createBtn.disabled = true
 	Firebase.Auth.signup_with_email_and_password(email.text, password.text)
@@ -38,14 +35,28 @@ func _on_BackButton_pressed():
 func _on_FirebaseAuth_signup_succeeded(auth):
 	var userid = auth["localid"]
 		
-	var add_task : FirestoreTask = collection.add("" + userid, \
-	{"AK47_Ammo" : 10, "AK47_Dmg" : 5, "AK47_Range" : 7, "Credit" : 2000, "SPAS12_Ammo" : 6, "SPAS12_Dmg" : 20, "SPAS12_Range":2, "Uzi_Ammo" : 20, "Uzi_Dmg" : 2, "Uzi_Range" : 5})
+	var add_task : FirestoreTask = collection.add("" + userid, {"Credit" : 20,\
+	"Basic" : {"Ammo" : 50, "Dmg" : 1000, "Range" : 5,\
+			   "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
+			   "Unlocked": true, "Unlocked_Cost": 0, "Upgrade_Cost": 2},
+	"AK47" : {"Ammo" : 130, "Dmg" : 30, "Range" : 7,\
+			  "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
+			  "Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 6},
+	"SPAS12" : {"Ammo" : 50, "Dmg" : 50, "Range":2,\
+	 			"Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl": 1,\
+				"Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 4},
+	"Uzi" : {"Ammo" : 200, "Dmg" : 25, "Range" : 5,\
+			 "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
+			 "Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 3}
+	})
 	
 	var add_task2 : FirestoreTask = collection2.add("" + userid, \
 	{"highscore" : 0, "username" : username.text})
 	
 	notification.text = "Account successfully created"
+	
 	yield(get_tree().create_timer(1.5),"timeout")
+	
 	get_tree().change_scene("res://Scenes/MainScenes/Login.tscn")
 	
 func _on_FirebaseAuth_signup_failed(error_code, msg):
