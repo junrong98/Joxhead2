@@ -13,7 +13,9 @@ onready var mainLobbyContainer = get_node("MainLobby")
 onready var invCollection : FirestoreCollection = Firebase.Firestore.collection('user_inventory')
 onready var inventoryContainer = get_node("Inventory")
 onready var invLabel = get_node("Inventory/Background/Item_Label")
-onready var weaponSprite = get_node("Inventory/Background/Character_Sprite/Weapon_Sprite")
+onready var characterSprite = $Inventory/Background/Character_Sprite
+onready var weaponSprite = $Inventory/Background/Character_Sprite/Weapon_Sprite
+onready var miscSprite = $Inventory/Background/MiscSprite
 onready var dmgLabel = get_node("Inventory/StatsPanel/WpnDamageValue")
 onready var rangeLabel = get_node("Inventory/StatsPanel/WpnRangeValue")
 onready var ammoLabel = get_node("Inventory/StatsPanel/WpnAmmoValue" )
@@ -29,6 +31,16 @@ onready var unlockCostLbl = get_node("Inventory/StatsPanel/unlockCostLbl")
 onready var unlockCost = get_node("Inventory/StatsPanel/unlockCost")
 onready var statsPabelBtn = get_node("Inventory/StatsPanel")
 onready var confirmUpBtn = get_node("Inventory/StatsPanel/ConfirmUpBtn")
+onready var itemPanel = $Inventory/ItemPanel
+onready var itemDamageValue = $Inventory/ItemPanel/itemDamageValue
+onready var ammoCostInpt = $Inventory/ItemPanel/ammoCostInpt
+onready var itemErrLbl = $Inventory/ItemPanel/itemErrLbl
+onready var itemQuantityVal = $Inventory/ItemPanel/itemQuantityVal
+onready var defPanel = $Inventory/DefensivePanel
+onready var defHealthVal = $Inventory/DefensivePanel/defHealthValue
+onready var defQtyVal = $Inventory/DefensivePanel/defQuantityVal
+onready var defAmmoVal = $Inventory/DefensivePanel/defAmmoVal
+onready var defErrLbl = $Inventory/DefensivePanel/defErrLbl
 
 var basic = preload("res://Resources/Weapon_Sprite/Basic.png")
 var ak47 = preload("res://Resources/Weapon_Sprite/AK-47.png")
@@ -64,6 +76,17 @@ onready var settingContainer = get_node("Settings")
 onready var gameSetting = get_node("GameSetting")
 onready var controlSetting = get_node("GameSetting/guikeybinding/ControlSettings")
 onready var audioSetting = get_node("GameSetting/AudioSettings")
+
+# Account Settings
+onready var accountSetting = $AccountSetting
+onready var buttonContainer = $AccountSetting/buttonNode
+onready var changeUsernameContainer = $AccountSetting/changeUsernameNode
+onready var usernameInpt = $AccountSetting/changeUsernameNode/newUsernameInput
+onready var changeInfoLbl = $AccountSetting/changeUsernameNode/changeInfoLabel
+onready var changePasswordContainer = $AccountSetting/changePasswordNode
+onready var newPasswordInt = $AccountSetting/changePasswordNode/newPaswordInput
+onready var cfmNewPasswordInt = $AccountSetting/changePasswordNode/cfmNewPaswordInput
+onready var changePassInfoLbl = $AccountSetting/changePasswordNode/changePassInfoLabel
 
 # Scene load, update game with existing values stored in global script.
 func _ready():
@@ -159,7 +182,6 @@ func _on_StartMapButton1_pressed():
 	Global.game_highscore = 0
 	get_tree().change_scene("res://Scenes/GameScene/" + "World1.tscn")
 
-
 func _on_StartMapButton2_pressed():
 	Global.game_highscore = 0
 	get_tree().change_scene("res://Scenes/GameScene/" + "World2.tscn")
@@ -168,7 +190,6 @@ func _on_StartMapButton2_mouse_entered():
 	var new_style = StyleBoxFlat.new()
 	new_style.set_bg_color(Color("FF8784"))
 	get_node("SinglePlayerLobby/BackgroundPanel").set('custom_styles/panel', new_style)
-
 
 func _on_StartMapButton2_mouse_exited():
 	var new_style = StyleBoxFlat.new()
@@ -256,19 +277,50 @@ func setSwitch():
 func setWpnLbls():
 	currWeapon = Global.invArr[invStartPos]
 	invLabel.text = currWeapon
-	weaponSprite.set_texture(Global.invSprite[invStartPos])
-	dmgLabel.text = str(invData[currWeapon]["Dmg"])
-	rangeLabel.text = str(invData[currWeapon]["Range"])
-	ammoLabel.text = str(invData[currWeapon]["Ammo"])
 	
-	currWeaponDmgLvl = invData[currWeapon]["Dmg_Lvl"]
-	currWeaponRangeLvl = invData[currWeapon]["Range_Lvl"]
-	currWeaponAmmoLvl = invData[currWeapon]["Ammo_Lvl"]
+	if invData[currWeapon]["Type"] == "Weapon":
+		statsPanel.visible = true
+		itemPanel.visible = false
+		defPanel.visible = false
+		weaponSprite.set_texture(Global.invSprite[invStartPos])
+		characterSprite.visible = true
+		miscSprite.visible = false
+		dmgLabel.text = str(invData[currWeapon]["Dmg"])
+		rangeLabel.text = str(invData[currWeapon]["Range"])
+		ammoLabel.text = str(invData[currWeapon]["Ammo"])
+		
+		currWeaponDmgLvl = invData[currWeapon]["Dmg_Lvl"]
+		currWeaponRangeLvl = invData[currWeapon]["Range_Lvl"]
+		currWeaponAmmoLvl = invData[currWeapon]["Ammo_Lvl"]
 	
-	upgradeCost = 0
-	upgradeCostValLbl.text = str(upgradeCost)
-
+		upgradeCost = 0
+		upgradeCostValLbl.text = str(upgradeCost)
+	elif invData[currWeapon]["Type"] == "Item":
+		statsPanel.visible = false
+		itemPanel.visible = true
+		defPanel.visible = false
+		characterSprite.visible = false
+		miscSprite.visible = true
+		miscSprite.set_texture(Global.invSprite[invStartPos])
+		itemDamageValue.text = str(invData[currWeapon]["Dmg"])
+		itemQuantityVal.text = str(invData[currWeapon]["Ammo"])
+		ammoCostInpt.text = str(invData[currWeapon]["Price"])
+	elif invData[currWeapon]["Type"] == "Defensive":
+		defPanel.visible = true
+		statsPanel.visible = false
+		itemPanel.visible = false
+		characterSprite.visible = false
+		miscSprite.visible = true
+		miscSprite.set_texture(Global.invSprite[invStartPos])
+		defHealthVal.text = str(invData[currWeapon]["Health"])
+		defQtyVal.text = str(invData[currWeapon]["Ammo"])
+		defAmmoVal.text = str(invData[currWeapon]["Price"])
+		
 func _on_LeftButton_pressed():
+	errLbl.visible = false
+	defErrLbl.visible = false
+	itemErrLbl.visible = false
+	
 	if invStartPos == 0:
 		invStartPos = Global.invSize - 1
 	else:
@@ -276,9 +328,12 @@ func _on_LeftButton_pressed():
 	
 	setWpnLbls()
 	setSwitch()
-	
 		
 func _on_RightButton_pressed():
+	errLbl.visible = false
+	defErrLbl.visible = false
+	itemErrLbl.visible = false
+	
 	if invStartPos == Global.invSize - 1:
 		invStartPos = 0
 	else:
@@ -316,6 +371,7 @@ func _on_dmgMinusBtn_pressed():
 		upgradeCost = upgradeCost - currWeaponDmgLvl * invData[currWeapon]["Upgrade_Cost"]
 		currWeaponDmgLvl = currWeaponDmgLvl - 1
 		updateUpgradeLabel()
+		errCheck()
 		
 func _on_rangeMinusBtn_pressed():
 	# Only can decrease if upgrade is greater than existing level
@@ -324,6 +380,7 @@ func _on_rangeMinusBtn_pressed():
 		upgradeCost = upgradeCost - currWeaponRangeLvl * invData[currWeapon]["Upgrade_Cost"]
 		currWeaponRangeLvl = currWeaponRangeLvl - 1
 		updateUpgradeLabel()
+		errCheck()
 
 func _on_rangePlusBtn_pressed():
 	currWeaponRangeLvl = currWeaponRangeLvl + 1
@@ -343,6 +400,7 @@ func _on_ammoMinusBtn_pressed():
 		upgradeCost = upgradeCost - currWeaponAmmoLvl * invData[currWeapon]["Upgrade_Cost"]
 		currWeaponAmmoLvl =  currWeaponAmmoLvl - 1
 		updateUpgradeLabel()
+		errCheck()
 
 func _on_ammoPlusBtn_pressed():
 	currWeaponAmmoLvl =  currWeaponAmmoLvl + 1
@@ -359,7 +417,11 @@ func _on_unlockBtn_pressed():
 	unlckOrUpgrade = true
 	if invData[currWeapon]["Unlocked_Cost"] > invData["Credit"]:
 		unlockCfmPanel.visible = false
+		errLbl.visible = true
+		errLbl.text = "Not enough credit"
 	else:
+		errLbl.visible = false
+		errLbl.text = ""
 		unlockCfmPanel.visible = true
 
 func _on_ConfirmUpBtn_pressed():
@@ -367,7 +429,7 @@ func _on_ConfirmUpBtn_pressed():
 	
 	if upgradeCost > invData["Credit"]:
 		errLbl.visible = true
-		errLbl.text = "Not enought credit"
+		errLbl.text = "Not enough credit"
 		unlockCfmPanel.visible = false
 	elif upgradeCost == 0:
 		errLbl.visible = true
@@ -402,10 +464,46 @@ func _on_cfmBtn_pressed():
 
 func _on_cancelBtn_pressed():
 	unlockCfmPanel.visible = false
-	
-	
-# Settings
 
+func _on_itemPurchaseBtn_pressed():
+	var itemPrice = invData[currWeapon]["Price"]
+	var currCredit = invData["Credit"]
+	var currAmt = invData[currWeapon]["Ammo"]
+	itemErrLbl.visible = true
+	if itemPrice > currCredit:
+		itemErrLbl.text = "Not enough credit."
+		itemErrLbl.add_color_override("font_color", Color(1, 0, 0))
+	else:
+		invData["Credit"] = currCredit - itemPrice
+		currAmt = currAmt + 1
+		itemErrLbl.text = "Purchased successfully"
+		itemErrLbl.add_color_override("font_color", Color(0, 1, 0))
+		invData[currWeapon]["Ammo"] = currAmt
+		invCollection.update("" + Global.uuid, {"Credit" : currCredit})
+		invCollection.update("" + Global.uuid, {currWeapon : invData[currWeapon]})
+	
+	updateGame()
+
+func _on_defPurchaseBtn_pressed():
+	var itemPrice = invData[currWeapon]["Price"]
+	var currCredit = invData["Credit"]
+	var currAmt = invData[currWeapon]["Ammo"]
+	defErrLbl.visible = true
+	if itemPrice > currCredit:
+		defErrLbl.text = "Not enough credit."
+		defErrLbl.add_color_override("font_color", Color(1, 0, 0))
+	else:
+		invData["Credit"] = currCredit - itemPrice
+		currAmt = currAmt + 1
+		defErrLbl.text = "Purchased successfully"
+		defErrLbl.add_color_override("font_color", Color(0, 1, 0))
+		invData[currWeapon]["Ammo"] = currAmt
+		invCollection.update("" + Global.uuid, {"Credit" : currCredit})
+		invCollection.update("" + Global.uuid, {currWeapon : invData[currWeapon]})
+	
+	updateGame()
+
+# Settings
 func _on_SettingButton_pressed():
 	mainLobbyContainer.visible = false
 	settingContainer.visible = true
@@ -430,14 +528,11 @@ func _on_gsBackButton_pressed():
 	controlSetting.visible = false
 	audioSetting.visible = false
 
-
 func _on_gsBackButton_mouse_entered():
 	hoverAudio.play()
 
-
 func _on_settingBackButton_mouse_entered():
 	hoverAudio.play()
-
 
 func _on_ControlSettingButton_pressed():
 	controlSetting.visible = true
@@ -448,7 +543,8 @@ func _on_AudioSettingButton_pressed():
 	audioSetting.visible = true
 
 func _on_AccountSettingButton_pressed():
-	pass # Replace with function body.
+	settingContainer.visible = false
+	accountSetting.visible = true
 	
 func _on_SFXSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
@@ -457,3 +553,61 @@ func _on_SFXSlider_value_changed(value):
 func _on_MusicSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
 	$GameSetting/AudioSettings/MusicSlider.value = value
+
+# Account settings
+func _on_accBackButton_pressed():
+	settingContainer.visible = true
+	accountSetting.visible = false
+
+# Change Username	
+func _on_changeUsernameBtn_pressed():
+	buttonContainer.visible = false
+	changeUsernameContainer.visible = true
+
+func _on_confirmButton_pressed():
+	var newUsername = usernameInpt.text
+	
+	if ((" " in newUsername) == true):
+		changeInfoLbl.text = "No spaces allowed in username"
+		changeInfoLbl.add_color_override("font_color", Color(1, 0, 0))
+	elif !newUsername :
+		changeInfoLbl.text = "Please enter a username."
+		changeInfoLbl.add_color_override("font_color", Color(1, 0, 0))
+	else:
+		collection.update("" + Global.uuid, {"highscore" : Global.highscore, "username" : newUsername})
+		Global.username = newUsername
+		changeInfoLbl.text = "Username changed successfully."
+		changeInfoLbl.add_color_override("font_color", Color(0, 1, 0))
+		updateGame()
+
+func _on_changeUserBackButton_pressed():
+	buttonContainer.visible = true
+	changeUsernameContainer.visible = false
+	changeInfoLbl.text = ""
+	usernameInpt.text = ""
+
+# Change password
+func _on_changePassword_pressed():
+	buttonContainer.visible = false
+	changePasswordContainer.visible = true
+
+func _on_chgPassConfirmButton_pressed():
+	var newPassword = newPasswordInt.text
+	var cfmNewPassword = cfmNewPasswordInt.text
+	if ((" " in newPassword) == true):
+		changePassInfoLbl.text = "Password should not contain spaces"
+		changePassInfoLbl.add_color_override("font_color", Color(1, 0, 0))
+	elif newPassword.length() < 7:
+		changePassInfoLbl.text = "Password should have 8 character or more"
+		changePassInfoLbl.add_color_override("font_color", Color(1, 0, 0))
+	elif newPassword != cfmNewPassword:
+		changePassInfoLbl.text = "Password does not match"
+		changePassInfoLbl.add_color_override("font_color", Color(1, 0, 0))
+	else:
+		Firebase.Auth.change_user_password(newPassword)
+		changePassInfoLbl.text = "Password changed successfully"
+		changePassInfoLbl.add_color_override("font_color", Color(0, 1, 0))
+	
+func _on_changePassBackButton_pressed():
+	buttonContainer.visible = true
+	changePasswordContainer.visible = false

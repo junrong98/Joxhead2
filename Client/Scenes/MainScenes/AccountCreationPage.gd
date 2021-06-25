@@ -35,19 +35,23 @@ func _on_BackButton_pressed():
 func _on_FirebaseAuth_signup_succeeded(auth):
 	var userid = auth["localid"]
 		
-	var add_task : FirestoreTask = collection.add("" + userid, {"Credit" : 20,\
-	"Basic" : {"Ammo" : 50, "Dmg" : 1000, "Range" : 5,\
+	var add_task : FirestoreTask = collection.add("" + userid, {"Credit" : 500,\
+	"Basic" : {"Ammo" : 50, "Dmg" : 10, "Range" : 5,\
 			   "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
-			   "Unlocked": true, "Unlocked_Cost": 0, "Upgrade_Cost": 2},
+			   "Unlocked": true, "Unlocked_Cost": 0, "Upgrade_Cost": 2, "Type" : "Weapon"},
 	"AK47" : {"Ammo" : 130, "Dmg" : 30, "Range" : 7,\
 			  "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
-			  "Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 6},
+			  "Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 6, "Type" : "Weapon"},
 	"SPAS12" : {"Ammo" : 50, "Dmg" : 50, "Range":2,\
 	 			"Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl": 1,\
-				"Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 4},
+				"Unlocked": false, "Unlocked_Cost": 15, "Upgrade_Cost": 4, "Type" : "Weapon"},
 	"Uzi" : {"Ammo" : 200, "Dmg" : 25, "Range" : 5,\
 			 "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
-			 "Unlocked": false, "Unlocked_Cost": 10, "Upgrade_Cost": 3}
+			 "Unlocked": false, "Unlocked_Cost": 20, "Upgrade_Cost": 3, "Type" : "Weapon"},
+	"Mine" : {"Ammo" : 10, "Dmg" : 60, 	"Unlocked" : true, "Price" : 10, "Type" : "Item"},
+	"Barrel" : {"Ammo" : 10, "Dmg" : 60, 	"Unlocked" : true, "Price" : 10, "Type" : "Item"},
+	"Grenade" : {"Ammo" : 10, "Dmg" : 60, 	"Unlocked" : true, "Price" : 10, "Type" : "Item"},
+	"Fake_Wall" : {"Ammo" : 10, "Health" : 50, "Unlocked" : true, "Price" : 10, "Type" : "Defensive"}
 	})
 	
 	var add_task2 : FirestoreTask = collection2.add("" + userid, \

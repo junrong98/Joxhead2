@@ -39,18 +39,18 @@
 size = 25
 font_data = ExtResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=25]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.894118, 0.894118, 0.894118, 1 )
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=3]
 size = 21
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=27]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=28]
+[sub_resource type="DynamicFont" id=5]
 size = 18
 font_data = ExtResource( 17 )
 
@@ -158,6 +158,7 @@ __meta__ = {
 }
 
 [node name="MainLobby" type="Node2D" parent="."]
+visible = false
 
 [node name="MainContainer" type="MarginContainer" parent="MainLobby"]
 margin_left = 345.0
@@ -275,7 +276,7 @@ margin_left = 465.456
 margin_top = 239.227
 margin_right = 865.456
 margin_bottom = 488.227
-custom_styles/panel = SubResource( 25 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -321,7 +322,7 @@ margin_left = 485.776
 margin_top = 501.898
 margin_right = 850.776
 margin_bottom = 524.898
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 3 )
 text = "CLICK TO PLAY LEVEL"
 align = 1
 __meta__ = {
@@ -349,7 +350,7 @@ __meta__ = {
 [node name="HSTextLabel" type="Label" parent="SinglePlayerLobby/VBoxContainer/HBoxContainer"]
 margin_right = 120.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 27 )
+custom_fonts/font = SubResource( 4 )
 text = "Highscore:"
 __meta__ = {
 "_edit_lock_": true,
@@ -360,7 +361,7 @@ __meta__ = {
 margin_left = 124.0
 margin_right = 124.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 28 )
+custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -384,7 +385,6 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Node2D" parent="."]
-visible = false
 
 [node name="Background" type="Panel" parent="Inventory"]
 margin_left = 245.51
@@ -445,6 +445,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="MiscSprite" type="Sprite" parent="Inventory/Background"]
+visible = false
+position = Vector2( 190.273, 187.895 )
+
 [node name="lock" type="TextureRect" parent="Inventory"]
 visible = false
 margin_left = 369.525
@@ -503,9 +507,9 @@ __meta__ = {
 
 [node name="WpnDamageValue" type="Label" parent="Inventory/StatsPanel"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 191.0
+margin_left = 188.0
 margin_top = 64.0
-margin_right = 241.0
+margin_right = 238.0
 margin_bottom = 95.0
 custom_fonts/font = SubResource( 9 )
 align = 1
@@ -687,13 +691,256 @@ __meta__ = {
 
 [node name="errLbl" type="Label" parent="Inventory/StatsPanel"]
 visible = false
-margin_left = 52.0588
-margin_top = 264.298
-margin_right = 239.059
-margin_bottom = 281.298
+margin_left = 2.0
+margin_top = 264.0
+margin_right = 291.0
+margin_bottom = 281.0
 custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Not enough credit"
+align = 1
+
+[node name="ItemPanel" type="Panel" parent="Inventory"]
+visible = false
+margin_left = 731.031
+margin_top = 219.098
+margin_right = 1023.04
+margin_bottom = 597.098
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemStatsLabel" type="Label" parent="Inventory/ItemPanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 296.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 9 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemDamageLabel" type="Label" parent="Inventory/ItemPanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 61.0
+margin_right = 158.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 9 )
+text = "Damage:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemDamageValue" type="Label" parent="Inventory/ItemPanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 191.0
+margin_top = 64.0
+margin_right = 241.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 9 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemQuantityLbl" type="Label" parent="Inventory/ItemPanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 114.0
+margin_right = 158.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 9 )
+text = "Qty:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemQuantityVal" type="Label" parent="Inventory/ItemPanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 191.0
+margin_top = 116.0
+margin_right = 241.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 9 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoCostLbl" type="Label" parent="Inventory/ItemPanel"]
+margin_left = 18.0109
+margin_top = 214.974
+margin_right = 187.011
+margin_bottom = 234.974
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo Cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoCostInpt" type="Label" parent="Inventory/ItemPanel"]
+margin_left = 182.0
+margin_top = 212.941
+margin_right = 257.0
+margin_bottom = 240.941
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemPurchaseBtn" type="Button" parent="Inventory/ItemPanel"]
+margin_left = 59.0
+margin_top = 300.0
+margin_right = 236.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 12 )
+text = "Purchase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemErrLbl" type="Label" parent="Inventory/ItemPanel"]
+visible = false
+margin_left = 2.0
+margin_top = 264.0
+margin_right = 287.0
+margin_bottom = 281.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Not enough credit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefensivePanel" type="Panel" parent="Inventory"]
+visible = false
+margin_left = 731.031
+margin_top = 219.098
+margin_right = 1023.04
+margin_bottom = 597.098
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defStatsLabel" type="Label" parent="Inventory/DefensivePanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 296.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 9 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defHealthLabel" type="Label" parent="Inventory/DefensivePanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 61.0
+margin_right = 158.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 9 )
+text = "Health::"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defHealthValue" type="Label" parent="Inventory/DefensivePanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 191.0
+margin_top = 64.0
+margin_right = 241.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 9 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defQuantityLbl" type="Label" parent="Inventory/DefensivePanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 114.0
+margin_right = 158.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 9 )
+text = "Qty:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defQuantityVal" type="Label" parent="Inventory/DefensivePanel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 191.0
+margin_top = 116.0
+margin_right = 241.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 9 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defAmmoAmt" type="Label" parent="Inventory/DefensivePanel"]
+margin_left = 18.0109
+margin_top = 214.974
+margin_right = 187.011
+margin_bottom = 234.974
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo Cost:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defAmmoVal" type="Label" parent="Inventory/DefensivePanel"]
+margin_left = 182.0
+margin_top = 212.941
+margin_right = 257.0
+margin_bottom = 240.941
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defPurchaseBtn" type="Button" parent="Inventory/DefensivePanel"]
+margin_left = 59.0
+margin_top = 300.0
+margin_right = 236.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 12 )
+text = "Purchase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="defErrLbl" type="Label" parent="Inventory/DefensivePanel"]
+visible = false
+margin_left = 9.0
+margin_top = 264.0
+margin_right = 291.0
+margin_bottom = 281.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Not enough credit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackButton" type="TextureButton" parent="Inventory"]
 margin_left = 600.0
@@ -917,6 +1164,165 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AccountSetting" type="Node2D" parent="."]
+visible = false
+
+[node name="accBackButton" type="TextureButton" parent="AccountSetting"]
+margin_left = 599.758
+margin_top = 669.651
+margin_right = 713.758
+margin_bottom = 723.651
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttonNode" type="Node2D" parent="AccountSetting"]
+
+[node name="changeUsernameBtn" type="Button" parent="AccountSetting/buttonNode"]
+margin_left = 483.725
+margin_top = 239.796
+margin_right = 844.725
+margin_bottom = 306.796
+text = "Change Username"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changePassword" type="Button" parent="AccountSetting/buttonNode"]
+margin_left = 483.725
+margin_top = 333.796
+margin_right = 844.725
+margin_bottom = 400.796
+text = "Change Password"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changeUsernameNode" type="Node2D" parent="AccountSetting"]
+visible = false
+
+[node name="newUsernameLbl" type="Label" parent="AccountSetting/changeUsernameNode"]
+margin_left = 486.439
+margin_top = 247.062
+margin_right = 663.439
+margin_bottom = 295.062
+text = "New Username:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newUsernameInput" type="LineEdit" parent="AccountSetting/changeUsernameNode"]
+margin_left = 485.151
+margin_top = 302.04
+margin_right = 819.151
+margin_bottom = 352.04
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirmButton" type="Button" parent="AccountSetting/changeUsernameNode"]
+margin_left = 553.52
+margin_top = 419.337
+margin_right = 754.52
+margin_bottom = 475.337
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changeUserBackButton" type="TextureButton" parent="AccountSetting/changeUsernameNode"]
+margin_left = 599.758
+margin_top = 669.651
+margin_right = 713.758
+margin_bottom = 723.651
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changeInfoLabel" type="Label" parent="AccountSetting/changeUsernameNode"]
+margin_left = 489.0
+margin_top = 372.0
+margin_right = 810.0
+margin_bottom = 397.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changePasswordNode" type="Node2D" parent="AccountSetting"]
+visible = false
+
+[node name="newPaswordLbl" type="Label" parent="AccountSetting/changePasswordNode"]
+margin_left = 486.439
+margin_top = 247.062
+margin_right = 663.439
+margin_bottom = 295.062
+text = "New Password:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newPaswordInput" type="LineEdit" parent="AccountSetting/changePasswordNode"]
+margin_left = 485.151
+margin_top = 302.04
+margin_right = 819.151
+margin_bottom = 352.04
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmNewPaswordLbl" type="Label" parent="AccountSetting/changePasswordNode"]
+margin_left = 486.439
+margin_top = 368.062
+margin_right = 663.439
+margin_bottom = 416.062
+text = "Confirm Password"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmNewPaswordInput" type="LineEdit" parent="AccountSetting/changePasswordNode"]
+margin_left = 485.151
+margin_top = 423.04
+margin_right = 819.151
+margin_bottom = 473.04
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chgPassConfirmButton" type="Button" parent="AccountSetting/changePasswordNode"]
+margin_left = 553.52
+margin_top = 531.337
+margin_right = 754.52
+margin_bottom = 587.337
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changePassBackButton" type="TextureButton" parent="AccountSetting/changePasswordNode"]
+margin_left = 599.758
+margin_top = 669.651
+margin_right = 713.758
+margin_bottom = 723.651
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changePassInfoLabel" type="Label" parent="AccountSetting/changePasswordNode"]
+margin_left = 489.0
+margin_top = 488.0
+margin_right = 810.0
+margin_bottom = 513.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MouseHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 pitch_scale = 2.0
@@ -960,6 +1366,8 @@ bus = "Music"
 [connection signal="pressed" from="Inventory/StatsPanel/ammoPlusBtn" to="." method="_on_ammoPlusBtn_pressed"]
 [connection signal="pressed" from="Inventory/StatsPanel/ConfirmUpBtn" to="." method="_on_ConfirmUpBtn_pressed"]
 [connection signal="pressed" from="Inventory/StatsPanel/unlockBtn" to="." method="_on_unlockBtn_pressed"]
+[connection signal="pressed" from="Inventory/ItemPanel/itemPurchaseBtn" to="." method="_on_itemPurchaseBtn_pressed"]
+[connection signal="pressed" from="Inventory/DefensivePanel/defPurchaseBtn" to="." method="_on_defPurchaseBtn_pressed"]
 [connection signal="mouse_entered" from="Inventory/BackButton" to="." method="_on_ExitButton_mouse_entered"]
 [connection signal="pressed" from="Inventory/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Inventory/unlockCfmPanel/cfmBtn" to="." method="_on_cfmBtn_pressed"]
@@ -973,3 +1381,12 @@ bus = "Music"
 [connection signal="value_changed" from="GameSetting/AudioSettings/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="mouse_entered" from="GameSetting/gsBackButton" to="." method="_on_gsBackButton_mouse_entered"]
 [connection signal="pressed" from="GameSetting/gsBackButton" to="." method="_on_gsBackButton_pressed"]
+[connection signal="mouse_entered" from="AccountSetting/accBackButton" to="." method="_on_gsBackButton_mouse_entered"]
+[connection signal="pressed" from="AccountSetting/accBackButton" to="." method="_on_accBackButton_pressed"]
+[connection signal="pressed" from="AccountSetting/buttonNode/changeUsernameBtn" to="." method="_on_changeUsernameBtn_pressed"]
+[connection signal="pressed" from="AccountSetting/buttonNode/changePassword" to="." method="_on_changePassword_pressed"]
+[connection signal="pressed" from="AccountSetting/changeUsernameNode/confirmButton" to="." method="_on_confirmButton_pressed"]
+[connection signal="mouse_entered" from="AccountSetting/changeUsernameNode/changeUserBackButton" to="." method="_on_gsBackButton_mouse_entered"]
+[connection signal="pressed" from="AccountSetting/changeUsernameNode/changeUserBackButton" to="." method="_on_changeUserBackButton_pressed"]
+[connection signal="pressed" from="AccountSetting/changePasswordNode/chgPassConfirmButton" to="." method="_on_chgPassConfirmButton_pressed"]
+[connection signal="pressed" from="AccountSetting/changePasswordNode/changePassBackButton" to="." method="_on_changePassBackButton_pressed"]

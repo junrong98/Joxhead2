@@ -9,10 +9,10 @@
 [ext_resource path="res://Scenes/GameScene/Weapon Scence/SPAS12.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/GameScene/Weapon Scence/Basic.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60.4504, 61.8568 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.0334, 15.3959 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -61,11 +61,11 @@ position = Vector2( 29.8132, 7.99199 )
 [node name="CastArea" type="Area2D" parent="PlayerSprite/CastBarricade"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/CastBarricade/CastArea"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 6.71785, 1.95606 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2.77216, -0.924164 )
