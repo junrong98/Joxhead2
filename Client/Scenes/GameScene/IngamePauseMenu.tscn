@@ -1,122 +1,153 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Resources/Fonts/REGISTER.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ResourcesV2/Images/RestartActive.png" type="Texture" id=5]
+[ext_resource path="res://ResourcesV2/Images/ExitActive.png" type="Texture" id=6]
+[ext_resource path="res://ResourcesV2/Images/RestartInactive.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/ExitInactive.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/GameScene/IngamePauseMenu.gd" type="Script" id=9]
+[ext_resource path="res://ResourcesV2/Images/ResumeInactive.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/GameScene/UI/panel.tres" type="StyleBox" id=11]
+[ext_resource path="res://ResourcesV2/Images/resumeActive.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 45
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 31
-font_data = ExtResource( 1 )
+size = 23
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 17
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 17
-font_data = ExtResource( 2 )
+size = 23
+font_data = ExtResource( 4 )
 
 [node name="IngamePauseMenu" type="CanvasLayer"]
 pause_mode = 2
+script = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 404.533
 margin_top = 148.533
-margin_right = 1007.53
-margin_bottom = 593.533
+margin_right = 827.533
+margin_bottom = 524.533
+custom_styles/panel = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSContainer" type="VBoxContainer" parent="."]
-margin_left = 404.0
-margin_top = 157.0
-margin_right = 1008.0
-margin_bottom = 284.0
+[node name="HSContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -211.5
+margin_top = 19.0
+margin_right = 211.5
+margin_bottom = 149.0
 custom_constants/separation = 30
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighscoreLabel" type="Label" parent="HSContainer"]
-margin_right = 604.0
-margin_bottom = 51.0
+[node name="HighscoreLabel" type="Label" parent="Panel/HSContainer"]
+margin_right = 423.0
+margin_bottom = 54.0
 custom_fonts/font = SubResource( 1 )
-text = "HIGHSCORE"
+custom_colors/font_color = Color( 1, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_shadow = Color( 0.972549, 0.972549, 0.972549, 1 )
+text = "PAUSED"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighscoreValueLabel" type="Label" parent="HSContainer"]
-margin_top = 81.0
-margin_right = 604.0
-margin_bottom = 127.0
+[node name="HighscoreValueLabel" type="Label" parent="Panel/HSContainer"]
+margin_top = 84.0
+margin_right = 423.0
+margin_bottom = 130.0
 custom_fonts/font = SubResource( 2 )
 align = 1
 script = ExtResource( 3 )
 
-[node name="ReplayButton" type="Button" parent="."]
-margin_left = 621.513
-margin_top = 422.776
-margin_right = 790.513
-margin_bottom = 485.776
+[node name="CoinearnedLabel" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -119.0
+margin_top = -32.5
+margin_right = -2.99998
+margin_bottom = -7.5
 custom_fonts/font = SubResource( 3 )
-text = "RESTART"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RestartButton" type="Button" parent="."]
-margin_left = 620.98
-margin_top = 344.496
-margin_right = 789.98
-margin_bottom = 407.496
-custom_fonts/font = SubResource( 3 )
-text = "REPLAY"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ExitButton" type="Button" parent="."]
-margin_left = 619.497
-margin_top = 506.061
-margin_right = 788.497
-margin_bottom = 569.061
-custom_fonts/font = SubResource( 3 )
-text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CoinearnedLabel" type="Label" parent="."]
-margin_left = 530.781
-margin_top = 301.381
-margin_right = 750.781
-margin_bottom = 325.381
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.956863, 0.956863, 1 )
-text = "Current coin earned:"
+text = "Coin earned:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Coinearnedvalue" type="Label" parent="."]
-margin_left = 764.136
-margin_top = 302.449
-margin_right = 831.136
-margin_bottom = 328.449
-custom_fonts/font = SubResource( 5 )
+[node name="Coinearnedvalue" type="Label" parent="Panel"]
+margin_left = 241.0
+margin_top = 158.0
+margin_right = 267.0
+margin_bottom = 183.0
+custom_fonts/font = SubResource( 4 )
 text = "0"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ResumeButton" type="TextureButton" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.5
+margin_top = 4.5
+margin_right = 53.5
+margin_bottom = 47.5
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="TextureButton" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -61.0
+margin_top = -131.0
+margin_right = 61.0
+margin_bottom = -88.0
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.5
+margin_top = -70.0
+margin_right = 34.5
+margin_bottom = -27.0
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_ExitButton_pressed"]

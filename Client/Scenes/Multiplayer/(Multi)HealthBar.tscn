@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Multiplayer/(Multi)HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player Sprite/Healthbars/HealthBarBack.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player Sprite/Healthbars/HealthBarOver.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player Sprite/Healthbars/HealthBarProgress.png" type="Texture" id=4]
+
+[node name="HealthBar" type="Control"]
+margin_right = 75.0
+margin_bottom = 45.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2( 0.09, 0.1 )
+
+[node name="HealthBarUnder" type="TextureProgress" parent="Node2D"]
+margin_left = 37.0
+margin_top = 33.0
+margin_right = 1017.0
+margin_bottom = 133.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarOver" type="TextureProgress" parent="Node2D"]
+margin_left = 37.0
+margin_top = 33.0
+margin_right = 1017.0
+margin_bottom = 133.0
+value = 100.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_progress = Color( 0, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateTween" type="Tween" parent="."]

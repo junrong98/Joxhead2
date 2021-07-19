@@ -1,0 +1,235 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/SinglePlayerMode.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Map/Boxxy.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Images/NextButton.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/PreviousButton.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Map/Castle.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Map/Maze.png" type="Texture" id=8]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=9]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.0156863, 0.0156863, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 1, 0.172549, 0.172549, 0.6 )
+shadow_size = 20
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 12 )
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -1.01874
+margin_right = 1366.99
+margin_bottom = 765.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="glowPanel" type="Panel" parent="."]
+visible = false
+margin_left = 469.0
+margin_top = 292.0
+margin_right = 887.0
+margin_bottom = 541.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.5
+margin_top = -149.5
+margin_right = 15.5
+margin_bottom = -124.5
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Highscore:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscoreValLabel" type="RichTextLabel" parent="."]
+margin_left = 704.0
+margin_top = 234.0
+margin_right = 754.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 50, 20 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]0[/u][/center]"
+meta_underlined = false
+text = "0"
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 4 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="worldOneButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.32
+margin_top = -86.5365
+margin_right = 1154.68
+margin_bottom = 1115.46
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 4 )
+
+[node name="worldTwoButton" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.922
+margin_top = -86.8781
+margin_right = 1154.08
+margin_bottom = 1115.12
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="worldThreeButton" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.32
+margin_top = -86.5365
+margin_right = 1154.68
+margin_bottom = 1115.46
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="notiLabel" type="Label" parent="."]
+margin_left = 474.944
+margin_top = 556.449
+margin_right = 888.944
+margin_bottom = 574.449
+custom_fonts/font = SubResource( 5 )
+text = "Click Map To Start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mapNameLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5001
+margin_top = 203.0
+margin_right = 46.4999
+margin_bottom = 233.0
+rect_min_size = Vector2( 100, 30 )
+custom_fonts/font = SubResource( 6 )
+text = "Big Boxxy"
+align = 1
+valign = 1
+
+[node name="nextButton" type="TextureButton" parent="."]
+margin_left = 748.0
+margin_top = 584.0
+margin_right = 782.0
+margin_bottom = 618.0
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="prevButton" type="TextureButton" parent="."]
+margin_left = 577.0
+margin_top = 584.0
+margin_right = 611.0
+margin_bottom = 618.0
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+
+[connection signal="mouse_entered" from="worldOneButton" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="worldOneButton" to="." method="_on_TextureRect_mouse_exited"]
+[connection signal="pressed" from="worldOneButton" to="." method="_on_worldOneButton_pressed"]
+[connection signal="focus_entered" from="worldTwoButton" to="." method="_on_worldTwoButton_focus_entered"]
+[connection signal="mouse_entered" from="worldTwoButton" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="worldTwoButton" to="." method="_on_TextureRect_mouse_exited"]
+[connection signal="pressed" from="worldTwoButton" to="." method="_on_worldTwoButton_pressed"]
+[connection signal="focus_entered" from="worldThreeButton" to="." method="_on_worldThreeButton_focus_entered"]
+[connection signal="mouse_entered" from="worldThreeButton" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="worldThreeButton" to="." method="_on_TextureRect_mouse_exited"]
+[connection signal="pressed" from="worldThreeButton" to="." method="_on_worldThreeButton_pressed"]
+[connection signal="pressed" from="nextButton" to="." method="_on_nextButton_pressed"]
+[connection signal="pressed" from="prevButton" to="." method="_on_prevButton_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Multiplayer/(Multi)Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Multiplayer/(Multi)WeaponManager.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/GameScene/Weapon Scence/Uzi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GameScene/Weapon Scence/AK47.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GameScene/Weapon Scence/SPAS12.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/GameScene/Weapon Scence/Basic.tscn" type="PackedScene" id=7]
+
+[node name="WeaponManager" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Basic" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 48.8162, 36.9973 )
+script = ExtResource( 1 )
+
+[node name="AK47" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 69.4509, 39.01 )
+script = ExtResource( 1 )
+
+[node name="Uzi" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 30.7349, 37.948 )
+script = ExtResource( 1 )
+
+[node name="SPAS12" parent="." instance=ExtResource( 6 )]
+visible = false
+script = ExtResource( 1 )

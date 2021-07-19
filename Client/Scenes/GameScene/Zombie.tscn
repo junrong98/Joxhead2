@@ -29,19 +29,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 27 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 26 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 20 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4.09488, 8.16664 )
+extents = Vector2( 3.67354, 7.30411 )
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "Enemy",
@@ -58,7 +58,7 @@ position = Vector2( 1.56458, 2.97882 )
 scale = Vector2( 0.365704, 0.341227 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 14
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

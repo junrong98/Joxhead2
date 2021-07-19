@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/GameScene/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/BombItem/hand_grenade.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Music/Large-Zombie-Horde-www.fesliyanstudios.com (online-audio-converter.com).mp3" type="AudioStream" id=5]
+[ext_resource path="res://Sprites/BombItem/redLandmine.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/BombItem/fakewall.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/BombItem/barrel.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/GameScene/World.gd" type="Script" id=33]
 [ext_resource path="res://Scenes/GameScene/BulletManager.gd" type="Script" id=34]
 
@@ -14,6 +18,22 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 60
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0352941, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=4]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0235294, 0, 0, 1 )
+border_blend = true
 
 [node name="World" type="Control"]
 script = ExtResource( 33 )
@@ -76,6 +96,136 @@ __meta__ = {
 
 [node name="WaveNotification_timer" type="Timer" parent="GUI/WaveNotificationLabel"]
 wait_time = 2.5
+
+[node name="ItemGUI" type="CanvasLayer" parent="."]
+
+[node name="GrenadePanel" type="Panel" parent="ItemGUI"]
+margin_left = 1065.0
+margin_top = 679.0
+margin_right = 1141.0
+margin_bottom = 755.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/GrenadePanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 73.0
+margin_bottom = 52.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GreandeLabel" type="Label" parent="ItemGUI/GrenadePanel"]
+margin_left = 1.0
+margin_top = 57.0
+margin_right = 74.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LandminePanel" type="Panel" parent="ItemGUI"]
+margin_left = 1141.23
+margin_top = 679.175
+margin_right = 1217.23
+margin_bottom = 755.175
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/LandminePanel"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 71.0
+margin_bottom = 52.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LandmineLabel" type="Label" parent="ItemGUI/LandminePanel"]
+margin_left = 1.0
+margin_top = 57.0
+margin_right = 74.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FakewallPanel" type="Panel" parent="ItemGUI"]
+margin_left = 1217.34
+margin_top = 679.015
+margin_right = 1293.34
+margin_bottom = 755.015
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/FakewallPanel"]
+margin_left = 12.7008
+margin_top = 3.68445
+margin_right = 63.7008
+margin_bottom = 53.6844
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FakewallLabel" type="Label" parent="ItemGUI/FakewallPanel"]
+margin_left = 1.0
+margin_top = 57.0
+margin_right = 74.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarrelPanel" type="Panel" parent="ItemGUI"]
+margin_left = 1288.75
+margin_top = 679.015
+margin_right = 1364.75
+margin_bottom = 755.015
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/BarrelPanel"]
+margin_left = 12.7008
+margin_top = 3.68445
+margin_right = 63.7008
+margin_bottom = 53.6844
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarrelLabel" type="Label" parent="ItemGUI/BarrelPanel"]
+margin_left = 1.0
+margin_top = 57.0
+margin_right = 74.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Incoming_monster_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

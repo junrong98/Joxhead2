@@ -1,0 +1,975 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/Shop.gd" type="Script" id=3]
+[ext_resource path="res://ResourcesV2/Images/creditIcon.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://ResourcesV2/Images/WeaponActive.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Weapon_Sprite/ak47glow.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/ItemActive.png" type="Texture" id=8]
+[ext_resource path="res://ResourcesV2/Images/ItemInactive.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Weapon_Sprite/AK-47.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/progressBar.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Weapon_Sprite/MP-5.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12Inv.png" type="Texture" id=13]
+[ext_resource path="res://ResourcesV2/Images/underBar.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Weapon_Sprite/ak47glowfocus.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Weapon_Sprite/mp5glowfocus.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Weapon_Sprite/mp5glow.png" type="Texture" id=17]
+[ext_resource path="res://ResourcesV2/Images/PurchaseInactive.png" type="Texture" id=18]
+[ext_resource path="res://ResourcesV2/Images/PurchaseActive.png" type="Texture" id=19]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=20]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=21]
+[ext_resource path="res://ResourcesV2/Images/OwnedButton.png" type="Texture" id=22]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12glow.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12glowfocus.png" type="Texture" id=24]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelGlowFocus.png" type="Texture" id=25]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeGlow.png" type="Texture" id=26]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelInv.png" type="Texture" id=27]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeGlowFocus.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelGlow.png" type="Texture" id=29]
+[ext_resource path="res://Resources/Weapon_Sprite/wallInv.png" type="Texture" id=30]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeInv.png" type="Texture" id=31]
+[ext_resource path="res://Resources/Weapon_Sprite/wallGlowFocus.png" type="Texture" id=32]
+[ext_resource path="res://Resources/Weapon_Sprite/mines.png" type="Texture" id=33]
+[ext_resource path="res://Resources/Weapon_Sprite/minesGlowFocus.png" type="Texture" id=34]
+[ext_resource path="res://Resources/Weapon_Sprite/minesGlow.png" type="Texture" id=35]
+[ext_resource path="res://Resources/Weapon_Sprite/wallGlow.png" type="Texture" id=36]
+[ext_resource path="res://ResourcesV2/Images/UpgradeValueActiveButton.png" type="Texture" id=38]
+[ext_resource path="res://ResourcesV2/Images/upgradeValueInactiveButton.png" type="Texture" id=39]
+[ext_resource path="res://ResourcesV2/Images/DowngradeInactive.png" type="Texture" id=40]
+[ext_resource path="res://ResourcesV2/Images/DowngradeActive.png" type="Texture" id=41]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.921569, 0.87451, 0.87451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.921569, 0.87451, 0.87451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 14
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 18
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+
+[sub_resource type="StyleBoxFlat" id=20]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=21]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=23]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("costLbl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("costLbl:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.03 ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("weaponPanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 536.706, 319.385 ), Vector2( 373.706, 319.385 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("encapContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("itemPanel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 536.706, 319.385 ), Vector2( 373.706, 319.385 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("encapItemContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -1.43872
+margin_right = 1366.56
+margin_bottom = 765.0
+rect_pivot_offset = Vector2( -144.09, -38.1291 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditIcon" type="TextureRect" parent="."]
+margin_left = 776.219
+margin_top = 260.727
+margin_right = 1618.22
+margin_bottom = 1101.73
+rect_scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditLbl" type="Label" parent="."]
+margin_left = 811.836
+margin_top = 262.701
+margin_right = 851.836
+margin_bottom = 285.701
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.831373, 0.462745, 0.0862745, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponButton" type="TextureButton" parent="."]
+margin_left = 416.669
+margin_top = 258.46
+margin_right = 530.669
+margin_bottom = 307.46
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemButton" type="TextureButton" parent="."]
+margin_left = 559.04
+margin_top = 257.941
+margin_right = 632.04
+margin_bottom = 302.941
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="encapContainer" type="Container" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsPanel" type="Panel" parent="encapContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsTitleLabel" type="Label" parent="encapContainer"]
+margin_left = 717.0
+margin_top = 415.0
+margin_right = 1038.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageLabel" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 464.508
+margin_right = 811.201
+margin_bottom = 482.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageValLabel" type="Label" parent="encapContainer"]
+margin_left = 984.881
+margin_top = 464.881
+margin_right = 1010.88
+margin_bottom = 482.881
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeLabel" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 504.508
+margin_right = 811.201
+margin_bottom = 522.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Range"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeValLabel" type="Label" parent="encapContainer"]
+margin_left = 984.881
+margin_top = 506.881
+margin_right = 1010.88
+margin_bottom = 524.881
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoLabel" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 541.508
+margin_right = 811.201
+margin_bottom = 559.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoValLabel" type="Label" parent="encapContainer"]
+margin_left = 984.881
+margin_top = 542.881
+margin_right = 1010.88
+margin_bottom = 560.881
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 466.0
+margin_right = 980.0
+margin_bottom = 481.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 508.0
+margin_right = 980.0
+margin_bottom = 523.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 543.0
+margin_right = 980.0
+margin_bottom = 558.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 1000.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionPanel" type="Panel" parent="encapContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.07
+margin_top = 322.881
+margin_right = 1040.07
+margin_bottom = 393.881
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionLabel" type="Label" parent="encapContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 717.0
+margin_top = 329.0
+margin_right = 1038.0
+margin_bottom = 349.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Description"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionTextLabel" type="Label" parent="encapContainer"]
+margin_left = 724.07
+margin_top = 351.881
+margin_right = 1033.07
+margin_bottom = 369.881
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon description"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="errLabel" type="Label" parent="encapContainer"]
+visible = false
+margin_left = 751.265
+margin_top = 570.245
+margin_right = 996.265
+margin_bottom = 584.245
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.933333, 0.933333, 1 )
+text = "Not enough credit!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="purchaseButton" type="TextureButton" parent="encapContainer"]
+margin_left = 813.0
+margin_top = 591.245
+margin_right = 934.0
+margin_bottom = 632.245
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ownedButton" type="TextureButton" parent="encapContainer"]
+visible = false
+margin_left = 813.0
+margin_top = 591.245
+margin_right = 934.0
+margin_bottom = 632.245
+hint_tooltip = "Can be upgraded in inventory!"
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="encapItemContainer" type="Container" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsPanel" type="Panel" parent="encapItemContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsTitleLabel" type="Label" parent="encapItemContainer"]
+margin_left = 717.0
+margin_top = 415.0
+margin_right = 1038.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemLabel" type="Label" parent="encapItemContainer"]
+margin_left = 754.201
+margin_top = 464.508
+margin_right = 811.201
+margin_bottom = 482.508
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionPanel" type="Panel" parent="encapItemContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.07
+margin_top = 322.881
+margin_right = 1040.07
+margin_bottom = 393.881
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionLabel" type="Label" parent="encapItemContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 717.0
+margin_top = 329.0
+margin_right = 1038.0
+margin_bottom = 349.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Item Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionTextLabel" type="Label" parent="encapItemContainer"]
+margin_left = 724.07
+margin_top = 351.881
+margin_right = 1033.07
+margin_bottom = 369.881
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Item description"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="errLabel" type="Label" parent="encapItemContainer"]
+visible = false
+margin_left = 751.265
+margin_top = 570.245
+margin_right = 996.265
+margin_bottom = 584.245
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.933333, 0.933333, 1 )
+text = "Not enough credit!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalCostLabel" type="Label" parent="encapItemContainer"]
+margin_left = 777.84
+margin_top = 579.134
+margin_right = 899.84
+margin_bottom = 595.134
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="purchaseItemButton" type="TextureButton" parent="encapItemContainer"]
+margin_left = 833.951
+margin_top = 602.065
+margin_right = 931.951
+margin_bottom = 635.065
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemValLabel" type="Label" parent="encapItemContainer"]
+margin_left = 985.881
+margin_top = 466.881
+margin_right = 1017.88
+margin_bottom = 484.881
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemsCurrentVal" type="Label" parent="encapItemContainer"]
+margin_left = 855.0
+margin_top = 504.0
+margin_right = 926.0
+margin_bottom = 522.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemsCurrent" type="Label" parent="encapItemContainer"]
+margin_left = 754.0
+margin_top = 502.0
+margin_right = 825.0
+margin_bottom = 520.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemStatsProgress" type="TextureProgress" parent="encapItemContainer"]
+margin_left = 827.0
+margin_top = 468.0
+margin_right = 977.0
+margin_bottom = 483.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="qtyPurchaseLbl" type="Label" parent="encapItemContainer"]
+margin_left = 754.0
+margin_top = 536.0
+margin_right = 850.0
+margin_bottom = 554.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Qty Purchase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="qtyPurchaseValLbl" type="Label" parent="encapItemContainer"]
+margin_left = 855.0
+margin_top = 537.0
+margin_right = 926.0
+margin_bottom = 555.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costLbl2" type="Label" parent="encapItemContainer"]
+margin_left = 754.0
+margin_top = 566.0
+margin_right = 850.0
+margin_bottom = 584.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Total Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costValLbl" type="Label" parent="encapItemContainer"]
+margin_left = 855.0
+margin_top = 568.0
+margin_right = 926.0
+margin_bottom = 586.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="increaseQtyButton" type="TextureButton" parent="encapItemContainer"]
+margin_left = 905.352
+margin_top = 538.029
+margin_right = 925.352
+margin_bottom = 558.029
+texture_normal = ExtResource( 39 )
+texture_hover = ExtResource( 38 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decreaseQtyButton" type="TextureButton" parent="encapItemContainer"]
+margin_left = 863.378
+margin_top = 537.594
+margin_right = 883.378
+margin_bottom = 557.594
+texture_normal = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clickContainer" type="Container" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clickPanel" type="Panel" parent="clickContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="clickContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 732.0
+margin_top = 512.0
+margin_right = 1024.0
+margin_bottom = 532.0
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Click A Weapon Or Item To See Data"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponPanel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.815686 )
+margin_left = 536.706
+margin_top = 319.385
+margin_right = 836.701
+margin_bottom = 636.385
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ak47Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 3.0
+margin_top = 26.0
+margin_right = 303.0
+margin_bottom = 93.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 15 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp5Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 1.25085
+margin_top = 121.0
+margin_right = 301.251
+margin_bottom = 188.0
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spas12Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 1.0
+margin_top = 224.749
+margin_right = 300.0
+margin_bottom = 281.749
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 23 )
+texture_focused = ExtResource( 24 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemPanel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.815686 )
+margin_left = 536.706
+margin_top = 319.385
+margin_right = 836.701
+margin_bottom = 636.385
+custom_styles/panel = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="barrelButton" type="TextureButton" parent="itemPanel"]
+margin_left = 3.0
+margin_top = 6.1012
+margin_right = 303.0
+margin_bottom = 73.1012
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 29 )
+texture_focused = ExtResource( 25 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wallsButton" type="TextureButton" parent="itemPanel"]
+margin_left = 1.25085
+margin_top = 86.0
+margin_right = 301.251
+margin_bottom = 153.0
+texture_normal = ExtResource( 30 )
+texture_hover = ExtResource( 36 )
+texture_focused = ExtResource( 32 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minesButton" type="TextureButton" parent="itemPanel"]
+margin_left = 3.51984
+margin_top = 166.749
+margin_right = 302.52
+margin_bottom = 223.749
+texture_normal = ExtResource( 33 )
+texture_hover = ExtResource( 35 )
+texture_focused = ExtResource( 34 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grenadeButton" type="TextureButton" parent="itemPanel"]
+margin_left = 1.0
+margin_top = 239.749
+margin_right = 300.0
+margin_bottom = 296.749
+texture_normal = ExtResource( 31 )
+texture_hover = ExtResource( 26 )
+texture_focused = ExtResource( 28 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costLbl" type="Label" parent="."]
+visible = false
+anchor_bottom = 0.03
+margin_left = 827.78
+margin_top = 276.556
+margin_right = 867.78
+margin_bottom = 294.556
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 1, 0.168627, 0.168627, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "-50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 21 )
+texture_hover = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 22 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/costFadeDrag = SubResource( 23 )
+
+[node name="weaponSelectAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/moveContainer = SubResource( 24 )
+
+[connection signal="pressed" from="weaponButton" to="." method="_on_weaponButton_pressed"]
+[connection signal="pressed" from="itemButton" to="." method="_on_itemButton_pressed"]
+[connection signal="pressed" from="encapContainer/purchaseButton" to="." method="_on_purchaseButton_pressed"]
+[connection signal="pressed" from="encapItemContainer/purchaseItemButton" to="." method="_on_purchaseItemButton_pressed"]
+[connection signal="pressed" from="encapItemContainer/increaseQtyButton" to="." method="_on_increaseQtyButton_pressed"]
+[connection signal="pressed" from="encapItemContainer/decreaseQtyButton" to="." method="_on_decreaseQtyButton_pressed"]
+[connection signal="pressed" from="weaponPanel/ak47Button" to="." method="_on_ak47Button_pressed"]
+[connection signal="pressed" from="weaponPanel/mp5Button" to="." method="_on_mp5Button_pressed"]
+[connection signal="pressed" from="weaponPanel/spas12Button" to="." method="_on_spas12Button_pressed"]
+[connection signal="pressed" from="itemPanel/barrelButton" to="." method="_on_barrelButton_pressed"]
+[connection signal="pressed" from="itemPanel/wallsButton" to="." method="_on_wallsButton_pressed"]
+[connection signal="pressed" from="itemPanel/minesButton" to="." method="_on_minesButton_pressed"]
+[connection signal="pressed" from="itemPanel/grenadeButton" to="." method="_on_grenadeButton_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]

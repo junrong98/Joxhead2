@@ -1,0 +1,867 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://ResourcesV2/Images/PlayInactive.png" type="Texture" id=3]
+[ext_resource path="res://ResourcesV2/Images/SettingsInactive.png" type="Texture" id=4]
+[ext_resource path="res://ResourcesV2/Images/ShopInactive.png" type="Texture" id=5]
+[ext_resource path="res://ResourcesV2/Images/ShopActive.png" type="Texture" id=6]
+[ext_resource path="res://ResourcesV2/Images/SettingsActive.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/PlayActive.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/MainScenesV2/MainMenu.gd" type="Script" id=9]
+[ext_resource path="res://ResourcesV2/Images/InventoryInactive.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/InventoryActive.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://ResourcesV2/Images/ExitInactive.png" type="Texture" id=13]
+[ext_resource path="res://ResourcesV2/Images/ExitActive.png" type="Texture" id=14]
+[ext_resource path="res://ResourcesV2/Images/howToPlayActive.png" type="Texture" id=15]
+[ext_resource path="res://ResourcesV2/Images/howToPlayInactive.png" type="Texture" id=16]
+[ext_resource path="res://ResourcesV2/Images/PreviousInactive.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Demon Sprite/dmn.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/ItemSprite/medkit.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/ItemSprite/ammo.png" type="Texture" id=20]
+[ext_resource path="res://Resources/Fonts/Raleway-Thin.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://ResourcesV2/Images/NextActive.png" type="Texture" id=22]
+[ext_resource path="res://ResourcesV2/Images/NextInactive.png" type="Texture" id=23]
+[ext_resource path="res://ResourcesV2/Images/PreviousActive.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/ItemSprite/coinItem.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Zombie Spite/attack0.png" type="Texture" id=26]
+[ext_resource path="res://ResourcesV2/Images/closeInactive.png" type="Texture" id=27]
+[ext_resource path="res://ResourcesV2/Images/closeActive.png" type="Texture" id=28]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=4]
+size = 35
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.0588235, 0.0588235, 0.0588235, 0.792157 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 29
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 22
+font_data = ExtResource( 12 )
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -1.33484
+margin_right = 1366.67
+margin_bottom = 765.0
+rect_pivot_offset = Vector2( -698.983, -92.5933 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.5
+margin_top = -95.0
+margin_right = 47.5
+margin_bottom = -33.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 8 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shopButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.2185
+margin_top = -23.7571
+margin_right = 52.7815
+margin_bottom = 38.2429
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventoryButton" type="TextureButton" parent="."]
+anchor_left = 0.456
+anchor_top = 0.325
+anchor_right = 0.456
+anchor_bottom = 0.325
+margin_left = -15.8102
+margin_top = 174.375
+margin_right = 132.19
+margin_bottom = 236.375
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settingsButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = 105.063
+margin_right = 69.0
+margin_bottom = 155.063
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = 224.434
+margin_right = 69.0
+margin_bottom = 274.434
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 1 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="howToPlayLabel" type="TextureButton" parent="."]
+margin_left = 604.082
+margin_top = 547.0
+margin_right = 769.082
+margin_bottom = 583.0
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="howToPlayBgPanel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.305882 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.33484
+margin_right = 1.33484
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="howToPlayPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -493.0
+margin_top = -265.5
+margin_right = 493.0
+margin_bottom = 265.5
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="howToPlayLbl" type="Label" parent="howToPlayPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -90.0
+margin_top = 22.803
+margin_right = 90.0
+margin_bottom = 60.803
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "How To Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page1" type="Container" parent="howToPlayPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 181.417
+margin_top = 178.448
+margin_right = 221.417
+margin_bottom = 218.448
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "W"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/upLbl"]
+margin_left = -7.06329
+margin_top = 108.724
+margin_right = 45.9367
+margin_bottom = 132.724
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Down"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leftLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 115.353
+margin_top = 240.172
+margin_right = 155.353
+margin_bottom = 280.172
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/leftLbl"]
+margin_left = -50.7239
+margin_top = 9.62451
+margin_right = -10.7239
+margin_bottom = 33.6245
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Left"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="downLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 181.417
+margin_top = 240.448
+margin_right = 221.417
+margin_bottom = 280.448
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "S"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/downLbl"]
+margin_left = -7.06329
+margin_top = -93.2761
+margin_right = 45.9367
+margin_bottom = -69.2761
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Up"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rightLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 248.417
+margin_top = 240.448
+margin_right = 288.417
+margin_bottom = 280.448
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/rightLbl"]
+margin_left = 47.2128
+margin_top = 9.34842
+margin_right = 87.2128
+margin_bottom = 33.3484
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Right"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 538.077
+margin_top = 237.778
+margin_right = 578.077
+margin_bottom = 277.778
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/nextLbl"]
+margin_left = -41.2215
+margin_top = 54.0678
+margin_right = 85.7785
+margin_bottom = 78.0678
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Next Weapon"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="prevLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 401.923
+margin_top = 239.113
+margin_right = 441.923
+margin_bottom = 279.113
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Q"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/prevLbl"]
+margin_left = -39.8866
+margin_top = 52.0633
+margin_right = 83.1134
+margin_bottom = 76.0633
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Prev Weapon"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="barrelLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 839.751
+margin_top = 248.457
+margin_right = 879.751
+margin_bottom = 288.457
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/barrelLbl"]
+margin_left = -39.8866
+margin_top = 52.0633
+margin_right = 83.1134
+margin_bottom = 76.0633
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Barrel"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wallsLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 837.081
+margin_top = 155.018
+margin_right = 877.081
+margin_bottom = 195.018
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/wallsLbl"]
+margin_left = -39.8866
+margin_top = 52.0633
+margin_right = 83.1134
+margin_bottom = 76.0633
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Walls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grenadeLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 715.611
+margin_top = 153.683
+margin_right = 755.611
+margin_bottom = 193.683
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/grenadeLbl"]
+margin_left = -39.1612
+margin_top = 52.0633
+margin_right = 83.8388
+margin_bottom = 76.0633
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Grenade"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="landmineLbl" type="Label" parent="howToPlayPanel/page1"]
+margin_left = 714.276
+margin_top = 247.122
+margin_right = 754.276
+margin_bottom = 287.122
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page1/landmineLbl"]
+margin_left = -39.8866
+margin_top = 52.0633
+margin_right = 83.1134
+margin_bottom = 76.0633
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Landmine"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="movementLbl" type="Label" parent="howToPlayPanel/page1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 92.0049
+margin_top = 328.221
+margin_right = 272.005
+margin_bottom = 366.221
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Movement"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="switchLbl" type="Label" parent="howToPlayPanel/page1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 384.005
+margin_top = 328.221
+margin_right = 574.005
+margin_bottom = 366.221
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Switch Weapons"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="miscLbl" type="Label" parent="howToPlayPanel/page1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 695.005
+margin_top = 328.221
+margin_right = 875.005
+margin_bottom = 366.221
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "miscellaneous"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shootLbl" type="Label" parent="howToPlayPanel/page1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 311.069
+margin_top = 93.9236
+margin_right = 491.07
+margin_bottom = 131.924
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Shooting"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shootingLbl" type="Label" parent="howToPlayPanel/page1/shootLbl"]
+margin_left = 175.317
+margin_top = -1.7957
+margin_right = 278.317
+margin_bottom = 38.2043
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Left Click"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page2" type="Container" parent="howToPlayPanel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="objectiveLbl" type="Label" parent="howToPlayPanel/page2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 47.2087
+margin_top = 87.3439
+margin_right = 136.209
+margin_bottom = 111.344
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Objective"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="objectiveValLbl" type="Label" parent="howToPlayPanel/page2/objectiveLbl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -44.5
+margin_top = 33.0
+margin_right = 841.5
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Your objective is to survive as long as possible, and shoot down as many zombie and demons"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dropLbl" type="Label" parent="howToPlayPanel/page2/objectiveLbl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -51.5
+margin_top = 185.0
+margin_right = 562.5
+margin_bottom = 209.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Zombie and demons have the chance to drop loots such as"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="zombieImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 452.0
+margin_top = 163.0
+margin_right = 515.0
+margin_bottom = 226.0
+rect_rotation = 90.0
+texture_normal = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="zombieLbl" type="Label" parent="howToPlayPanel/page2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 370.298
+margin_top = 232.299
+margin_right = 435.298
+margin_bottom = 256.299
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Zombie"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 591.0
+margin_top = 225.0
+margin_right = 656.0
+margin_bottom = 290.0
+rect_rotation = 180.0
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="healthImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 298.394
+margin_top = 332.995
+margin_right = 357.394
+margin_bottom = 391.995
+texture_normal = ExtResource( 20 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="howToPlayPanel/page2/healthImage"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 126.477
+margin_top = 74.1672
+margin_right = 191.477
+margin_bottom = 98.1672
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Health"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 621.317
+margin_top = 345.647
+margin_right = 674.317
+margin_bottom = 398.647
+texture_normal = ExtResource( 25 )
+expand = true
+stretch_mode = 5
+
+[node name="creditLabel" type="Label" parent="howToPlayPanel/page2/creditImage"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -31.9844
+margin_top = 62.0
+margin_right = 33.0156
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Credit"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 449.715
+margin_top = 328.991
+margin_right = 521.715
+margin_bottom = 400.991
+texture_normal = ExtResource( 19 )
+expand = true
+stretch_mode = 5
+
+[node name="ammoLabel" type="Label" parent="howToPlayPanel/page2/ammoImage"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.914
+margin_top = 75.9863
+margin_right = -127.914
+margin_bottom = 99.9863
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Ammo"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonLbl" type="Label" parent="howToPlayPanel/page2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 508.298
+margin_top = 231.299
+margin_right = 573.298
+margin_bottom = 255.299
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+text = "Demon"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="howtoplayexitButton" type="TextureButton" parent="howToPlayPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -49.0
+margin_top = 15.0
+margin_right = -9.0
+margin_bottom = 55.0
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextPageButton" type="TextureButton" parent="howToPlayPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.0
+margin_top = -57.0
+margin_right = 37.0
+margin_bottom = -15.0
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="prevPageButton" type="TextureButton" parent="howToPlayPanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -62.0
+margin_top = -63.0
+margin_right = 62.0
+margin_bottom = -11.0
+texture_normal = ExtResource( 17 )
+texture_hover = ExtResource( 24 )
+expand = true
+
+[connection signal="pressed" from="playButton" to="." method="_on_playButton_pressed"]
+[connection signal="pressed" from="shopButton" to="." method="_on_shopButton_pressed"]
+[connection signal="pressed" from="inventoryButton" to="." method="_on_inventoryButton_pressed"]
+[connection signal="pressed" from="settingsButton" to="." method="_on_settingsButton_pressed"]
+[connection signal="pressed" from="exitButton" to="." method="_on_exitButton_pressed"]
+[connection signal="pressed" from="howToPlayLabel" to="." method="_on_howToPlayLabel_pressed"]
+[connection signal="pressed" from="howToPlayPanel/howtoplayexitButton" to="." method="_on_howtoplayexitButton_pressed"]
+[connection signal="pressed" from="howToPlayPanel/nextPageButton" to="." method="_on_nextPageButton_pressed"]
+[connection signal="pressed" from="howToPlayPanel/prevPageButton" to="." method="_on_prevPageButton_pressed"]

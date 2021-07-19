@@ -3,13 +3,13 @@ extends KinematicBody2D
 export var animations = []
 export (int) var attackDistance = 150
 
-var player 
+var player
 var nav_2d 
 onready var fire_ball = preload("res://Scenes/GameScene/DemonFireBall.tscn")
 onready var gun_end = $EndOfGun
 onready var gun_direction = $GunDirection
 
-var path = PoolVector2Array() setget set_path
+var path
 var health = 100
 var speed = 40
 var isAttack = false
@@ -21,12 +21,8 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
-	for player_group_node in get_tree().get_nodes_in_group("Players"):
-		player = player_group_node;
-		break;
-	for nav_group_node in get_tree().get_nodes_in_group("LevelNavigation"):
-		nav_2d = nav_group_node;
-		break;
+	player = get_parent().get_node("Player")
+	nav_2d = get_parent().get_node("Navigation2D")
 	set_process(false)
 	randomize()
 	
@@ -35,29 +31,24 @@ func _ready() -> void:
 # for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 
 # have navigation highlighted then it can work
 func _physics_process(delta):
-	var new_path = nav_2d.get_simple_path(self.global_position, player.global_position)
-	self.path = new_path 
+	path = nav_2d.get_simple_path(self.global_position, player.global_position, false)
 	var move_distance = speed * delta
-	demon_movement()
 	move_along_path(move_distance)
+	demon_movement()
+	
 
 func move_along_path(distance):
-	var start_position = position
+	var start_position = get_global_position()
 	for i in range(path.size()):
 		var distance_to_next = start_position.distance_to(path[0])
-		if distance <= distance_to_next and distance >= 0.0:
-			position = start_position.linear_interpolate(path[0],distance/distance_to_next)
-			move_and_slide(Vector2.ZERO)
+		if distance <= distance_to_next:
+			var move_rotated = get_angle_to(start_position.linear_interpolate(path[0], distance/distance_to_next))
+			var motion = Vector2(speed, 0).rotated(move_rotated)
+			move_and_slide(motion)
 			break
 		distance -= distance_to_next
 		start_position = path[0]
 		path.remove(0)
-
-func set_path(value):
-	path = value
-	if value.size() == 0:
-		return
-	set_process(true)
 
 # when demon got hit by bullet. Whn the demon is killed, it will add 5 points
 # to the highscores and disappear

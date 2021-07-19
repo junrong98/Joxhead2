@@ -11,13 +11,14 @@ config_version=4
 [application]
 
 config/name="Server"
-run/main_scene="res://Scene/Server.tscn"
+run/main_scene="res://Scenes/Server.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Firebase="*res://Singleton/Firebase.gd"
-Global="*res://Singleton/Global.gd"
+Global="*res://Scenes/Singletons/Global.gd"
+Server="*res://Scenes/Singletons/Server.gd"
 
 [physics]
 

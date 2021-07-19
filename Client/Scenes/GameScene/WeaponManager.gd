@@ -26,7 +26,7 @@ func _ready():
 	
 	for weapon in Global.gamedata:
 		if weapon != "Credit":
-			if Global.gamedata[weapon]["Unlocked"]:
+			if Global.gamedata[weapon]["Type"] == "Weapon" && Global.gamedata[weapon]["Unlocked"]:
 				currPlayerInv.push_front(weapon)
 	
 	Basic_stat()

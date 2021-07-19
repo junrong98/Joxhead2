@@ -1,0 +1,312 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/SoundSetting.gd" type="Script" id=3]
+[ext_resource path="res://ResourcesV2/Images/skullGrabber.png" type="Texture" id=4]
+[ext_resource path="res://ResourcesV2/Images/SaveInactive.png" type="Texture" id=5]
+[ext_resource path="res://ResourcesV2/Images/SaveActive.png" type="Texture" id=6]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=8]
+[ext_resource path="res://ResourcesV2/Images/YesActive.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://ResourcesV2/Images/YesInactive.png" type="Texture" id=11]
+[ext_resource path="res://ResourcesV2/Images/closeActive.png" type="Texture" id=12]
+[ext_resource path="res://ResourcesV2/Images/closeInactive.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.74902, 0.305882, 0.294118, 0.796078 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 21
+extra_spacing_char = 1
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 10 )
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = 2.90295
+margin_top = 0.840912
+margin_right = 1370.91
+margin_bottom = 765.841
+rect_pivot_offset = Vector2( -298.754, 62.1887 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="soundLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.5
+margin_top = -151.5
+margin_right = 82.5
+margin_bottom = -102.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Sound"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 2 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backgroundMusicLbl" type="Label" parent="."]
+margin_left = 400.456
+margin_top = 317.919
+margin_right = 589.456
+margin_bottom = 345.919
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Background Music:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgMusicSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.002
+margin_top = -12.5
+margin_right = 249.998
+margin_bottom = 12.5
+rect_min_size = Vector2( 500, 0 )
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/grabber_area_highlight = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 4 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgMusicVolInput" type="LineEdit" parent="."]
+margin_left = 951.584
+margin_top = 365.119
+margin_right = 997.584
+margin_bottom = 399.119
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/minimum_spaces = -30
+align = 1
+max_length = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfxLbl" type="Label" parent="."]
+margin_left = 400.456
+margin_top = 417.919
+margin_right = 589.456
+margin_bottom = 445.919
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "SFX:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfxSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.002
+margin_top = 87.5
+margin_right = 249.998
+margin_bottom = 112.5
+rect_min_size = Vector2( 500, 0 )
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/grabber_area_highlight = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 4 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfxVolInput" type="LineEdit" parent="."]
+margin_left = 951.584
+margin_top = 465.119
+margin_right = 997.584
+margin_bottom = 499.119
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/minimum_spaces = -30
+align = 1
+max_length = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="saveSettings" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.5
+margin_top = 133.5
+margin_right = 51.5
+margin_bottom = 190.5
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirmationPanel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.466667 )
+margin_right = 1368.0
+margin_bottom = 766.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="conPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -247.004
+margin_top = -97.5
+margin_right = 246.996
+margin_bottom = 68.5
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="discardChangeLbl" type="Label" parent="conPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -122.5
+margin_top = 19.0
+margin_right = 122.5
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Discard Changes?"
+
+[node name="confirmationButton" type="TextureButton" parent="conPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -44.5
+margin_top = -64.0
+margin_right = 44.5
+margin_bottom = -9.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="noButton" type="TextureButton" parent="conPanel"]
+margin_left = 455.097
+margin_top = 7.7619
+margin_right = 487.097
+margin_bottom = 43.7619
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
+[connection signal="value_changed" from="bgMusicSlider" to="." method="_on_bgMusicSlider_value_changed"]
+[connection signal="text_changed" from="bgMusicVolInput" to="." method="_on_bgMusicVolInput_text_changed"]
+[connection signal="value_changed" from="sfxSlider" to="." method="_on_sfxSlider_value_changed"]
+[connection signal="text_changed" from="sfxVolInput" to="." method="_on_sfxVolInput_text_changed"]
+[connection signal="pressed" from="saveSettings" to="." method="_on_saveSettings_pressed"]
+[connection signal="pressed" from="conPanel/confirmationButton" to="." method="_on_confirmationButton_pressed"]
+[connection signal="pressed" from="conPanel/noButton" to="." method="_on_noButton_pressed"]

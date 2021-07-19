@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ResourcesV2/Images/ResumeInactive.png" type="Texture" id=2]
+[ext_resource path="res://ResourcesV2/Images/resumeActive.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/Multiplayer/(Multi)IngamePauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://ResourcesV2/Images/ExitActive.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/GameScene/Highscores.gd" type="Script" id=7]
+[ext_resource path="res://ResourcesV2/Images/ExitInactive.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/GameScene/UI/panel.tres" type="StyleBox" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 23
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+font_data = ExtResource( 4 )
+
+[node name="IngamePauseMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 5 )
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 404.533
+margin_top = 148.533
+margin_right = 827.533
+margin_bottom = 524.533
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSContainer" type="VBoxContainer" parent="Panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -211.5
+margin_top = 19.0
+margin_right = 211.5
+margin_bottom = 149.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="Panel2/HSContainer"]
+margin_right = 423.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_shadow = Color( 0.972549, 0.972549, 0.972549, 1 )
+text = "PAUSED"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreValueLabel" type="Label" parent="Panel2/HSContainer"]
+margin_top = 84.0
+margin_right = 423.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+script = ExtResource( 7 )
+
+[node name="CoinearnedLabel" type="Label" parent="Panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -119.0
+margin_top = -38.5
+margin_right = -2.99998
+margin_bottom = -13.5
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.960784, 0.956863, 0.956863, 1 )
+text = "Coin earned:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coinearnedvalue" type="Label" parent="Panel2"]
+margin_left = 241.0
+margin_top = 152.0
+margin_right = 267.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="TextureButton" parent="Panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.5
+margin_top = 4.5
+margin_right = 53.5
+margin_bottom = 47.5
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="Panel2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.5
+margin_top = -115.0
+margin_right = 34.5
+margin_bottom = -72.0
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Panel2/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Panel2/ExitButton" to="." method="_on_ExitButton_pressed"]

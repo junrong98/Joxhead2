@@ -3,10 +3,8 @@ extends KinematicBody2D
 export var animations = []
 export (int) var attackDistance = 50
 
-var players
+var players 
 var nav_2d 
-
-#TO BE EDIT IN FUTURE
 var path
 
 var zombie_dmg = 10
@@ -20,12 +18,8 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready() -> void:
-	for player_group_node in get_tree().get_nodes_in_group("Players"):
-		players = player_group_node;
-		break;
-	for nav_group_node in get_tree().get_nodes_in_group("LevelNavigation"):
-		nav_2d = nav_group_node;
-		break;
+	players = get_parent().get_node("Player")
+	nav_2d = get_parent().get_node("Navigation2D")
 	set_process(false)
 	randomize()
 
@@ -33,7 +27,7 @@ func _ready() -> void:
 # for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 
 # have navigation highlighted then it can work
 func _physics_process(delta):
-	path = nav_2d.get_simple_path(get_global_position(), players.get_global_position())
+	path = nav_2d.get_simple_path(get_global_position(), players.get_global_position(), false)
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	zomebie_movement()

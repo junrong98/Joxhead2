@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
-class_name Player
-
 export (int) var speed = 100
+
+signal grenade_num_update(grenade_amt)
+signal landmine_num_update(landmine_amt)
+signal fakewall_num_update(fakewall_amt)
+signal barrel_num_update(barrel_amt)
 
 onready var weapon = $PlayerSprite/WeaponManager
 onready var health_stat = $HealthBar
@@ -14,11 +17,18 @@ onready var grenade_bomb = preload("res://Scenes/GameScene/BombItems/Grenade.tsc
 onready var landmine_bomb = preload("res://Scenes/GameScene/BombItems/Landmine.tscn")
 onready var fake_wall = preload("res://Scenes/GameScene/BombItems/Fakewall.tscn")
 onready var barrel_bomb = preload("res://Scenes/GameScene/BombItems/Barrel.tscn")
+onready var invCollection : FirestoreCollection = Firebase.Firestore.collection('user_inventory')
 
 var gameoverscreen = preload("res://Scenes/GameScene/GameOverScreen.tscn")
+var pausescreen = preload("res://Scenes/GameScene/IngamePauseMenu.tscn")
 var screensize
 var coins_earned = 0
 var can_throw = true
+var invData = Global.gamedata
+var num_grenade = invData["Grenade"]["Ammo"]
+var num_landmine = invData["Mine"]["Ammo"]
+var num_fakewall = invData["Fake_Wall"]["Ammo"]
+var num_barrel = invData["Barrel"]["Ammo"]
 
 
 func _ready():
@@ -51,14 +61,41 @@ func _physics_process(delta) -> void:
 
 # for throwing projectile. Edit in future if need to
 func _process(delta):
-	if Input.is_action_pressed("throw_item") and can_throw:
+	if Input.is_action_pressed("throw_item") and can_throw and num_grenade != 0:
 		throw_grenade()
-	if Input.is_action_pressed("plant_landmine") and can_throw:
+	if Input.is_action_pressed("plant_landmine") and can_throw and num_landmine != 0:
 		plant_landmine()
-	if Input.is_action_pressed("place_fakewall") and can_throw:
+	if Input.is_action_pressed("place_fakewall") and can_throw and num_fakewall != 0:
 		put_fakewalls()
-	if Input.is_action_pressed("place_barrel") and can_throw:
+	if Input.is_action_pressed("place_barrel") and can_throw and num_barrel != 0:
 		put_barrels()
+	if Input.is_action_pressed("Pause_game"):
+		pause_game()
+
+func grenade_update(num):
+	num_grenade = num
+	emit_signal("grenade_num_update", num_grenade)
+	invData["Grenade"]["Ammo"] = num_grenade
+	invCollection.update("" + Global.uuid, {"Grenade" : invData["Grenade"]})
+
+func landmine_update(num):
+	num_landmine = num
+	emit_signal("landmine_num_update", num_landmine)
+	invData["Mine"]["Ammo"] = num_landmine
+	invCollection.update("" + Global.uuid, {"Mine" : invData["Mine"]})
+	
+
+func fakewall_update(num):
+	num_fakewall = num
+	emit_signal("fakewall_num_update", num_fakewall)
+	invData["Fake_Wall"]["Ammo"] = num_fakewall
+	invCollection.update("" + Global.uuid, {"Fake_Wall" : invData["Fake_Wall"]})
+
+func barrel_update(num):
+	num_barrel = num
+	emit_signal("barrel_num_update", num_barrel)
+	invData["Barrel"]["Ammo"] = num_barrel
+	invCollection.update("" + Global.uuid, {"Barrel" : invData["Barrel"]})
 
 func throw_grenade():
 	can_throw = false
@@ -67,6 +104,8 @@ func throw_grenade():
 	grenade.position = castpoint.get_global_position()
 	grenade.rotation = get_angle_to(get_global_mouse_position())
 	get_parent().add_child(grenade)
+	grenade.throw_at_mouse(grenade.position)
+	grenade_update(num_grenade - 1)
 	yield(get_tree().create_timer(0.4), "timeout")
 	can_throw = true
 
@@ -76,6 +115,7 @@ func plant_landmine():
 		var landmine = landmine_bomb.instance()
 		landmine.position = get_global_position()
 		get_parent().add_child(landmine)
+		landmine_update(num_landmine - 1)
 		yield(get_tree().create_timer(0.4), "timeout")
 		can_throw = true
 	can_throw = true
@@ -86,6 +126,7 @@ func put_fakewalls():
 		var fakewall = fake_wall.instance()
 		fakewall.position = $PlayerSprite/CastBarricade.get_global_position()
 		get_parent().add_child(fakewall)
+		fakewall_update(num_fakewall - 1)
 		yield(get_tree().create_timer(0.4), "timeout")
 		can_throw = true
 	can_throw = true
@@ -96,6 +137,7 @@ func put_barrels():
 		var barrel = barrel_bomb.instance()
 		barrel.position = $PlayerSprite/CastBarricade.get_global_position()
 		get_parent().add_child(barrel)
+		barrel_update(num_barrel - 1)
 		yield(get_tree().create_timer(0.4), "timeout")
 		can_throw = true
 	can_throw = true
@@ -141,5 +183,14 @@ func add_ammo(ammo_amt):
 func add_coins():
 	coins_earned += 15
 
-
-
+func pause_game():
+	var pause_game = pausescreen.instance()
+	add_child(pause_game)
+	get_tree().paused = true
+	
+	# Check if player achieve highscore
+	var newScore = Global.game_highscore
+	
+	if newScore > Global.highscore:
+		Global.updateHighScore = true
+		Global.highscore = newScore

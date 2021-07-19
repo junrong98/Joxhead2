@@ -1,0 +1,652 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/Login.gd" type="Script" id=3]
+[ext_resource path="res://ResourcesV2/Images/LoginActive.png" type="Texture" id=4]
+[ext_resource path="res://ResourcesV2/Images/LoginInactive.png" type="Texture" id=5]
+[ext_resource path="res://ResourcesV2/Images/CreateAccInactive.png" type="Texture" id=6]
+[ext_resource path="res://ResourcesV2/Images/CreateAccActive.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://ResourcesV2/Images/whiteBackground.jpg" type="Texture" id=9]
+[ext_resource path="res://ResourcesV2/Images/closeInactive.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/closeActive.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/BombItem/hand_grenade.png" type="Texture" id=12]
+[ext_resource path="res://ResourcesV2/Images/ResetActive.png" type="Texture" id=13]
+[ext_resource path="res://ResourcesV2/Images/ResetInactive.png" type="Texture" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DoSplashAnimation"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Logo:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Logo:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -73.865, -0.25, 0, 0.25, 0, 157.135, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "LoginButtonAnimation"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("loginBtnSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("loginBtnSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 377.976, -0.25, 0, 0.25, 0, 377.976, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "doSplashAnimation"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("loginBtnSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("loginBtnSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 811.976, -0.25, 0, 0.25, 0, 377.976, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "DoSplashAnimation"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("createAccSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("createAccSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 884.194, -0.25, 0, 0.25, 0, 459.194, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 45
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.427451 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "loadingGrenade"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("loadingGrenade1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("loadingGrenade2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("loadingGrenade3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Background" type="TextureRect"]
+margin_left = 1.41431
+margin_top = -1.0
+margin_right = 1369.41
+margin_bottom = 764.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 684.098, 154.135 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DoSplashAnimation"
+anims/DoSplashAnimation = SubResource( 1 )
+anims/LoginButtonAnimation = SubResource( 2 )
+
+[node name="loginBtnAnimation" type="AnimationPlayer" parent="."]
+autoplay = "doSplashAnimation"
+anims/doSplashAnimation = SubResource( 3 )
+
+[node name="createBtnAnimation" type="AnimationPlayer" parent="."]
+autoplay = "DoSplashAnimation"
+anims/DoSplashAnimation = SubResource( 4 )
+
+[node name="loginBtnSprite" type="Sprite" parent="."]
+position = Vector2( 670.278, 811.976 )
+texture = ExtResource( 5 )
+
+[node name="createAccSprite" type="Sprite" parent="."]
+position = Vector2( 673.429, 884.194 )
+texture = ExtResource( 6 )
+
+[node name="loginButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 596.036
+margin_top = 339.222
+margin_right = 745.036
+margin_bottom = 416.222
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="createAccButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 526.083
+margin_top = 433.903
+margin_right = 820.083
+margin_bottom = 483.903
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="signUpForm" type="NinePatchRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -178.0
+margin_right = 200.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 400, 450 )
+texture = ExtResource( 9 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="signUpForm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = -30.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="titleLbl" type="Label" parent="signUpForm/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+text = "Joxhead"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="signUpForm/VBoxContainer"]
+margin_top = 79.0
+margin_right = 360.0
+margin_bottom = 103.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="signUpForm/VBoxContainer/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 24.0
+
+[node name="usernameLbl" type="Label" parent="signUpForm/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 70.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Username:"
+
+[node name="usernameInpt" type="LineEdit" parent="signUpForm/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 132.0
+margin_bottom = 24.0
+max_length = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="emailLbl" type="Label" parent="signUpForm/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 136.0
+margin_top = 5.0
+margin_right = 175.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Email:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="emailInpt" type="LineEdit" parent="signUpForm/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 179.0
+margin_right = 359.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 180, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="signUpForm/VBoxContainer"]
+margin_top = 133.0
+margin_right = 360.0
+margin_bottom = 175.0
+
+[node name="passwordLbl" type="Label" parent="signUpForm/VBoxContainer/VBoxContainer2"]
+margin_right = 360.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Password:"
+
+[node name="passwordInpt" type="LineEdit" parent="signUpForm/VBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 360.0
+margin_bottom = 42.0
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="signUpForm/VBoxContainer"]
+margin_top = 205.0
+margin_right = 360.0
+margin_bottom = 247.0
+
+[node name="cfmPasswordLbl" type="Label" parent="signUpForm/VBoxContainer/VBoxContainer3"]
+margin_right = 360.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Confirm Password:"
+
+[node name="cfmPasswordInpt" type="LineEdit" parent="signUpForm/VBoxContainer/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 360.0
+margin_bottom = 42.0
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="signUpErrLbl" type="Label" parent="signUpForm"]
+margin_left = 20.0
+margin_top = 299.0
+margin_right = 380.0
+margin_bottom = 313.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="createAccBtn" type="TextureButton" parent="signUpForm"]
+anchor_left = 0.5
+anchor_top = 0.67
+anchor_right = 0.5
+anchor_bottom = 0.67
+margin_left = -110.0
+margin_top = 30.0
+margin_right = 184.0
+margin_bottom = 80.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="createAccCloseBtn" type="TextureButton" parent="signUpForm"]
+margin_left = 361.0
+margin_top = 8.0
+margin_right = 393.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+
+[node name="forgetPasswordForm" type="NinePatchRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.998
+margin_top = -174.5
+margin_right = 200.002
+margin_bottom = 206.5
+rect_min_size = Vector2( 400, 350 )
+texture = ExtResource( 9 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="forgetPasswordForm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = -97.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="titleLbl" type="Label" parent="forgetPasswordForm/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+text = "Joxhead"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="forgetPasswordForm/VBoxContainer"]
+margin_top = 79.0
+margin_right = 360.0
+margin_bottom = 121.0
+
+[node name="usernameLbl" type="Label" parent="forgetPasswordForm/VBoxContainer/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Email:"
+
+[node name="usernameInpt" type="LineEdit" parent="forgetPasswordForm/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 360.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="resetPwLbl" type="Label" parent="forgetPasswordForm"]
+visible = false
+margin_left = 20.0
+margin_top = 163.059
+margin_right = 380.0
+margin_bottom = 177.059
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="resetCloseBtn" type="TextureButton" parent="forgetPasswordForm"]
+margin_left = 361.0
+margin_top = 8.0
+margin_right = 393.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="resetButton" type="TextureButton" parent="forgetPasswordForm"]
+margin_top = 184.0
+margin_right = 399.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 13 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loginForm" type="NinePatchRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.998
+margin_top = -174.5
+margin_right = 200.002
+margin_bottom = 206.5
+rect_min_size = Vector2( 400, 350 )
+texture = ExtResource( 9 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="loginForm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = -97.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="titleLbl" type="Label" parent="loginForm/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+text = "Joxhead"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="loginForm/VBoxContainer"]
+margin_top = 79.0
+margin_right = 360.0
+margin_bottom = 121.0
+
+[node name="usernameLbl" type="Label" parent="loginForm/VBoxContainer/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Email:"
+
+[node name="usernameInpt" type="LineEdit" parent="loginForm/VBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 360.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="loginForm/VBoxContainer"]
+margin_top = 151.0
+margin_right = 360.0
+margin_bottom = 193.0
+
+[node name="passwordLbl" type="Label" parent="loginForm/VBoxContainer/VBoxContainer2"]
+margin_right = 360.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Password:"
+
+[node name="passwordInpt" type="LineEdit" parent="loginForm/VBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 360.0
+margin_bottom = 42.0
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loginErrLbl" type="Label" parent="loginForm"]
+margin_left = 20.0
+margin_top = 241.059
+margin_right = 380.0
+margin_bottom = 255.059
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loginBtn" type="TextureButton" parent="loginForm"]
+margin_left = 1.0
+margin_top = 282.0
+margin_right = 531.0
+margin_bottom = 359.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="closeBtn" type="TextureButton" parent="loginForm"]
+margin_left = 361.0
+margin_top = 8.0
+margin_right = 393.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+
+[node name="forgetPwLabel" type="RichTextLabel" parent="loginForm"]
+margin_left = 144.0
+margin_top = 344.0
+margin_right = 257.0
+margin_bottom = 362.0
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Forget Password?"
+meta_underlined = false
+tab_size = 3
+text = "Forget Password?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loadingPanel" type="Panel" parent="."]
+visible = false
+margin_right = 1369.0
+margin_bottom = 765.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loadingGrenade1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 636.353, 400.606 )
+texture = ExtResource( 12 )
+
+[node name="loadingGrenade2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 677.381, 400.936 )
+texture = ExtResource( 12 )
+
+[node name="loadingGrenade3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 718.829, 401.266 )
+texture = ExtResource( 12 )
+
+[node name="loadingAnimationG1" type="AnimationPlayer" parent="."]
+anims/loadingGrenade = SubResource( 7 )
+
+[node name="loadingAnimationG2" type="AnimationPlayer" parent="."]
+anims/loadingGrenade = SubResource( 8 )
+
+[node name="loadingAnimationG3" type="AnimationPlayer" parent="."]
+anims/loadingGrenade = SubResource( 9 )
+
+[connection signal="animation_finished" from="loginBtnAnimation" to="." method="_on_loginBtnAnimation_animation_finished"]
+[connection signal="animation_finished" from="createBtnAnimation" to="." method="_on_createBtnAnimation_animation_finished"]
+[connection signal="pressed" from="loginButton" to="." method="_on_loginButton_pressed"]
+[connection signal="pressed" from="createAccButton" to="." method="_on_createAccButton_pressed"]
+[connection signal="pressed" from="signUpForm/createAccBtn" to="." method="_on_createAccBtn_pressed"]
+[connection signal="pressed" from="signUpForm/createAccCloseBtn" to="." method="_on_createAccCloseBtn_pressed"]
+[connection signal="pressed" from="forgetPasswordForm/resetCloseBtn" to="." method="_on_resetCloseBtn_pressed"]
+[connection signal="pressed" from="forgetPasswordForm/resetButton" to="." method="_on_resetButton_pressed"]
+[connection signal="pressed" from="loginForm/loginBtn" to="." method="_on_loginBtn_pressed"]
+[connection signal="pressed" from="loginForm/closeBtn" to="." method="_on_closeBtn_pressed"]
+[connection signal="meta_clicked" from="loginForm/forgetPwLabel" to="." method="_on_forgetPwLabel_meta_clicked"]
+[connection signal="mouse_entered" from="loginForm/forgetPwLabel" to="." method="_on_forgetPwLabel_mouse_entered"]
+[connection signal="mouse_exited" from="loginForm/forgetPwLabel" to="." method="_on_forgetPwLabel_mouse_exited"]

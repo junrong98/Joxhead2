@@ -12,6 +12,9 @@ var range_time
 func _ready():
 	pass
 
+#func _physics_process(delta):
+#	position += transform.x * speed * delta
+
 func _process(delta):
 	if direction != Vector2.ZERO:
 		var velocity = speed * direction
@@ -42,4 +45,4 @@ func set_weapon_damage(dmg):
 	bullet_dmg = dmg
 
 func set_range_time(time):
-	kill_timer.start(time/20)
+	$ShootTimer.start(time/20)

@@ -1,0 +1,236 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Resources/Fonts/arial.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ResourcesV2/Images/SaveChangesInactive.png" type="Texture" id=5]
+[ext_resource path="res://ResourcesV2/Images/AccountActive.png" type="Texture" id=6]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/MainScenesV2/AccountSetting.gd" type="Script" id=9]
+[ext_resource path="res://ResourcesV2/Images/SaveChangesActive.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/changePasswordActive.png" type="Texture" id=11]
+[ext_resource path="res://ResourcesV2/Images/changePasswordInactive.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 14
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -0.92224
+margin_top = 0.159119
+margin_right = 1367.08
+margin_bottom = 765.159
+rect_pivot_offset = Vector2( -298.754, 62.1887 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -61.0
+margin_top = 240.0
+margin_right = 61.0
+margin_bottom = 283.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.631373 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.002
+margin_top = -94.5
+margin_right = 162.998
+margin_bottom = 136.5
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 534.0
+margin_top = 300.0
+margin_right = 838.0
+margin_bottom = 434.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 304.0
+margin_bottom = 146.0
+custom_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 304.0
+margin_bottom = 68.0
+
+[node name="emailLbl" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 304.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E-mail"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="emailInpt" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 304.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 30 )
+custom_styles/read_only = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_uneditable = Color( 0.631373, 0.631373, 0.631373, 1 )
+text = "email"
+editable = false
+placeholder_text = "Enter your Email"
+
+[node name="errLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 304.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 304.0
+margin_bottom = 146.0
+
+[node name="usernameLbl" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 304.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Username"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usernameInpt" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 20.0
+margin_right = 304.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 30 )
+custom_styles/read_only = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_uneditable = Color( 0.631373, 0.631373, 0.631373, 1 )
+text = "username"
+editable = false
+placeholder_text = "Enter your username"
+
+[node name="errLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 54.0
+margin_right = 304.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="saveChangesBtn" type="TextureButton" parent="."]
+margin_left = 593.339
+margin_top = 468.158
+margin_right = 768.339
+margin_bottom = 510.158
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 7 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="changePasswordBtn" type="TextureButton" parent="."]
+margin_left = 571.297
+margin_top = 538.227
+margin_right = 786.297
+margin_bottom = 571.227
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/emailInpt" to="." method="_on_emailInpt_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/VBoxContainer/emailInpt" to="." method="_on_emailInpt_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer2/usernameInpt" to="." method="_on_usernameInpt_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/VBoxContainer2/usernameInpt" to="." method="_on_usernameInpt_mouse_exited"]
+[connection signal="mouse_entered" from="saveChangesBtn" to="." method="_on_saveChangesBtn_mouse_entered"]
+[connection signal="pressed" from="changePasswordBtn" to="." method="_on_changePasswordBtn_pressed"]

@@ -1,0 +1,553 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/MultiPlayerMode.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Map/Boxxy.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Images/NextButton.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/PreviousButton.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Map/Castle.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Map/Maze.png" type="Texture" id=8]
+[ext_resource path="res://ResourcesV2/Images/ReadyInactive.png" type="Texture" id=9]
+[ext_resource path="res://ResourcesV2/Images/ReadyActive.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/UnreadyActive.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://ResourcesV2/Images/UnreadyInactive.png" type="Texture" id=13]
+[ext_resource path="res://ResourcesV2/Images/StartInactive.png" type="Texture" id=14]
+[ext_resource path="res://ResourcesV2/Images/StartActive.png" type="Texture" id=15]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=16]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=17]
+[ext_resource path="res://ResourcesV2/Images/YesInactive.png" type="Texture" id=18]
+[ext_resource path="res://ResourcesV2/Images/YesActive.png" type="Texture" id=19]
+[ext_resource path="res://ResourcesV2/Images/closeInactive.png" type="Texture" id=20]
+[ext_resource path="res://ResourcesV2/Images/closeActive.png" type="Texture" id=21]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.0156863, 0.0156863, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 1, 0.172549, 0.172549, 0.6 )
+shadow_size = 20
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 23
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 13
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.623529, 0.623529, 0.623529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 24
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 20
+font_data = ExtResource( 12 )
+
+[node name="roomContainer" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -1.01874
+margin_top = 3.8811
+margin_right = 1366.99
+margin_bottom = 768.881
+rect_pivot_offset = Vector2( 105.414, -78.7644 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="glowPanel" type="Panel" parent="."]
+visible = false
+margin_left = 469.0
+margin_top = 292.0
+margin_right = 887.0
+margin_bottom = 541.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.5
+margin_top = -149.5
+margin_right = 15.5
+margin_bottom = -124.5
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Highscore:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscoreValLabel" type="RichTextLabel" parent="."]
+margin_left = 704.0
+margin_top = 234.0
+margin_right = 754.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 50, 20 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]0[/u][/center]"
+text = "0"
+
+[node name="usernameLabel" type="Label" parent="."]
+margin_left = 1106.58
+margin_top = 169.525
+margin_right = 1186.58
+margin_bottom = 191.525
+custom_fonts/font = SubResource( 4 )
+text = "Username"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="worldOneButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.32
+margin_top = -86.5365
+margin_right = 1154.68
+margin_bottom = 1115.46
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 4 )
+
+[node name="worldTwoButton" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.922
+margin_top = -86.8781
+margin_right = 1154.08
+margin_bottom = 1115.12
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="worldThreeButton" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -895.32
+margin_top = -86.5365
+margin_right = 1154.68
+margin_bottom = 1115.46
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="notiLabel" type="Label" parent="."]
+visible = false
+margin_left = 474.944
+margin_top = 556.449
+margin_right = 888.944
+margin_bottom = 574.449
+custom_fonts/font = SubResource( 5 )
+text = "Click Map To Start"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mapNameLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5001
+margin_top = 169.0
+margin_right = 46.4999
+margin_bottom = 199.0
+rect_min_size = Vector2( 100, 30 )
+custom_fonts/font = SubResource( 6 )
+text = "Big Boxxy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 748.0
+margin_top = 584.0
+margin_right = 782.0
+margin_bottom = 618.0
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="prevButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 584.158
+margin_top = 583.74
+margin_right = 618.158
+margin_bottom = 617.74
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="roomLabel" type="Label" parent="."]
+margin_left = 937.0
+margin_top = 261.0
+margin_right = 1298.0
+margin_bottom = 286.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.6, 0.333333, 1 )
+text = "Room"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="multiplayerPanel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 937.0
+margin_top = 297.0
+margin_right = 1300.0
+margin_bottom = 387.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leaderLabel" type="Label" parent="."]
+visible = false
+margin_left = 955.203
+margin_top = 314.311
+margin_right = 1003.2
+margin_bottom = 332.311
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Leader"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leaderReadyLabel" type="Label" parent="."]
+visible = false
+margin_left = 1190.2
+margin_top = 314.311
+margin_right = 1290.2
+margin_bottom = 332.311
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Not Ready"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLabel" type="Label" parent="."]
+visible = false
+margin_left = 955.203
+margin_top = 352.311
+margin_right = 1003.2
+margin_bottom = 370.311
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerReadyLabel" type="Label" parent="."]
+visible = false
+margin_left = 1190.2
+margin_top = 352.311
+margin_right = 1290.2
+margin_bottom = 370.311
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Not Ready"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="readyButton" type="TextureButton" parent="."]
+margin_left = 1082.61
+margin_top = 407.0
+margin_right = 1157.61
+margin_bottom = 454.0
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="unreadyButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 1082.61
+margin_top = 407.0
+margin_right = 1157.61
+margin_bottom = 454.0
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 1084.73
+margin_top = 443.908
+margin_right = 1153.73
+margin_bottom = 496.908
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="errLabel" type="Label" parent="."]
+visible = false
+margin_left = 936.0
+margin_top = 392.85
+margin_right = 1302.0
+margin_bottom = 407.85
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Please ensure both players are ready"
+align = 1
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 17 )
+texture_hover = ExtResource( 16 )
+
+[node name="cfmBackContainer" type="Container" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmBgPanel" type="Panel" parent="cfmBackContainer"]
+modulate = Color( 1, 1, 1, 0.415686 )
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 1369.0
+margin_bottom = 764.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmPanel" type="Panel" parent="cfmBackContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 470.0
+margin_top = 304.0
+margin_right = 858.0
+margin_bottom = 453.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="cfmLbl" type="Label" parent="cfmBackContainer/cfmPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.5
+margin_top = 26.0
+margin_right = 96.5
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Are you sure?"
+
+[node name="confirmButton" type="TextureButton" parent="cfmBackContainer/cfmPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = 18.4949
+margin_right = 35.0
+margin_bottom = 63.4949
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+
+[node name="noButton" type="TextureButton" parent="cfmBackContainer/cfmPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -36.0
+margin_top = 11.0
+margin_right = -4.0
+margin_bottom = 47.0
+texture_normal = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
+
+[node name="leaveRoomContainer" type="Container" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmBgPanel" type="Panel" parent="leaveRoomContainer"]
+modulate = Color( 1, 1, 1, 0.415686 )
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 1369.0
+margin_bottom = 764.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cfmPanel" type="Panel" parent="leaveRoomContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 470.0
+margin_top = 304.0
+margin_right = 858.0
+margin_bottom = 453.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="cfmLbl" type="Label" parent="leaveRoomContainer/cfmPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -141.0
+margin_top = 20.0
+margin_right = 141.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Leader has left the room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="extraLbl" type="Label" parent="leaveRoomContainer/cfmPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -1.5
+margin_right = 168.0
+margin_bottom = 31.5
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You will be redirected back to lobby"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="worldTwoButton" to="." method="_on_worldTwoButton_focus_entered"]
+[connection signal="mouse_entered" from="worldTwoButton" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="worldTwoButton" to="." method="_on_TextureRect_mouse_exited"]
+[connection signal="pressed" from="worldTwoButton" to="." method="_on_worldTwoButton_pressed"]
+[connection signal="focus_entered" from="worldThreeButton" to="." method="_on_worldThreeButton_focus_entered"]
+[connection signal="mouse_entered" from="worldThreeButton" to="." method="_on_TextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="worldThreeButton" to="." method="_on_TextureRect_mouse_exited"]
+[connection signal="pressed" from="worldThreeButton" to="." method="_on_worldThreeButton_pressed"]
+[connection signal="pressed" from="nextButton" to="." method="_on_nextButton_pressed"]
+[connection signal="pressed" from="prevButton" to="." method="_on_prevButton_pressed"]
+[connection signal="pressed" from="readyButton" to="." method="_on_readyButton_pressed"]
+[connection signal="pressed" from="unreadyButton" to="." method="_on_unreadyButton_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
+[connection signal="pressed" from="cfmBackContainer/cfmPanel/confirmButton" to="." method="_on_confirmButton_pressed"]
+[connection signal="pressed" from="cfmBackContainer/cfmPanel/noButton" to="." method="_on_noButton_pressed"]

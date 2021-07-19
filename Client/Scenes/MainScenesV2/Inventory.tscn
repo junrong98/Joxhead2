@@ -1,0 +1,1161 @@
+[gd_scene load_steps=68 format=2]
+
+[ext_resource path="res://ResourcesV2/Images/pixelSkyline.jpg" type="Texture" id=1]
+[ext_resource path="res://ResourcesV2/Images/MainLogo.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MainScenesV2/Inventory.gd" type="Script" id=3]
+[ext_resource path="res://ResourcesV2/Images/creditIcon.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Fonts/8bitlimr.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://ResourcesV2/Images/WeaponActive.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Weapon_Sprite/ak47glow.png" type="Texture" id=7]
+[ext_resource path="res://ResourcesV2/Images/ItemActive.png" type="Texture" id=8]
+[ext_resource path="res://ResourcesV2/Images/ItemInactive.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Weapon_Sprite/AK-47.png" type="Texture" id=10]
+[ext_resource path="res://ResourcesV2/Images/progressBar.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Weapon_Sprite/MP-5.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12Inv.png" type="Texture" id=13]
+[ext_resource path="res://ResourcesV2/Images/underBar.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Weapon_Sprite/ak47glowfocus.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Weapon_Sprite/mp5glowfocus.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Weapon_Sprite/mp5glow.png" type="Texture" id=17]
+[ext_resource path="res://ResourcesV2/Images/UpgradeDisabled.png" type="Texture" id=18]
+[ext_resource path="res://ResourcesV2/Images/UpgradeValueActiveButton.png" type="Texture" id=19]
+[ext_resource path="res://ResourcesV2/Images/BackActive.png" type="Texture" id=20]
+[ext_resource path="res://ResourcesV2/Images/BackInactive.png" type="Texture" id=21]
+[ext_resource path="res://ResourcesV2/Images/NotAvailable.png" type="Texture" id=22]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12glow.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Weapon_Sprite/spas12glowfocus.png" type="Texture" id=24]
+[ext_resource path="res://ResourcesV2/Images/upgradeValueInactiveButton.png" type="Texture" id=25]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelGlowFocus.png" type="Texture" id=26]
+[ext_resource path="res://ResourcesV2/Images/DowngradeInactive.png" type="Texture" id=27]
+[ext_resource path="res://ResourcesV2/Images/DowngradeActive.png" type="Texture" id=28]
+[ext_resource path="res://Resources/Fonts/Roboto-Black.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelInv.png" type="Texture" id=30]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeGlowFocus.png" type="Texture" id=31]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeGlow.png" type="Texture" id=32]
+[ext_resource path="res://Resources/Weapon_Sprite/grenadeInv.png" type="Texture" id=33]
+[ext_resource path="res://Resources/Weapon_Sprite/barrelGlow.png" type="Texture" id=34]
+[ext_resource path="res://Resources/Weapon_Sprite/wallInv.png" type="Texture" id=35]
+[ext_resource path="res://Resources/Weapon_Sprite/wallGlowFocus.png" type="Texture" id=36]
+[ext_resource path="res://Resources/Weapon_Sprite/wallGlow.png" type="Texture" id=37]
+[ext_resource path="res://Resources/Weapon_Sprite/minesGlowFocus.png" type="Texture" id=38]
+[ext_resource path="res://Resources/Weapon_Sprite/minesGlow.png" type="Texture" id=39]
+[ext_resource path="res://Resources/Weapon_Sprite/mines.png" type="Texture" id=40]
+[ext_resource path="res://Resources/Weapon_Sprite/basicGlowFocus.png" type="Texture" id=41]
+[ext_resource path="res://Resources/Weapon_Sprite/basicInv.png" type="Texture" id=42]
+[ext_resource path="res://Resources/Weapon_Sprite/basicGlow.png" type="Texture" id=43]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.921569, 0.87451, 0.87451, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 11
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 14
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 10
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 13
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 14
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 15
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.921569, 0.87451, 0.87451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=24]
+size = 18
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Animation" id=20]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("costLbl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("costLbl:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.03 ]
+}
+
+[sub_resource type="DynamicFont" id=21]
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=22]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("weaponPanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 536.706, 319.385 ), Vector2( 373.706, 319.385 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("encapContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("itemPanel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 536.706, 319.385 ), Vector2( 373.706, 319.385 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("encapItemContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Background" type="TextureRect"]
+anchor_top = -0.00173807
+anchor_bottom = -0.00173807
+margin_left = -0.5488
+margin_top = 0.12372
+margin_right = 1367.45
+margin_bottom = 765.124
+texture = ExtResource( 1 )
+stretch_mode = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logoRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.0
+margin_top = 93.0
+margin_right = 182.0
+margin_bottom = 216.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditIcon" type="TextureRect" parent="."]
+margin_left = 776.219
+margin_top = 260.727
+margin_right = 1618.22
+margin_bottom = 1101.73
+rect_scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creditLbl" type="Label" parent="."]
+margin_left = 811.836
+margin_top = 262.701
+margin_right = 851.836
+margin_bottom = 285.701
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.831373, 0.462745, 0.0862745, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponButton" type="TextureButton" parent="."]
+margin_left = 416.669
+margin_top = 258.46
+margin_right = 530.669
+margin_bottom = 307.46
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemButton" type="TextureButton" parent="."]
+margin_left = 559.04
+margin_top = 257.941
+margin_right = 632.04
+margin_bottom = 302.941
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="encapContainer" type="Container" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsPanel" type="Panel" parent="encapContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsTitleLabel" type="Label" parent="encapContainer"]
+margin_left = 717.0
+margin_top = 415.0
+margin_right = 1038.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageLabel" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 464.508
+margin_right = 811.201
+margin_bottom = 482.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionPanel" type="Panel" parent="encapContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.07
+margin_top = 322.881
+margin_right = 1040.07
+margin_bottom = 393.881
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageLvlLbl" type="Label" parent="encapContainer"]
+margin_left = 795.0
+margin_top = 476.0
+margin_right = 831.0
+margin_bottom = 494.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lv.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeLabel2" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 502.508
+margin_right = 811.201
+margin_bottom = 520.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Range"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeLvlLbl" type="Label" parent="encapContainer"]
+margin_left = 795.0
+margin_top = 511.0
+margin_right = 831.0
+margin_bottom = 529.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lv.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoLabel" type="Label" parent="encapContainer"]
+margin_left = 754.201
+margin_top = 541.508
+margin_right = 811.201
+margin_bottom = 559.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoLvlLbl" type="Label" parent="encapContainer"]
+margin_left = 795.0
+margin_top = 550.0
+margin_right = 831.0
+margin_bottom = 568.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lv.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionLabel" type="Label" parent="encapContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 717.0
+margin_top = 329.0
+margin_right = 1038.0
+margin_bottom = 349.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Description"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionTextLabel" type="Label" parent="encapContainer"]
+margin_left = 724.07
+margin_top = 351.881
+margin_right = 1033.07
+margin_bottom = 369.881
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapon description"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="errLabel" type="Label" parent="encapContainer"]
+visible = false
+margin_left = 751.265
+margin_top = 570.245
+margin_right = 996.265
+margin_bottom = 584.245
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.933333, 0.933333, 1 )
+text = "Not enough credit!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 468.0
+margin_right = 980.0
+margin_bottom = 483.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 545.0
+margin_right = 980.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 1000.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeProgress" type="TextureProgress" parent="encapContainer"]
+margin_left = 830.0
+margin_top = 508.0
+margin_right = 980.0
+margin_bottom = 523.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalCostLabel" type="Label" parent="encapContainer"]
+margin_left = 777.84
+margin_top = 579.134
+margin_right = 899.84
+margin_bottom = 595.134
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Total Upgrade Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalCostValLabel" type="RichTextLabel" parent="encapContainer"]
+margin_left = 907.459
+margin_top = 578.892
+margin_right = 942.459
+margin_bottom = 597.892
+custom_fonts/normal_font = SubResource( 10 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u]0[/u][/center]"
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradedDmgLbl" type="Label" parent="encapContainer"]
+margin_left = 816.135
+margin_top = 485.595
+margin_right = 834.135
+margin_bottom = 498.595
+custom_fonts/font = SubResource( 11 )
+align = 1
+
+[node name="upgradedRangeLbl" type="Label" parent="encapContainer"]
+margin_left = 816.135
+margin_top = 520.595
+margin_right = 834.135
+margin_bottom = 533.595
+custom_fonts/font = SubResource( 11 )
+align = 1
+
+[node name="upgradedAmmoLbl" type="Label" parent="encapContainer"]
+margin_left = 816.135
+margin_top = 558.595
+margin_right = 834.135
+margin_bottom = 571.595
+custom_fonts/font = SubResource( 11 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeButton" type="TextureButton" parent="encapContainer"]
+margin_left = 833.951
+margin_top = 602.065
+margin_right = 931.951
+margin_bottom = 635.065
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="notAvailButton" type="TextureButton" parent="encapContainer"]
+visible = false
+margin_left = 833.951
+margin_top = 602.065
+margin_right = 931.951
+margin_bottom = 635.065
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradedDmgValLbl" type="Label" parent="encapContainer"]
+margin_left = 1005.14
+margin_top = 480.595
+margin_right = 1036.14
+margin_bottom = 493.595
+custom_fonts/font = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradedRangeValLbl" type="Label" parent="encapContainer"]
+margin_left = 1005.14
+margin_top = 520.595
+margin_right = 1036.14
+margin_bottom = 533.595
+custom_fonts/font = SubResource( 11 )
+
+[node name="upgradedAmmoValLbl" type="Label" parent="encapContainer"]
+margin_left = 1005.14
+margin_top = 558.595
+margin_right = 1036.14
+margin_bottom = 571.595
+custom_fonts/font = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageValLabel" type="Label" parent="encapContainer"]
+margin_left = 985.881
+margin_top = 466.881
+margin_right = 1017.88
+margin_bottom = 484.881
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeValLabel" type="Label" parent="encapContainer"]
+margin_left = 985.881
+margin_top = 506.881
+margin_right = 1017.88
+margin_bottom = 524.881
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoValLabel" type="Label" parent="encapContainer"]
+margin_left = 985.881
+margin_top = 543.881
+margin_right = 1017.88
+margin_bottom = 561.881
+rect_min_size = Vector2( 32, 18 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="encapItemContainer" type="Container" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsPanel" type="Panel" parent="encapItemContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statsTitleLabel" type="Label" parent="encapItemContainer"]
+margin_left = 717.0
+margin_top = 415.0
+margin_right = 1038.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemLabel" type="Label" parent="encapItemContainer"]
+margin_left = 754.201
+margin_top = 464.508
+margin_right = 811.201
+margin_bottom = 482.508
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionPanel" type="Panel" parent="encapItemContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.07
+margin_top = 322.881
+margin_right = 1040.07
+margin_bottom = 393.881
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionLabel" type="Label" parent="encapItemContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 717.0
+margin_top = 329.0
+margin_right = 1038.0
+margin_bottom = 349.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Item Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descriptionTextLabel" type="Label" parent="encapItemContainer"]
+margin_left = 724.07
+margin_top = 351.881
+margin_right = 1033.07
+margin_bottom = 369.881
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Item description"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="errLabel" type="Label" parent="encapItemContainer"]
+visible = false
+margin_left = 751.265
+margin_top = 570.245
+margin_right = 996.265
+margin_bottom = 584.245
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_shadow = Color( 1, 0.933333, 0.933333, 1 )
+text = "Not enough credit!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalCostLabel" type="Label" parent="encapItemContainer"]
+margin_left = 777.84
+margin_top = 579.134
+margin_right = 899.84
+margin_bottom = 595.134
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeButton" type="TextureButton" parent="encapItemContainer"]
+margin_left = 833.951
+margin_top = 602.065
+margin_right = 931.951
+margin_bottom = 635.065
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemValLabel" type="Label" parent="encapItemContainer"]
+margin_left = 985.881
+margin_top = 466.881
+margin_right = 1017.88
+margin_bottom = 484.881
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemsCurrent" type="Label" parent="encapItemContainer"]
+margin_left = 754.0
+margin_top = 502.0
+margin_right = 825.0
+margin_bottom = 520.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemsCurrentVal" type="Label" parent="encapItemContainer"]
+margin_left = 827.0
+margin_top = 504.0
+margin_right = 898.0
+margin_bottom = 522.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemStatsProgress" type="TextureProgress" parent="encapItemContainer"]
+margin_left = 827.0
+margin_top = 468.0
+margin_right = 977.0
+margin_bottom = 483.0
+rect_min_size = Vector2( 146, 11 )
+max_value = 250.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeContainer" type="Container" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradePanel" type="Panel" parent="upgradeContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+self_modulate = Color( 1, 1, 1, 0.776471 )
+margin_left = 1075.0
+margin_top = 410.0
+margin_right = 1200.0
+margin_bottom = 545.0
+custom_styles/panel = SubResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeLbl" type="Label" parent="upgradeContainer"]
+margin_left = 1076.0
+margin_top = 415.0
+margin_right = 1200.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Upgrades"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damageLabel" type="Label" parent="upgradeContainer"]
+margin_left = 1112.3
+margin_top = 446.967
+margin_right = 1169.3
+margin_bottom = 464.967
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Damage"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rangeLabel" type="Label" parent="upgradeContainer"]
+margin_left = 1111.77
+margin_top = 474.843
+margin_right = 1168.77
+margin_bottom = 492.843
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Range"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ammoLabel" type="Label" parent="upgradeContainer"]
+margin_left = 1110.71
+margin_top = 502.308
+margin_right = 1167.71
+margin_bottom = 520.308
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeDmgButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1162.75
+margin_top = 449.0
+margin_right = 1179.75
+margin_bottom = 466.0
+focus_mode = 0
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 19 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeRangeButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1162.5
+margin_top = 477.5
+margin_right = 1179.5
+margin_bottom = 494.5
+focus_mode = 0
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 19 )
+expand = true
+
+[node name="upgradeAmmoButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1162.25
+margin_top = 506.25
+margin_right = 1179.25
+margin_bottom = 523.25
+focus_mode = 0
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 19 )
+expand = true
+
+[node name="downgradeDmgButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1096.5
+margin_top = 449.5
+margin_right = 1113.5
+margin_bottom = 466.5
+focus_mode = 0
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+expand = true
+
+[node name="downgradeRangeButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1096.5
+margin_top = 478.5
+margin_right = 1113.5
+margin_bottom = 495.5
+focus_mode = 0
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+expand = true
+
+[node name="downgradeAmmoButton" type="TextureButton" parent="upgradeContainer"]
+margin_left = 1096.5
+margin_top = 507.5
+margin_right = 1113.5
+margin_bottom = 524.5
+focus_mode = 0
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+expand = true
+
+[node name="clickContainer" type="Container" parent="."]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clickPanel" type="Panel" parent="clickContainer"]
+modulate = Color( 1, 1, 1, 0.623529 )
+light_mask = 0
+margin_left = 716.0
+margin_top = 409.0
+margin_right = 1040.0
+margin_bottom = 635.0
+custom_styles/panel = SubResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="clickContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 732.0
+margin_top = 512.0
+margin_right = 1024.0
+margin_bottom = 532.0
+custom_fonts/font = SubResource( 24 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Click A Weapon Or Item To See Data"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponPanel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.815686 )
+margin_left = 536.706
+margin_top = 319.385
+margin_right = 836.701
+margin_bottom = 636.385
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="basicButton" type="TextureButton" parent="weaponPanel"]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 299.0
+margin_bottom = 71.0
+texture_normal = ExtResource( 42 )
+texture_hover = ExtResource( 43 )
+texture_focused = ExtResource( 41 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ak47Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 3.0
+margin_top = 86.0
+margin_right = 300.0
+margin_bottom = 153.0
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 15 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp5Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 1.25085
+margin_top = 171.0
+margin_right = 301.251
+margin_bottom = 238.0
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 16 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spas12Button" type="TextureButton" parent="weaponPanel"]
+margin_left = 1.0
+margin_top = 252.749
+margin_right = 300.0
+margin_bottom = 309.749
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 23 )
+texture_focused = ExtResource( 24 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemPanel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.815686 )
+margin_left = 536.706
+margin_top = 319.385
+margin_right = 836.701
+margin_bottom = 636.385
+custom_styles/panel = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="barrelButton" type="TextureButton" parent="itemPanel"]
+margin_left = 3.0
+margin_top = 6.1012
+margin_right = 303.0
+margin_bottom = 73.1012
+texture_normal = ExtResource( 30 )
+texture_hover = ExtResource( 34 )
+texture_focused = ExtResource( 26 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wallsButton" type="TextureButton" parent="itemPanel"]
+margin_left = 1.25085
+margin_top = 86.0
+margin_right = 301.251
+margin_bottom = 153.0
+texture_normal = ExtResource( 35 )
+texture_hover = ExtResource( 37 )
+texture_focused = ExtResource( 36 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minesButton" type="TextureButton" parent="itemPanel"]
+margin_left = 3.51984
+margin_top = 166.749
+margin_right = 302.52
+margin_bottom = 223.749
+texture_normal = ExtResource( 40 )
+texture_hover = ExtResource( 39 )
+texture_focused = ExtResource( 38 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grenadeButton" type="TextureButton" parent="itemPanel"]
+margin_left = 1.0
+margin_top = 239.749
+margin_right = 300.0
+margin_bottom = 296.749
+texture_normal = ExtResource( 33 )
+texture_hover = ExtResource( 32 )
+texture_focused = ExtResource( 31 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/costFadeDrag = SubResource( 20 )
+
+[node name="costLbl" type="Label" parent="."]
+visible = false
+anchor_bottom = 0.03
+margin_left = 827.78
+margin_top = 276.556
+margin_right = 867.78
+margin_bottom = 294.556
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 1, 0.168627, 0.168627, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "-50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.0
+margin_top = -86.0
+margin_right = 42.0
+margin_bottom = -41.0
+texture_normal = ExtResource( 21 )
+texture_hover = ExtResource( 20 )
+
+[node name="weaponSelectAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/moveContainer = SubResource( 22 )
+
+[connection signal="pressed" from="weaponButton" to="." method="_on_weaponButton_pressed"]
+[connection signal="pressed" from="itemButton" to="." method="_on_itemButton_pressed"]
+[connection signal="pressed" from="encapContainer/upgradeButton" to="." method="_on_upgradeButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/upgradeDmgButton" to="." method="_on_upgradeDmgButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/upgradeRangeButton" to="." method="_on_upgradeRangeButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/upgradeAmmoButton" to="." method="_on_upgradeAmmoButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/downgradeDmgButton" to="." method="_on_downgradeDmgButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/downgradeRangeButton" to="." method="_on_downgradeRangeButton_pressed"]
+[connection signal="pressed" from="upgradeContainer/downgradeAmmoButton" to="." method="_on_downgradeAmmoButton_pressed"]
+[connection signal="pressed" from="weaponPanel/basicButton" to="." method="_on_basicButton_pressed"]
+[connection signal="pressed" from="weaponPanel/ak47Button" to="." method="_on_ak47Button_pressed"]
+[connection signal="pressed" from="weaponPanel/mp5Button" to="." method="_on_mp5Button_pressed"]
+[connection signal="pressed" from="weaponPanel/spas12Button" to="." method="_on_spas12Button_pressed"]
+[connection signal="pressed" from="itemPanel/barrelButton" to="." method="_on_barrelButton_pressed"]
+[connection signal="pressed" from="itemPanel/wallsButton" to="." method="_on_wallsButton_pressed"]
+[connection signal="pressed" from="itemPanel/minesButton" to="." method="_on_minesButton_pressed"]
+[connection signal="pressed" from="itemPanel/grenadeButton" to="." method="_on_grenadeButton_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
