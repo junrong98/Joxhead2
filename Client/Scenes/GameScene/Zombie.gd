@@ -20,7 +20,7 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 func _ready() -> void:
 	players = get_parent().get_node("Player")
 	nav_2d = get_parent().get_node("Navigation2D")
-	set_process(false)
+	#set_process(false)
 	randomize()
 
 # Movement of the demon. move_along_path() and set_path() is part of the pathfinding algo

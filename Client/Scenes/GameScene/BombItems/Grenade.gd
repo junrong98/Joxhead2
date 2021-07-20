@@ -3,6 +3,7 @@ extends RigidBody2D
 var dmg = 60
 var dmg_delay_time = 2
 var speed = 300
+var direction
 onready var AOEdmg = $AOEAttack
 onready var bomb_time = $Bomb_Timer
 
@@ -11,11 +12,12 @@ func _ready():
 	#apply_impulse(Vector2(), Vector2(300, 0).rotated(rotation))
 	pass
 
+
 func throw_at_mouse(start_pos):
 	var target_pos = get_global_mouse_position()
 	self.global_position = start_pos
 	self.look_at(target_pos)
-	var direction = (target_pos - start_pos).normalized()
+	direction = (target_pos - start_pos).normalized()
 	self.linear_velocity = direction * speed
 
 func AOEAttack():

@@ -31,11 +31,11 @@ func _ready() -> void:
 # for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 
 # have navigation highlighted then it can work
 func _physics_process(delta):
-	path = nav_2d.get_simple_path(self.global_position, player.global_position, false)
+	path = nav_2d.get_simple_path(get_global_position(), player.get_global_position(), false)
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	demon_movement()
-	
+
 
 func move_along_path(distance):
 	var start_position = get_global_position()

@@ -102,10 +102,9 @@ remote func throw_grenade(grenade_id):
 	grenade.name = grenade_id
 	grenade.position = castpoint.get_global_position()
 	grenade.rotation = get_angle_to(get_global_mouse_position())
+	var direction = (get_global_mouse_position() - grenade.position).normalized()
+	grenade.linear_velocity += direction * 300
 	get_parent().add_child(grenade)
-	grenade.throw_at_mouse(grenade.position)
-	yield(get_tree().create_timer(0.4), "timeout")
-	can_throw = true
 
 remote func grenade_update(num, uuid):
 	num_grenade = num

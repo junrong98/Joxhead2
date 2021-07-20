@@ -41,7 +41,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.67354, 7.30411 )
+extents = Vector2( 3.20354, 6.49017 )
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "Enemy",
@@ -58,7 +58,7 @@ position = Vector2( 1.56458, 2.97882 )
 scale = Vector2( 0.365704, 0.341227 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 7
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

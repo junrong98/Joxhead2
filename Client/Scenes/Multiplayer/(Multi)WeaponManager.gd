@@ -48,7 +48,7 @@ func shoot(bullet_instance, location: Vector2, direction: Vector2):
 # When the client press left mouse button
 func _unhandled_input(event):
 	if is_network_master():
-		if event.is_action_released("shoot"):
+		if event.is_action_pressed("shoot"):
 			rpc_id(1, "player_bullet")
 		if event.is_action_pressed("next_weapon"):
 			rpc_id(1,"change_next")
