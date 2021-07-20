@@ -1,5 +1,8 @@
 extends TextureRect
 
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
+
 # Thread
 var dmgThread
 var rangeThread
@@ -46,11 +49,14 @@ onready var upgradeAmmoLvl = 0
 onready var totalCost = 0
 onready var totalUpgradeLvl = 0
 
-
 # Variables
 var currObj
 var checkPnlAniPlayed = 0 # 0 means animation not played
 var isClicked = false
+
+func _ready():
+	creditLbl.text = str(invData["Credit"])
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 
 func populateItemDescription():
 	$encapItemContainer/descriptionTextLabel.text = invData[currObj]["Description"]
@@ -97,7 +103,6 @@ func damageProgress(dmgStats):
 		else:
 			break
 		yield(get_tree().create_timer(0.01),"timeout")
-	#dmgThread.wait_to_finish()
 	
 func rangeProgress(rangeStats):
 	for n in rangeStats:
@@ -110,7 +115,6 @@ func rangeProgress(rangeStats):
 		else:
 			break
 		yield(get_tree().create_timer(0.01),"timeout")
-	#rangeThread.wait_to_finish()
 	
 func ammoProgress(ammoStats):
 	for n in (ammoStats / 10):
@@ -123,10 +127,10 @@ func ammoProgress(ammoStats):
 		else:
 			break
 		yield(get_tree().create_timer(0.01),"timeout")
-	#ammoThread.wait_to_finish()
 
-func _ready():
-	creditLbl.text = str(invData["Credit"])
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 	
 func checkUnlocked(weapon):
 	# Check if weapon has been purchased

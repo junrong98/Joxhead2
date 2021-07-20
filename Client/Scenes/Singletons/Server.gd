@@ -53,7 +53,7 @@ func logout():
 	rpc_id(1, "CloseConnection")
 	# Needed such that user can login again after logging out
 	network = WebSocketClient.new()
-	# network = NetworkedMultiplayerENet.new()
+#	network = NetworkedMultiplayerENet.new()
 	get_tree().change_scene("res://Scenes/MainScenesV2/Login.tscn")
 
 # Multiplayer

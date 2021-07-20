@@ -1,5 +1,8 @@
 extends TextureRect
 
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
+
 onready var errLabel = $createContainer/errLabel
 onready var rmNameInput = $createContainer/roomNameInput
 
@@ -23,6 +26,11 @@ func _ready():
 		button.set("custom_styles/hover", customStyle)
 		button.connect("pressed", self, "button_press", [room])
 		$lobbyContainer/lobbyScroll/roomContainer.add_child(button)
+		Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 # Room Button function
 func button_press(arr):

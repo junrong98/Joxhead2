@@ -9,6 +9,9 @@ var isSave = true
 var originalBgVol
 var originalSFXVol
 
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
+
 func _ready():
 	originalBgVol = Global.currentBgVolume
 	originalSFXVol = Global.currentSFXvoume
@@ -19,6 +22,11 @@ func _ready():
 	$sfxSlider.value = Global.currentSFXvoume
 	$sfxVolInput.text = str($sfxSlider.value)
 	$usernameLabel.text = Global.username
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _on_bgMusicSlider_value_changed(value):
 	$bgMusicVolInput.text = str($bgMusicSlider.value)

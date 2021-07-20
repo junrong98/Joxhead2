@@ -1,4 +1,6 @@
 extends TextureRect
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 onready var passwordInpt = $MarginContainer/VBoxContainer/VBoxContainer/passwordInpt
 onready var cfmPasswordInpt = $MarginContainer/VBoxContainer/VBoxContainer2/cfmPasswordInpt
@@ -6,6 +8,11 @@ onready var errLabel = $MarginContainer/VBoxContainer/VBoxContainer2/errLabel
 
 func _ready():
 	$usernameLabel.text = Global.username
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _on_backButton_pressed():
 	get_tree().change_scene("res://Scenes/MainScenesV2/AccountSetting.tscn")
