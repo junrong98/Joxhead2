@@ -16,7 +16,7 @@ func _process(_delta):
 
 func start_server():
 	network.listen(port, PoolStringArray(), true);
-#	snetwork.create_server(port, 100)
+#	network.create_server(port, 100)
 	get_tree().set_network_peer(network)
 	network.connect("peer_connected", self, "_peer_connected")
 	network.connect("peer_disconnected", self, "_peer_disconnected")

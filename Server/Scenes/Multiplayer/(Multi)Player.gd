@@ -27,6 +27,7 @@ remote func die():
 remote func remove_player(player_id):
 	players.remove_child(players.get_node(player_id))
 
+
 remote func throw_grenades(num, uuid):
 	var player_id = get_tree().get_rpc_sender_id()
 	var grenade_instance = grenade.instance()

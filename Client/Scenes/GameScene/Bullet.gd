@@ -1,7 +1,7 @@
 extends Area2D
 class_name Bullet
 
-export (float) var speed = 15
+export (float) var speed = 500
 
 onready var kill_timer = $ShootTimer
 var direction := Vector2.ZERO
@@ -17,7 +17,7 @@ func _ready():
 
 func _process(delta):
 	if direction != Vector2.ZERO:
-		var velocity = speed * direction
+		var velocity = speed * direction * delta
 		global_position += velocity
 
 # Direction whre the bullet going to fly
