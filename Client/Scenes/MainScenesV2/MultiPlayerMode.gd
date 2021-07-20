@@ -8,7 +8,8 @@ onready var mapName = $mapNameLabel
 
 var mapTracker = 0
 var mapNames = ["Big Boxxy", "Castle", "Maze"]
-
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,11 @@ func _ready():
 	
 	if Global.isLeader:
 		$startButton.visible = true
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _on_TextureRect_mouse_entered():
 	pass
