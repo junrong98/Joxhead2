@@ -7,6 +7,9 @@ var server_url = 'wss://%s:%d/ws/' % [IP_ADDRESS, PORT]
 var network = WebSocketClient.new()
 #var network = NetworkedMultiplayerENet.new()
 
+# Preload diconnect scene
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
+
 func _ready():
 	pass
 
@@ -25,6 +28,8 @@ func connect_to_server():
 		network.connect("connection_succeeded", self, "_on_connection_succeeded")
 	
 func _on_connection_failed():
+	var disconnectScene = preDisconnectScene.instance()
+	get_tree().get_current_scene().add_child(disconnectScene)
 	print("You have disconnected from the server")
 
 func _on_connection_succeeded():
@@ -173,4 +178,3 @@ func end_game():
 # on the server. Does not matter who does it first
 func clearRoom():
 	rpc_id(1, "clearRoom", Global.roomName)
-
