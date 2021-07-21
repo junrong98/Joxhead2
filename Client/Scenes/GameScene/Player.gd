@@ -112,7 +112,7 @@ func throw_grenade():
 	grenade.position = castpoint.get_global_position()
 	grenade.rotation = get_angle_to(get_global_mouse_position())
 	get_parent().add_child(grenade)
-	grenade.throw_at_mouse(grenade.position)
+	grenade_update(num_grenade - 1)
 	yield(get_tree().create_timer(0.4), "timeout")
 	can_throw = true
 

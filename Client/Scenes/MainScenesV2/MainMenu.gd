@@ -21,7 +21,7 @@ func _ready():
 	$howToPlayPanel/page1/grenadeLbl.text = OS.get_scancode_string(Global.controlSettings["throw_item"])
 	$howToPlayPanel/page1/wallsLbl.text = OS.get_scancode_string(Global.controlSettings["place_fakewall"])
 	$howToPlayPanel/page1/barrelLbl.text = OS.get_scancode_string(Global.controlSettings["place_barrel"])
-	
+
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 
 func _on_server_disconnect():

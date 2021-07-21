@@ -7,7 +7,7 @@
 extents = Vector2( 15.9656, 25.1209 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 17.0593, 26.4261 )
+extents = Vector2( 13.8834, 23.5297 )
 
 [node name="Fakewall" type="Node2D"]
 z_index = -1
@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 [node name="FakewallArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FakewallArea"]
-position = Vector2( -1.67291, -0.518061 )
+position = Vector2( -1.21951, -0.518059 )
 shape = SubResource( 2 )
 
 [connection signal="body_exited" from="FakewallArea" to="." method="_on_FakewallArea_body_exited"]

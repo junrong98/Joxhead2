@@ -23,9 +23,9 @@ onready var world = get_tree().root.get_node("(Multi)World")
 
 var gameoverscreen = preload("res://Scenes/GameScene/GameOverScreen.tscn")
 onready var grenade_bomb = preload("res://Scenes/GameScene/BombItems/Grenade.tscn")
-onready var landmine_bomb = preload("res://Scenes/GameScene/BombItems/Landmine.tscn")
-onready var fake_wall = preload("res://Scenes/GameScene/BombItems/Fakewall.tscn")
-onready var barrel_bomb = preload("res://Scenes/GameScene/BombItems/Barrel.tscn")
+onready var landmine_bomb = preload("res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Landmine.tscn")
+onready var fake_wall = preload("res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Fakewall.tscn")
+onready var barrel_bomb = preload("res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Barrel.tscn")
 onready var game_over = preload("res://Scenes/Multiplayer/GameOverGui.tscn")
 onready var pause_scence = preload("res://Scenes/Multiplayer/(Multi)IngamePauseMenu.tscn")
 onready var turn_axis = $PlayerSprite/TurnAxis
@@ -95,15 +95,11 @@ func _process(delta):
 	get_node("ItemGUI/FakewallPanel/FakewallLabel").set_text(str(invData["Fake_Wall"]["Ammo"]))
 	get_node("ItemGUI/BarrelPanel/BarrelLabel").set_text(str(invData["Barrel"]["Ammo"]))
 
-remote func throw_grenade(grenade_id):
+sync func throw_grenade(grenade_id):
 	can_throw = false
-	turn_axis.rotation = get_angle_to(get_global_mouse_position())
 	var grenade = grenade_bomb.instance()
 	grenade.name = grenade_id
-	grenade.position = castpoint.get_global_position()
-	grenade.rotation = get_angle_to(get_global_mouse_position())
-	var direction = (get_global_mouse_position() - grenade.position).normalized()
-	grenade.linear_velocity += direction * 300
+	grenade.transform = $PlayerSprite/TurnAxis/CastPoint.global_transform
 	get_parent().add_child(grenade)
 	yield(get_tree().create_timer(0.4), "timeout")
 	can_throw = true
@@ -135,7 +131,7 @@ remote func put_fakewalls(fakewall_id):
 		var fakewall = fake_wall.instance()
 		fakewall.name = fakewall_id
 		fakewall.position = $PlayerSprite/CastBarricade.get_global_position()
-		get_parent().add_child(fakewall)
+		world.add_child(fakewall)
 		yield(get_tree().create_timer(0.4), "timeout")
 		can_throw = true
 	can_throw = true
@@ -151,7 +147,7 @@ remote func put_barrels(barrel_id):
 		var barrel = barrel_bomb.instance()
 		barrel.name = barrel_id
 		barrel.position = $PlayerSprite/CastBarricade.get_global_position()
-		get_parent().add_child(barrel)
+		world.add_child(barrel)
 		yield(get_tree().create_timer(0.4), "timeout")
 		can_throw = true
 	can_throw = true
@@ -176,7 +172,7 @@ func demon_fireball(fireball_dmg):
 	$HealthBar.health_deducted(fireball_dmg)
 	if $HealthBar.players_health <= 0:
 		rpc_id(1, "die")
-		
+
 
 sync func player_died():
 	set_physics_process(false)
