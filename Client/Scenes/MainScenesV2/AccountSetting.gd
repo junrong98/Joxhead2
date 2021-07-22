@@ -31,7 +31,20 @@ func _on_usernameInpt_mouse_exited():
 	if usernameInpt.text == Global.username:
 		usernameInpt.editable = false
 
-func _on_saveChangesBtn_mouse_entered():
+func auth_user_request(result, response_code, headers, body):
+	if response_code == 400:
+		emailErrLbl.text = "Email already exists"
+		emailErrLbl.add_color_override("font_color", Color(1,0,0))
+	elif response_code == 200:
+		emailErrLbl.text = "Email changed successfully"
+		emailErrLbl.add_color_override("font_color", Color(0,1,0))
+
+
+func _on_changePasswordBtn_pressed():
+	get_tree().change_scene("res://Scenes/MainScenesV2/ChangePassword.tscn")
+
+
+func _on_saveChangesBtn_pressed():
 	if usernameInpt.text != Global.username: # There is a change in username
 		if ($usernameLabel.text.empty()):
 			userNameErrLbl.text = "Please enter a valid username"
@@ -53,15 +66,3 @@ func _on_saveChangesBtn_mouse_entered():
 			emailErrLbl.add_color_override("font_color", Color(1,0,0))
 		else:
 			Firebase.Auth.change_user_email(emailInpt.text)
-
-func auth_user_request(result, response_code, headers, body):
-	if response_code == 400:
-		emailErrLbl.text = "Email already exists"
-		emailErrLbl.add_color_override("font_color", Color(1,0,0))
-	elif response_code == 200:
-		emailErrLbl.text = "Email changed successfully"
-		emailErrLbl.add_color_override("font_color", Color(0,1,0))
-
-
-func _on_changePasswordBtn_pressed():
-	get_tree().change_scene("res://Scenes/MainScenesV2/ChangePassword.tscn")

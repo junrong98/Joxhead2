@@ -36,12 +36,12 @@ func _on_worldOneButton_pressed():
 func _on_worldTwoButton_pressed():
 	BackgroundMusic.setMusicVolume(0)
 	Global.game_highscore = 0
-	get_tree().change_scene("res://Scenes/GameScene/World2.tscn")
+	get_tree().change_scene("res://Scenes/GameScene/World3.tscn")
 
 func _on_worldThreeButton_pressed():
 	BackgroundMusic.setMusicVolume(0)
 	Global.game_highscore = 0
-	get_tree().change_scene("res://Scenes/GameScene/World3.tscn")
+	get_tree().change_scene("res://Scenes/GameScene/World2.tscn")
 
 func _on_nextButton_pressed():
 	mapTracker = mapTracker + 1

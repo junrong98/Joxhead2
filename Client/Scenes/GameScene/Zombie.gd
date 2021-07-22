@@ -53,6 +53,7 @@ func handle_hit(dmg_amt):
 	blood_particle_instance.rotation = global_position.angle_to_point(players.global_position)
 	if health_stat <= 0:
 		Global.game_highscore += 1
+		get_parent().num_of_zombie_left -= 1
 		death_drop_loots()
 		queue_free()
 
@@ -61,6 +62,7 @@ func bomb_hit(dmg):
 	var blood_particle_instance = instance_blood_particles()
 	if health_stat <= 0:
 		Global.game_highscore += 1
+		get_parent().num_of_zombie_left -= 1
 		death_drop_loots()
 		queue_free()
 

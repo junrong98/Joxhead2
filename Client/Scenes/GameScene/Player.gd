@@ -56,14 +56,14 @@ func _physics_process(delta) -> void:
 
 	if Input.is_action_pressed("right_D") :
 		movement_direction.x = 1
-	
+
 	movement_direction = movement_direction.normalized();
 	position += movement_direction * delta
-	
+
 	# clamp method so that players will not move out of the screen
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
-	
+
 	move_and_slide(movement_direction * speed);
 	player_sprite.look_at(get_global_mouse_position())
 
@@ -91,7 +91,7 @@ func landmine_update(num):
 	emit_signal("landmine_num_update", num_landmine)
 	invData["Mine"]["Ammo"] = num_landmine
 	invCollection.update("" + Global.uuid, {"Mine" : invData["Mine"]})
-	
+
 
 func fakewall_update(num):
 	num_fakewall = num
@@ -112,7 +112,7 @@ func throw_grenade():
 	grenade.position = castpoint.get_global_position()
 	grenade.rotation = get_angle_to(get_global_mouse_position())
 	get_parent().add_child(grenade)
-	grenade.throw_at_mouse(grenade.position)
+	grenade_update(num_grenade - 1)
 	yield(get_tree().create_timer(0.4), "timeout")
 	can_throw = true
 
@@ -171,10 +171,10 @@ func player_lost():
 	var game_over = gameoverscreen.instance()
 	add_child(game_over)
 	get_tree().paused = true
-	
+
 	# Check if player achieve highscore
 	var newScore = Global.game_highscore
-	
+
 	if newScore > Global.highscore:
 		Global.updateHighScore = true
 		Global.highscore = newScore
@@ -194,10 +194,10 @@ func pause_game():
 	var pause_game = pausescreen.instance()
 	add_child(pause_game)
 	get_tree().paused = true
-	
+
 	# Check if player achieve highscore
 	var newScore = Global.game_highscore
-	
+
 	if newScore > Global.highscore:
 		Global.updateHighScore = true
 		Global.highscore = newScore

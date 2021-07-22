@@ -2,6 +2,7 @@ extends Node2D
 
 var previous_weapon = "Basic"
 
+
 remote func player_bullet():
 	rpc("spawn_bullet")
 
@@ -19,3 +20,4 @@ remote func set_weapon(curr_weapon):
 
 remote func set_weapon_ammo(weapon_ammo):
 	rpc("update_weapon_ammo", str(weapon_ammo))
+

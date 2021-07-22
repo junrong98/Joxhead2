@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Barrel.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+
+[node name="(Multi)Barrel" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BarrelStaticBody" type="StaticBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="BarrelSprite" type="Sprite" parent="BarrelStaticBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrelStaticBody"]
+shape = SubResource( 1 )
+
+[node name="AOEAttack" type="Area2D" parent="BarrelStaticBody"]
+
+[node name="ExplosionSprite" type="AnimatedSprite" parent="BarrelStaticBody/AOEAttack"]
+frames = SubResource( 2 )
+
+[node name="AOEArea" type="CollisionShape2D" parent="BarrelStaticBody/AOEAttack"]
+shape = SubResource( 3 )

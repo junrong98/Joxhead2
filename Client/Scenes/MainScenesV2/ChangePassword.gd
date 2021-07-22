@@ -1,4 +1,5 @@
 extends TextureRect
+
 # Preload diconnect scene
 var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 

@@ -108,3 +108,5 @@ func show_gameover():
 
 remote func player_disconnected(player_id):
 	players.get_node(str(player_id)).queue_free()
+
+

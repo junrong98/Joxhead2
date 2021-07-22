@@ -54,9 +54,8 @@ func _unhandled_input(event):
 			rpc_id(1,"change_next")
 		if event.is_action_pressed("previous_weapon"):
 			rpc_id(1,"change_previous")
-			
 
-sync func spawn_bullet():
+remotesync func spawn_bullet():
 	currWeapon.shoot()
 
 # functions to add ammo when the players take the ammo
@@ -88,6 +87,7 @@ remote func update_weapon_text(curr_weapon_name, curr_weapon_texture, previous_w
 		prevWeapon.visible = false
 		currWeapon = get_node(curr_weapon_texture)
 		currWeapon.visible = true
+		currWeapon.connect("weapon_fired", self, "shoot")
 
 remote func update_weapon_ammo(weapon_ammo):
 	if not is_network_master():
@@ -119,6 +119,7 @@ func Basic_stat():
 	Basic.weapon_range = invData["Basic"]["Range"]
 
 func AK_47_stat():
+	rpc_id(get_tree().get_rpc_sender_id(),"AK_47_stats", invData["AK47"]["Range"])
 	AK47.num_ammo = invData["AK47"]["Ammo"]
 	AK47.weapon_dmg = invData["AK47"]["Dmg"]
 	AK47.weapon_range = invData["AK47"]["Range"]
