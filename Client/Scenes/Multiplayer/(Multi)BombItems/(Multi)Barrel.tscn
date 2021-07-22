@@ -1,0 +1,152 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Sprites/BombItem/explosion.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/BombItem/barrel.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Barrel.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.69599, 15.0346 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.9934, 23.0321 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 320, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 384, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 448, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "Explosion",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 59.6555
+
+[node name="(Multi)Barrel" type="Node2D"]
+z_index = -1
+script = ExtResource( 4 )
+
+[node name="BarrelStaticBody" type="StaticBody2D" parent="." groups=[
+"BarricadeObject",
+]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="BarrelArea" type="Area2D" parent="BarrelStaticBody"]
+position = Vector2( 1.1121, -3.0251 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrelStaticBody/BarrelArea"]
+position = Vector2( -3.21583, 0.608583 )
+shape = SubResource( 1 )
+
+[node name="BarrelSprite" type="Sprite" parent="BarrelStaticBody"]
+position = Vector2( -1.8764, -2.33771 )
+scale = Vector2( 0.363342, 0.441682 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrelStaticBody"]
+position = Vector2( -1.7259, -2.15374 )
+shape = SubResource( 2 )
+
+[node name="AOEAttack" type="Area2D" parent="BarrelStaticBody"]
+position = Vector2( -1.67207, 0.639153 )
+z_index = -1
+collision_layer = 4
+collision_mask = 4
+
+[node name="ExplosionSprite" type="AnimatedSprite" parent="BarrelStaticBody/AOEAttack"]
+frames = SubResource( 20 )
+animation = "Explosion"
+speed_scale = 3.0
+
+[node name="AOEArea" type="CollisionShape2D" parent="BarrelStaticBody/AOEAttack"]
+position = Vector2( 2.27684, -0.134483 )
+shape = SubResource( 21 )
+
+[connection signal="body_exited" from="BarrelStaticBody/BarrelArea" to="." method="_on_BarrelArea_body_exited"]
+[connection signal="animation_finished" from="BarrelStaticBody/AOEAttack/ExplosionSprite" to="." method="_on_ExplosionSprite_animation_finished"]

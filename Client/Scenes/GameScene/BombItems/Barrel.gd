@@ -33,3 +33,7 @@ func _on_BarrelArea_body_exited(body):
 
 func _on_ExplosionSprite_animation_finished():
 	queue_free()
+
+
+func _on_AOEAttack_body_entered(body):
+	pass # Replace with function body.

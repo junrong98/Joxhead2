@@ -82,3 +82,8 @@ remote func current_scores(score):
 func delete_player(player_id):
 	players.get_node(str(player_id)).queue_free()
 	rpc("player_disconnected", player_id)
+
+remote func remove_barrel(barrel_id):
+	print("barrel")
+	get_node(str(barrel_id)).queue_free()
+	rpc("barrel_removed", barrel_id)

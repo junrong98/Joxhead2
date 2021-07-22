@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Resources/Fonts/BleedingPixels.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/GameScene/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Sprites/BombItem/redLandmine.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/BombItem/fakewall.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/BombItem/barrel.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Demon Sprite/demonSingle.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Zombie Spite/attack0.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/GameScene/World.gd" type="Script" id=33]
 [ext_resource path="res://Scenes/GameScene/BulletManager.gd" type="Script" id=34]
 
@@ -220,6 +222,72 @@ __meta__ = {
 margin_left = 1.0
 margin_top = 57.0
 margin_right = 74.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZombiePanel" type="Panel" parent="ItemGUI"]
+margin_left = 670.526
+margin_top = 681.179
+margin_right = 746.526
+margin_bottom = 757.179
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/ZombiePanel"]
+margin_left = 62.7683
+margin_top = 4.40576
+margin_right = 113.768
+margin_bottom = 54.4057
+rect_rotation = 89.5931
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZombieNumLabel" type="Label" parent="ItemGUI/ZombiePanel"]
+margin_left = 1.20276
+margin_top = 57.0
+margin_right = 74.2028
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemonPanel" type="Panel" parent="ItemGUI"]
+margin_left = 747.128
+margin_top = 680.369
+margin_right = 823.128
+margin_bottom = 756.369
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="ItemGUI/DemonPanel"]
+margin_left = 12.1056
+margin_top = 4.40582
+margin_right = 63.1056
+margin_bottom = 54.4058
+rect_rotation = -0.134671
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemonNumLabel" type="Label" parent="ItemGUI/DemonPanel"]
+margin_left = 1.20276
+margin_top = 57.0
+margin_right = 74.2028
 margin_bottom = 73.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1

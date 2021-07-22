@@ -8,6 +8,7 @@ onready var mapName = $mapNameLabel
 
 var mapTracker = 0
 var mapNames = ["Big Boxxy", "Castle", "Maze"]
+
 # Preload diconnect scene
 var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
@@ -121,6 +122,7 @@ func _on_noButton_pressed():
 	$cfmBackContainer.visible = false
 
 func _on_confirmButton_pressed():
+	Global.isLeader = false
 	Server.exitRoom(Global.roomName, Global.uuid)
 	
 

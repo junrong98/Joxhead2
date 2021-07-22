@@ -54,7 +54,6 @@ func _unhandled_input(event):
 			rpc_id(1,"change_next")
 		if event.is_action_pressed("previous_weapon"):
 			rpc_id(1,"change_previous")
-			
 
 sync func spawn_bullet():
 	currWeapon.shoot()
