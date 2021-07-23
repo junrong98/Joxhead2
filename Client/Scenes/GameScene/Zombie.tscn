@@ -41,7 +41,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.20354, 6.49017 )
+extents = Vector2( 2.91263, 8.60858 )
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "Enemy",
@@ -50,18 +50,20 @@ position = Vector2( 600, 400 )
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 5
 collision_mask = 5
+collision/safe_margin = 0.2
 script = ExtResource( 11 )
 animations = [ "Walk", "Attack" ]
 
 [node name="ZombieSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.56458, 2.97882 )
+position = Vector2( 1.72339, 2.68213 )
 scale = Vector2( 0.365704, 0.341227 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 2
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.508057, 3.0069 )
-scale = Vector2( -7.93426, 3.87496 )
+position = Vector2( 1.19202, 2.68243 )
+rotation = 3.14159
+scale = Vector2( 7.36855, -3.38819 )
 shape = SubResource( 2 )

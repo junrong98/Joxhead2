@@ -11,13 +11,19 @@ onready var grenade_num_label = $ItemGUI/GrenadePanel/GreandeLabel
 onready var landmine_num_label = $ItemGUI/LandminePanel/LandmineLabel
 onready var fakewall_num_label = $ItemGUI/FakewallPanel/FakewallLabel
 onready var barrel_num_label = $ItemGUI/BarrelPanel/BarrelLabel
+onready var zombie_remainding_label = $ItemGUI/ZombiePanel/ZombieNumLabel
+onready var demon_remainding_label = $ItemGUI/DemonPanel/DemonNumLabel
 
 var zombies = preload("res://Scenes/GameScene/Zombie.tscn")
 var demons = preload("res://Scenes/GameScene/Demon.tscn")
 var wave_num = 1
 var zombie_spawn_number = 14
 var demon_spawn_number = 0
+var num_of_zombie_left = zombie_spawn_number
+var num_of_demon_left = demon_spawn_number
 var screensize
+var spawn_loc = Array()
+var min_dist = 65
 
 # Called when the node enters the scene tree for the first time. Spawn waves() function
 # to automatically spawn the first wave.
@@ -33,7 +39,12 @@ func _ready():
 	landmine_num_label.text = str(player.num_landmine)
 	fakewall_num_label.text = str(player.num_fakewall)
 	barrel_num_label.text = str(player.num_barrel)
+#	demon_remainding_label.text = str(num_of_demon_left)
+#	zombie_remainding_label.text = str(num_of_zombie_left)
 
+func _process(delta):
+	demon_remainding_label.text = str(num_of_demon_left)
+	zombie_remainding_label.text = str(num_of_zombie_left)
 
 func grenade_update(num):
 	grenade_num_label.text = str(num)
@@ -47,25 +58,34 @@ func fakewall_update(num):
 func barrel_update(num):
 	barrel_num_label.text = str(num)
 
-# Randomly spawn zombie outside of the screen size area
-func zombie_wave():
+func zombie_wave(): 
 	for i in range(0, zombie_spawn_number):
-		var zombie_position = Vector2(rand_range(-40, screensize.x + 50), rand_range(-50, screensize.y + 50))
-		while zombie_position.x < screensize.x and zombie_position.x > -30 and zombie_position.y < screensize.y  and zombie_position.y > -35:
-			zombie_position = Vector2(rand_range(-40, screensize.x + 50), rand_range(-50, screensize.y + 50))
+		var nextLoc = getNextSpawnLoc()
 		var zombie_instance = zombies.instance()
 		add_child(zombie_instance)
-		zombie_instance.global_position = zombie_position
+		zombie_instance.global_position = nextLoc
 
-# Randomly spawn demon outside of the screen size area
 func demon_wave():
 	for j in range(0, demon_spawn_number):
-		var demon_position = Vector2(rand_range(-40, screensize.x + 50), rand_range(-50, screensize.y + 50))
-		while demon_position.x < screensize.x and demon_position.x > -30 and demon_position.y < screensize.y and demon_position.y > -35:
-			demon_position = Vector2(rand_range(-40, screensize.x + 50), rand_range(-50, screensize.y + 50))
+		var nextLoc = getNextSpawnLoc()
 		var demon_instance = demons.instance()
 		add_child(demon_instance)
-		demon_instance.global_position = demon_position
+		demon_instance.global_position = nextLoc
+
+func getNextSpawnLoc():
+	while true:
+		var pos = Vector2(rand_range(-180, screensize.x + 170), rand_range(-180, screensize.y + 170))
+		while pos.x < screensize.x and pos.x > -165 and pos.y < screensize.y and pos.y > -165:
+			pos  = Vector2(rand_range(-150, screensize.x + 150), rand_range(-150, screensize.y + 150))
+		var newLoc = pos
+		var tooClose = false
+		for loc in spawn_loc:
+			if newLoc.distance_to(loc) < min_dist:
+				tooClose = true;
+				break;
+		if !tooClose:
+			spawn_loc.append(newLoc)
+			return newLoc
 
 # Start to spwan the monster wave by wave after each wave of monster died
 func _on_Difficulty_spawn_timer_timeout():
@@ -74,6 +94,7 @@ func _on_Difficulty_spawn_timer_timeout():
 
 # function to spawn each wave of monsters.
 func spawn_waves():
+	spawn_loc = Array()
 	zombie_wave()
 	demon_wave()
 	$Incoming_monster_sound.play()
@@ -83,6 +104,8 @@ func spawn_waves():
 	wave_num += 1
 	zombie_spawn_number += 2
 	demon_spawn_number += 2
+	num_of_demon_left = demon_spawn_number - 2
+	num_of_zombie_left = zombie_spawn_number - 2
 
 # Once the timer hits 0, the wave_notification alert will be set to false
 func _on_WaveNotification_timer_timeout():

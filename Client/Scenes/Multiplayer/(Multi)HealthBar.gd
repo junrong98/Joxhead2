@@ -41,7 +41,6 @@ sync func update_player_health(health):
 
 sync func update_healthbars_colour(health):
 	players_health = health
-	print(players_health)
 	if health < 60 && health > 30:
 		health_bar_over.value = health
 		health_bar_over.tint_progress = caution_colour

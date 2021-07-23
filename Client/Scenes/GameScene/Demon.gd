@@ -23,7 +23,7 @@ var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
 func _ready() -> void:
 	player = get_parent().get_node("Player")
 	nav_2d = get_parent().get_node("Navigation2D")
-	set_process(false)
+	#set_process(false)
 	randomize()
 	
 
@@ -58,6 +58,7 @@ func handle_hit(dmg_amt):
 	blood_particle_instance.rotation = global_position.angle_to_point(player.global_position)
 	if health <= 0:
 		Global.game_highscore += 5
+		get_parent().num_of_demon_left -= 1
 		death_drop_loots()
 		queue_free()
 
@@ -66,6 +67,7 @@ func bomb_hit(dmg):
 	var blood_particle_instance = instance_blood_particles()
 	if health <= 0:
 		Global.game_highscore += 1
+		get_parent().num_of_demon_left -= 1
 		death_drop_loots()
 		queue_free()
 
@@ -79,21 +81,19 @@ func play_demon_ani(aniIndex:int):
 # start attacking the players with animation. 
 func demon_movement():
 	var distance = player.position.distance_to(position)
-	var dir = player.position - position
 	if distance > attackDistance:
 		play_demon_ani(0)
-		self.rotation = dir.angle()
+		$DemonSprite.look_at(player.global_position)
 	elif !isAttack:
 		attack_player()
 
 # When the demon attack player. Display of attack animation and to prevent
 # the Demon to continuously attacking the player.
 func attack_player():
-	var dir = player.position - position
 	isAttack = true
 	play_demon_ani(1)
 	fire()
-	self.rotation = dir.angle()
+	$DemonSprite.look_at(player.global_position)
 	yield($DemonSprite,"animation_finished")
 	isAttack = false
 

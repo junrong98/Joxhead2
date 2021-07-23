@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Fakewall.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="(Multi)Fakewall" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="FakewallStaticBody" type="StaticBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="FakewallSprite" type="Sprite" parent="FakewallStaticBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakewallStaticBody"]
+shape = SubResource( 1 )
