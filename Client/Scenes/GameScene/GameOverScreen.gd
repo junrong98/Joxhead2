@@ -13,7 +13,6 @@ func _ready() -> void:
 		player = player_group_node;
 		break;
 
-
 func _process(delta):
 	var start_coin = 0
 	while start_coin < player.coins_earned:

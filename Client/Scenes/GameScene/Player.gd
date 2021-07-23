@@ -41,10 +41,12 @@ func _ready():
 func _on_connection_failed():
 	var disconnectScene = preDisconnectScene.instance()
 	add_child(disconnectScene)
+	get_tree().paused = true
 	
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()
 	add_child(disconnectScene)
+	get_tree().paused = true
 
 #Player movement.
 func _physics_process(delta) -> void:

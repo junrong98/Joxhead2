@@ -17,7 +17,7 @@ onready var demon_remainding_label = $ItemGUI/DemonPanel/DemonNumLabel
 var zombies = preload("res://Scenes/GameScene/Zombie.tscn")
 var demons = preload("res://Scenes/GameScene/Demon.tscn")
 var wave_num = 1
-var zombie_spawn_number = 14
+var zombie_spawn_number = 0
 var demon_spawn_number = 0
 var num_of_zombie_left = zombie_spawn_number
 var num_of_demon_left = demon_spawn_number
@@ -94,18 +94,7 @@ func _on_Difficulty_spawn_timer_timeout():
 
 # function to spawn each wave of monsters.
 func spawn_waves():
-	spawn_loc = Array()
-	zombie_wave()
-	demon_wave()
-	$Incoming_monster_sound.play()
-	wave_notification.visible = true
-	wave_notification.text = "Wave " + str(wave_num) + " started"
-	wave_noti_timer.start(2.5)
-	wave_num += 1
-	zombie_spawn_number += 2
-	demon_spawn_number += 2
-	num_of_demon_left = demon_spawn_number - 2
-	num_of_zombie_left = zombie_spawn_number - 2
+	pass
 
 # Once the timer hits 0, the wave_notification alert will be set to false
 func _on_WaveNotification_timer_timeout():
