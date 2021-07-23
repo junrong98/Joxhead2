@@ -170,9 +170,13 @@ func ammoProgress(ammoStats):
 func checkUnlocked(weapon):
 	# Check if weapon has been purchased
 	if !(invData[weapon]["Unlocked"]):
+		$encapContainer/weaponCostValLabel.visible = true
+		$encapContainer/weaponCostLabel.visible = true
 		$encapContainer/purchaseButton.visible = true
 		$encapContainer/ownedButton.visible = false
 	else:
+		$encapContainer/weaponCostValLabel.visible = false
+		$encapContainer/weaponCostLabel.visible = false
 		$encapContainer/purchaseButton.visible = false
 		$encapContainer/ownedButton.visible = true
 		
@@ -185,13 +189,7 @@ func getStats(weapon):
 	damageProgress(Global.weaponStats[weapon]["Dmg"])
 	rangeProgress(Global.weaponStats[weapon]["Range"])
 	ammoProgress(Global.weaponStats[weapon]["Ammo"])
-	#dmgThread = Thread.new()
-	#rangeThread = Thread.new()
-	#ammoThread = Thread.new()
-	
-	#dmgThread.start(self, "damageProgress", Global.weaponStats[weapon]["Dmg"])
-	#rangeThread.start(self, "rangeProgress", Global.weaponStats[weapon]["Range"])
-	#ammoThread.start(self, "ammoProgress", Global.weaponStats[weapon]["Ammo"])
+	$encapContainer/weaponCostValLabel.text = str(Global.weaponStats[weapon]["Unlocked_Cost"])
 
 func disRestLbl():
 	errLbl.visible = false
