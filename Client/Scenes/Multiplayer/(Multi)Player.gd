@@ -38,7 +38,7 @@ var num_grenade = invData["Grenade"]["Ammo"]
 var num_landmine = invData["Mine"]["Ammo"]
 var num_fakewall = invData["Fake_Wall"]["Ammo"]
 var num_barrel = invData["Barrel"]["Ammo"]
-
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -48,6 +48,16 @@ func _ready():
 	landmine_num_label.text = str(num_landmine)
 	fakewall_num_label.text = str(num_fakewall)
 	barrel_num_label.text = str(num_barrel)
+	Server.network.connect("connection_failed", self, "_on_connection_failed")
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_connection_failed():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
+	
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _physics_process(delta):
 	if is_network_master():

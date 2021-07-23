@@ -17,7 +17,7 @@ onready var demon_remainding_label = $ItemGUI/DemonPanel/DemonNumLabel
 var zombies = preload("res://Scenes/GameScene/Zombie.tscn")
 var demons = preload("res://Scenes/GameScene/Demon.tscn")
 var wave_num = 1
-var zombie_spawn_number = 14
+var zombie_spawn_number = 0
 var demon_spawn_number = 0
 var num_of_zombie_left = zombie_spawn_number
 var num_of_demon_left = demon_spawn_number
@@ -58,7 +58,7 @@ func fakewall_update(num):
 func barrel_update(num):
 	barrel_num_label.text = str(num)
 
-func zombie_wave(): 
+func zombie_wave():
 	for i in range(0, zombie_spawn_number):
 		var nextLoc = getNextSpawnLoc()
 		var zombie_instance = zombies.instance()
