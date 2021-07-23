@@ -232,5 +232,5 @@ stretch_mode = 5
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/VBoxContainer/emailInpt" to="." method="_on_emailInpt_mouse_exited"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer2/usernameInpt" to="." method="_on_usernameInpt_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/VBoxContainer2/usernameInpt" to="." method="_on_usernameInpt_mouse_exited"]
-[connection signal="mouse_entered" from="saveChangesBtn" to="." method="_on_saveChangesBtn_mouse_entered"]
+[connection signal="pressed" from="saveChangesBtn" to="." method="_on_saveChangesBtn_pressed"]
 [connection signal="pressed" from="changePasswordBtn" to="." method="_on_changePasswordBtn_pressed"]
