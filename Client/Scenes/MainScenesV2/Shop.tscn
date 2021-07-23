@@ -459,12 +459,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="weaponCostLabel" type="Label" parent="encapContainer"]
+margin_left = 753.875
+margin_top = 574.052
+margin_right = 787.875
+margin_bottom = 592.052
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weaponCostValLabel" type="Label" parent="encapContainer"]
+margin_left = 813.544
+margin_top = 575.241
+margin_right = 857.544
+margin_bottom = 593.241
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="errLabel" type="Label" parent="encapContainer"]
-visible = false
-margin_left = 751.265
-margin_top = 570.245
-margin_right = 996.265
-margin_bottom = 584.245
+margin_left = 758.757
+margin_top = 436.896
+margin_right = 1003.76
+margin_bottom = 454.896
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 0.0470588, 0.0470588, 1 )
 custom_colors/font_color_shadow = Color( 1, 0.933333, 0.933333, 1 )
@@ -475,10 +500,10 @@ __meta__ = {
 }
 
 [node name="purchaseButton" type="TextureButton" parent="encapContainer"]
-margin_left = 813.0
-margin_top = 591.245
-margin_right = 934.0
-margin_bottom = 632.245
+margin_left = 830.0
+margin_top = 599.245
+margin_right = 951.0
+margin_bottom = 640.245
 texture_normal = ExtResource( 18 )
 texture_hover = ExtResource( 19 )
 expand = true
@@ -488,11 +513,10 @@ __meta__ = {
 }
 
 [node name="ownedButton" type="TextureButton" parent="encapContainer"]
-visible = false
-margin_left = 813.0
-margin_top = 591.245
-margin_right = 934.0
-margin_bottom = 632.245
+margin_left = 826.986
+margin_top = 599.486
+margin_right = 947.986
+margin_bottom = 640.486
 hint_tooltip = "Can be upgraded in inventory!"
 texture_normal = ExtResource( 22 )
 expand = true
