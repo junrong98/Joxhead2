@@ -141,7 +141,7 @@ func _on_FirebaseAuth_signup_succeeded(auth):
 	var userid = auth["localid"]
 	
 	var addUserData : FirestoreTask = userInventoryCollection.add("" + userid, {"Credit" : 500,\
-	"Basic" : {"Ammo" : 50, "Dmg" : 10, "Range" : 5,\
+	"Basic" : {"Ammo" : 70, "Dmg" : 10, "Range" : 5,\
 			   "Ammo_Lvl" : 1, "Dmg_Lvl" : 1, "Range_Lvl" : 1,\
 			   "Unlocked": true, "Unlocked_Cost": 0, "Upgrade_Cost": 3, "Type" : "Weapon",\
 			   "Description" : "Basic weapon to survive this apocalypse"},
