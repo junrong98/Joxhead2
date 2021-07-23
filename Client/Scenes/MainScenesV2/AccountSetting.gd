@@ -5,14 +5,24 @@ onready var usernameInpt = $MarginContainer/VBoxContainer/VBoxContainer2/usernam
 
 onready var emailErrLbl = $MarginContainer/VBoxContainer/VBoxContainer/errLabel
 onready var userNameErrLbl = $MarginContainer/VBoxContainer/VBoxContainer2/errLabel
+var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 func _ready():
 	usernameInpt.text = Global.username
 	emailInpt.text = Global.email
 	$usernameLabel.text = Global.username
-	
 	Firebase.Auth.connect("request_completed", self, "auth_user_request")
 	userCollection.connect("error", self, "update_error")
+	Server.network.connect("connection_failed", self, "_on_connection_failed")
+	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+
+func _on_connection_failed():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
+	
+func _on_server_disconnect():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _on_backButton_pressed():
 	get_tree().change_scene("res://Scenes/MainScenesV2/Setting.tscn")

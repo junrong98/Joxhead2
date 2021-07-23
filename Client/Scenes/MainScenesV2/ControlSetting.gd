@@ -17,6 +17,7 @@ onready var prevWpnBtn = $VBoxContainer/ScrollContainer/VBoxContainer/prevWeapon
 
 func _ready():
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+	Server.network.connect("connection_failed", self, "_on_connection_failed")
 	$usernameLabel.text = Global.username	
 	ControlScript.setKeyDict(Global.settings["control"])
 	upBtn.text = OS.get_scancode_string(controls["up_W"])
@@ -29,6 +30,10 @@ func _ready():
 	wallsBtn.text = OS.get_scancode_string(controls["place_fakewall"])
 	nextWpnBtn.text = OS.get_scancode_string(controls["next_weapon"])
 	prevWpnBtn.text = OS.get_scancode_string(controls["previous_weapon"])
+
+func _on_connection_failed():
+	var disconnectScene = preDisconnectScene.instance()
+	add_child(disconnectScene)
 
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()

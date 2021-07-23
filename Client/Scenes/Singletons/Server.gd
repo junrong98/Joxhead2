@@ -29,8 +29,6 @@ func connect_to_server():
 	
 func _on_connection_failed():
 	var disconnectScene = preDisconnectScene.instance()
-	get_tree().get_current_scene().add_child(disconnectScene)
-	print("You have disconnected from the server")
 
 func _on_connection_succeeded():
 	rpc_id(1, "addPlayer", Global.uuid, Global.username)
