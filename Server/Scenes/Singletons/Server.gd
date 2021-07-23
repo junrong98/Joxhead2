@@ -1,8 +1,8 @@
 extends Node
 
 const port = 4444
-var network = WebSocketServer.new()
-#var network = NetworkedMultiplayerENet.new()
+#var network = WebSocketServer.new()
+var network = NetworkedMultiplayerENet.new()
 onready var root_node = get_tree().get_root()
 var rmname
 
@@ -10,13 +10,13 @@ func _ready():
 	start_server()
 	
 func _process(_delta):
-#	pass
-	if network.is_listening():
-		network.poll()
+	pass
+#	if network.is_listening():
+#		network.poll()
 
 func start_server():
-	network.listen(port, PoolStringArray(), true);
-#	network.create_server(port, 100)
+#	network.listen(port, PoolStringArray(), true);
+	network.create_server(port, 100)
 	get_tree().set_network_peer(network)
 	network.connect("peer_connected", self, "_peer_connected")
 	network.connect("peer_disconnected", self, "_peer_disconnected")
