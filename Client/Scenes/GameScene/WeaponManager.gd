@@ -51,6 +51,7 @@ func _unhandled_input(event):
 		change_next_weapon()
 	if event.is_action_pressed("previous_weapon"):
 		change_previous_weapon()
+	Server.maintainConnection()
 
 # functions to add ammo when the players take the ammo
 func add_ammo_curr_weapon(ammo):

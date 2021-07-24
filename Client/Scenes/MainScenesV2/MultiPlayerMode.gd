@@ -21,6 +21,7 @@ func _ready():
 	if Global.isLeader:
 		$startButton.visible = true
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
+	Server.maintainConnection()
 
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()

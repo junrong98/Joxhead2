@@ -65,6 +65,8 @@ func _physics_process(delta):
 		player_label.rect_position = Vector2(position.x - 10, position.y - 66)
 		var x_input = int(Input.is_action_pressed("right_D")) - int(Input.is_action_pressed("left_A"))
 		var y_input = int(Input.is_action_pressed("down_S")) - int(Input.is_action_pressed("up_W"))
+		
+		Server.maintainConnection()
 			
 		motion = Vector2(x_input, y_input).normalized()
 			
@@ -98,6 +100,7 @@ func _unhandled_input(event):
 			rpc_id(1, "put_barrel", num_barrel - 1, Global.uuid)
 		if event.is_action_pressed("Pause_game"):
 			show_pause_menu()
+		Server.maintainConnection()
 			
 func _process(delta):
 	get_node("ItemGUI/GrenadePanel/GreandeLabel").set_text(str(invData["Grenade"]["Ammo"]))
@@ -166,7 +169,6 @@ remote func barrel_update(num, uuid):
 	num_barrel = num
 	invData["Barrel"]["Ammo"] = num_barrel
 	invCollection.update("" + uuid, {"Barrel" : invData["Barrel"]})
-
 
 func zombie_attack(zombie_dmg):
 	$HealthBar.health_deducted(zombie_dmg)

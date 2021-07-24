@@ -8,6 +8,7 @@ onready var cfmPasswordInpt = $MarginContainer/VBoxContainer/VBoxContainer2/cfmP
 onready var errLabel = $MarginContainer/VBoxContainer/VBoxContainer2/errLabel
 
 func _ready():
+	Server.maintainConnection()
 	$usernameLabel.text = Global.username
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 	Server.network.connect("connection_failed", self, "_on_connection_failed")

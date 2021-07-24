@@ -176,3 +176,10 @@ func end_game():
 # on the server. Does not matter who does it first
 func clearRoom():
 	rpc_id(1, "clearRoom", Global.roomName)
+
+# Maintain connection to server
+func maintainConnection():
+	rpc_id(1, "maintainConnection")
+
+remote func maintainPlayerConnection():
+	pass
