@@ -169,9 +169,9 @@ func getStats(weapon):
 	#rangeThread = Thread.new()
 	#ammoThread = Thread.new()
 	
-	#dmgLvlLbl.text = "Lv." + str(invData[weapon]["Dmg_Lvl"])
-	#rangeLvlLbl.text = "Lv." + str(invData[weapon]["Range_Lvl"])
-	#ammoLvlLbl.text = "Lv." + str(invData[weapon]["Ammo_Lvl"])
+	dmgLvlLbl.text = "Lv." + str(invData[weapon]["Dmg_Lvl"])
+	rangeLvlLbl.text = "Lv." + str(invData[weapon]["Range_Lvl"])
+	ammoLvlLbl.text = "Lv." + str(invData[weapon]["Ammo_Lvl"])
 	
 	#dmgThread.start(self, "damageProgress", invData[weapon]["Dmg"])
 	#rangeThread.start(self, "rangeProgress", invData[weapon]["Range"])
@@ -376,6 +376,10 @@ func _on_upgradeButton_pressed():
 	invData[currObj]["Dmg_Lvl"] = invData[currObj]["Dmg_Lvl"] + upgradeDmgLvl
 	invData[currObj]["Range_Lvl"] = invData[currObj]["Range_Lvl"] + upgradeRangeLvl
 	invData[currObj]["Ammo_Lvl"] = invData[currObj]["Ammo_Lvl"] + upgradeAmmoLvl
+	
+	dmgValLbl.text = str(invData[currObj]["Dmg_Lvl"])
+	rangeValLbl.text = str(invData[currObj]["Range_Lvl"])
+	ammoValLbl.text = str(invData[currObj]["Ammo_Lvl"])
 	
 	invData[currObj]["Dmg"] = invData[currObj]["Dmg"] + (upgradeDmgLvl * 2)
 	invData[currObj]["Range"] = invData[currObj]["Range"] + (upgradeRangeLvl * 2)
