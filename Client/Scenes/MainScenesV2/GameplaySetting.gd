@@ -5,6 +5,7 @@ var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 func _ready():
 	$usernameLabel.text = Global.username
+	Server.maintainConnection()
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 	Server.network.connect("connection_failed", self, "_on_connection_failed")
 

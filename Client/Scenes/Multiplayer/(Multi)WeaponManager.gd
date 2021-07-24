@@ -54,6 +54,7 @@ func _unhandled_input(event):
 			rpc_id(1,"change_next")
 		if event.is_action_pressed("previous_weapon"):
 			rpc_id(1,"change_previous")
+		Server.maintainConnection()
 
 remotesync func spawn_bullet():
 	currWeapon.shoot()

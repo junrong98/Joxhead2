@@ -8,6 +8,7 @@ onready var userNameErrLbl = $MarginContainer/VBoxContainer/VBoxContainer2/errLa
 var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
 func _ready():
+	Server.maintainConnection()
 	usernameInpt.text = Global.username
 	emailInpt.text = Global.email
 	$usernameLabel.text = Global.username
@@ -52,7 +53,6 @@ func auth_user_request(result, response_code, headers, body):
 
 func _on_changePasswordBtn_pressed():
 	get_tree().change_scene("res://Scenes/MainScenesV2/ChangePassword.tscn")
-
 
 func _on_saveChangesBtn_pressed():
 	if usernameInpt.text != Global.username: # There is a change in username

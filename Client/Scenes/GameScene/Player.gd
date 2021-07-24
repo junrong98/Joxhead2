@@ -62,7 +62,7 @@ func _physics_process(delta) -> void:
 
 	if Input.is_action_pressed("right_D") :
 		movement_direction.x = 1
-
+	Server.maintainConnection()
 	movement_direction = movement_direction.normalized();
 	position += movement_direction * delta
 
@@ -85,6 +85,7 @@ func _process(delta):
 		put_barrels()
 	if Input.is_action_pressed("Pause_game"):
 		pause_game()
+	Server.maintainConnection()
 
 func grenade_update(num):
 	num_grenade = num
