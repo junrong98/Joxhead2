@@ -35,6 +35,7 @@ func delete_old_keys():
 	#Remove the old keys
 	for i in key_dict:
 		var oldkey = InputEventKey.new()
+		print(Guikeybinding)
 		oldkey.scancode = int(Guikeybinding.key_dict[i])
 		InputMap.action_erase_event(i, oldkey)
 

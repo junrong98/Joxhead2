@@ -49,7 +49,7 @@ extents = Vector2( 2.91263, 8.60858 )
 position = Vector2( 600, 400 )
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 5
-collision_mask = 5
+collision_mask = 4
 collision/safe_margin = 0.2
 script = ExtResource( 11 )
 animations = [ "Walk", "Attack" ]
@@ -59,7 +59,7 @@ position = Vector2( 1.72339, 2.68213 )
 scale = Vector2( 0.365704, 0.341227 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 9
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
