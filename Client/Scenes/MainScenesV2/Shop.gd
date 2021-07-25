@@ -63,6 +63,7 @@ func populateItemDescription():
 func getItemStats(type):
 	playPnlItemAnimation()
 	populateItemDescription()
+	$encapItemContainer/descriptionLabel.text = currObj
 	if type == "HEALTH":
 		$encapItemContainer/itemLabel.text = "Health"
 		itemProgress(invData[currObj]["Ammo"])
@@ -190,6 +191,7 @@ func getStats(weapon):
 	damageProgress(Global.weaponStats[weapon]["Dmg"])
 	rangeProgress(Global.weaponStats[weapon]["Range"])
 	ammoProgress(Global.weaponStats[weapon]["Ammo"])
+	$encapContainer/descriptionLabel.text = weapon
 	$encapContainer/weaponCostValLabel.text = str(Global.weaponStats[weapon]["Unlocked_Cost"])
 
 func disRestLbl():

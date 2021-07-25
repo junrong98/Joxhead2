@@ -75,6 +75,7 @@ func populateItemDescription():
 func getItemStats(type):
 	playPnlItemAnimation()
 	populateItemDescription()
+	$encapItemContainer/descriptionLabel.text = currObj
 	if type == "HEALTH":
 		$encapItemContainer/itemLabel.text = "Health"
 		itemProgress(invData[currObj]["Ammo"])
@@ -165,17 +166,12 @@ func getStats(weapon):
 	damageProgress(invData[weapon]["Dmg"])
 	rangeProgress(invData[weapon]["Range"])
 	ammoProgress(invData[weapon]["Ammo"])
-	#dmgThread = Thread.new()
-	#rangeThread = Thread.new()
-	#ammoThread = Thread.new()
+	
 	
 	dmgLvlLbl.text = "Lv." + str(invData[weapon]["Dmg_Lvl"])
 	rangeLvlLbl.text = "Lv." + str(invData[weapon]["Range_Lvl"])
 	ammoLvlLbl.text = "Lv." + str(invData[weapon]["Ammo_Lvl"])
-	
-	#dmgThread.start(self, "damageProgress", invData[weapon]["Dmg"])
-	#rangeThread.start(self, "rangeProgress", invData[weapon]["Range"])
-	#ammoThread.start(self, "ammoProgress", invData[weapon]["Ammo"])
+	$encapContainer/descriptionLabel.text = weapon
 
 func disRestLbl():
 	errLbl.visible = false
