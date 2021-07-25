@@ -47,7 +47,6 @@ func _ready():
 	$usernameLabel.text = Global.username
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 	Server.network.connect("connection_failed", self, "_on_connection_failed")
-	Server.maintainConnection()
 
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()
@@ -63,6 +62,7 @@ func populateItemDescription():
 func getItemStats(type):
 	playPnlItemAnimation()
 	populateItemDescription()
+	$encapItemContainer/descriptionLabel.text = currObj
 	if type == "HEALTH":
 		$encapItemContainer/itemLabel.text = "Health"
 		itemProgress(invData[currObj]["Ammo"])
@@ -190,6 +190,7 @@ func getStats(weapon):
 	damageProgress(Global.weaponStats[weapon]["Dmg"])
 	rangeProgress(Global.weaponStats[weapon]["Range"])
 	ammoProgress(Global.weaponStats[weapon]["Ammo"])
+	$encapContainer/descriptionLabel.text = weapon
 	$encapContainer/weaponCostValLabel.text = str(Global.weaponStats[weapon]["Unlocked_Cost"])
 
 func disRestLbl():

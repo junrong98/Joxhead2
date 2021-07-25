@@ -21,7 +21,6 @@ func _ready():
 	if Global.isLeader:
 		$startButton.visible = true
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
-	Server.maintainConnection()
 
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()
@@ -120,6 +119,7 @@ func _on_backButton_pressed():
 		Server.userExitRoom(Global.roomName, Global.uuid)
 
 func _on_noButton_pressed():
+	Global.isLeader = true
 	$cfmBackContainer.visible = false
 
 func _on_confirmButton_pressed():
