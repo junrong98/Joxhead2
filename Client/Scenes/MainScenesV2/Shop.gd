@@ -27,12 +27,6 @@ onready var ammoValLbl = $encapContainer/ammoValLabel
 onready var rangeValLbl = $encapContainer/rangeValLabel
 onready var itemValLbl = $encapItemContainer/itemValLabel
 
-onready var upgradeDmgLvl = 0
-onready var upgradeRangeLvl = 0
-onready var upgradeAmmoLvl = 0
-onready var totalCost = 0
-onready var totalUpgradeLvl = 0
-
 # Preload diconnect scene
 var preDisconnectScene = preload("res://Scenes/MainScenesV2/Disconnect.tscn")
 
@@ -195,7 +189,7 @@ func getStats(weapon):
 
 func disRestLbl():
 	errLbl.visible = false
-	
+
 func playPnlAnimation():
 	disRestLbl()
 	if !(checkPnlAniPlayed):
@@ -210,6 +204,7 @@ func _on_ak47Button_pressed():
 	$clickContainer.visible = false
 	isClicked = true
 	currObj = "AK47"
+	
 	playPnlAnimation()
 
 func _on_mp5Button_pressed():
@@ -254,7 +249,6 @@ func _on_itemButton_pressed():
 	$itemPanel.visible = true
 	$encapContainer.visible = false
 	$encapItemContainer.visible = true
-	
 	if isClicked:
 		$encapItemContainer.visible = false
 		$clickContainer.visible = true

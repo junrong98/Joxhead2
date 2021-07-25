@@ -166,7 +166,6 @@ func getStats(weapon):
 	rangeProgress(invData[weapon]["Range"])
 	ammoProgress(invData[weapon]["Ammo"])
 	
-	
 	dmgLvlLbl.text = "Lv." + str(invData[weapon]["Dmg_Lvl"])
 	rangeLvlLbl.text = "Lv." + str(invData[weapon]["Range_Lvl"])
 	ammoLvlLbl.text = "Lv." + str(invData[weapon]["Ammo_Lvl"])
@@ -196,13 +195,17 @@ func _on_basicButton_pressed():
 	isClicked = true
 	$clickContainer.visible = false
 	$encapContainer.visible = true
+	if invData["Basic"]["Unlocked"]:
+		resetUpgradeForm()
 	playPnlAnimation()
-
+	
 func _on_ak47Button_pressed():
 	currObj = "AK47"
 	isClicked = true
 	$clickContainer.visible = false
 	$encapContainer.visible = true
+	if invData["AK47"]["Unlocked"]:
+		resetUpgradeForm()
 	playPnlAnimation()
 
 func _on_mp5Button_pressed():
@@ -210,6 +213,8 @@ func _on_mp5Button_pressed():
 	isClicked = true
 	$clickContainer.visible = false
 	$encapContainer.visible = true
+	if invData["Uzi"]["Unlocked"]:
+		resetUpgradeForm()
 	playPnlAnimation()
 	
 func _on_spas12Button_pressed():
@@ -217,6 +222,8 @@ func _on_spas12Button_pressed():
 	isClicked = true
 	$clickContainer.visible = false
 	$encapContainer.visible = true
+	if invData["SPAS12"]["Unlocked"]:
+		resetUpgradeForm()
 	playPnlAnimation()
 
 func addTextToErr(message, lblColor):

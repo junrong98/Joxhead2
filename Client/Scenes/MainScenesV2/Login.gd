@@ -57,6 +57,7 @@ func _on_closeBtn_pressed():
 	loginForm.visible = false
 	usernameInpt.text = ""
 	passwordInpt.text = ""
+	$loginForm/loginErrLbl.text = ""
 	
 func _on_loginBtn_pressed():
 	if usernameInpt.text.empty() || passwordInpt.text.empty():
@@ -117,6 +118,7 @@ func clearSignUpForm():
 	newEmailInpt.text = ""
 	newPasswordInpt.text = ""
 	cfmNewPasswordInpt.text = ""
+	signUpErrLbl.text = ""
 	
 func _on_createAccCloseBtn_pressed():
 	$signUpForm.visible = false
