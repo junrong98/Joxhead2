@@ -59,7 +59,6 @@ func _ready():
 	creditLbl.text = str(invData["Credit"])
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 	Server.network.connect("connection_failed", self, "_on_connection_failed")
-	Server.maintainConnection()
 
 func _on_server_disconnect():
 	var disconnectScene = preDisconnectScene.instance()

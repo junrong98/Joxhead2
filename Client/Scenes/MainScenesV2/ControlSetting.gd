@@ -18,7 +18,6 @@ onready var prevWpnBtn = $VBoxContainer/ScrollContainer/VBoxContainer/prevWeapon
 func _ready():
 	Server.network.connect("server_disconnected", self, "_on_server_disconnect")
 	Server.network.connect("connection_failed", self, "_on_connection_failed")
-	Server.maintainConnection()
 	$usernameLabel.text = Global.username	
 	ControlScript.setKeyDict(Global.settings["control"])
 	upBtn.text = OS.get_scancode_string(controls["up_W"])
