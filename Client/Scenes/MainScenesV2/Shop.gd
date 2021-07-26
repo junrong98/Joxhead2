@@ -59,7 +59,7 @@ func getItemStats(type):
 	$encapItemContainer/descriptionLabel.text = currObj
 	if type == "HEALTH":
 		$encapItemContainer/itemLabel.text = "Health"
-		itemProgress(invData[currObj]["Ammo"])
+		itemProgress(invData[currObj]["Health"])
 	else:
 		$encapItemContainer/itemLabel.text = "Damage"
 		itemProgress(invData[currObj]["Dmg"])
