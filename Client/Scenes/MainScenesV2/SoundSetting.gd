@@ -97,6 +97,8 @@ func _on_noButton_pressed():
 	$conPanel.visible = false
 
 func _on_confirmationButton_pressed():
-	BackgroundMusic.setMusicVolume(Global.currentBgVolume)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), Global.currentSFXvoume - 70)
+	BackgroundMusic.setMusicVolume(originalBgVol)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), originalSFXVol - 70)
+	Global.currentBgVolume = originalBgVol
+	Global.currentSFXvoume  = originalSFXVol
 	get_tree().change_scene("res://Scenes/MainScenesV2/GameplaySetting.tscn")

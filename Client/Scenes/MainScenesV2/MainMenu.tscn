@@ -17,7 +17,7 @@
 [ext_resource path="res://ResourcesV2/Images/howToPlayActive.png" type="Texture" id=15]
 [ext_resource path="res://ResourcesV2/Images/howToPlayInactive.png" type="Texture" id=16]
 [ext_resource path="res://ResourcesV2/Images/PreviousInactive.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Demon Sprite/dmn.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Demon Sprite/demonSingle.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/ItemSprite/medkit.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/ItemSprite/ammo.png" type="Texture" id=20]
 [ext_resource path="res://Resources/Fonts/Raleway-Thin.ttf" type="DynamicFontData" id=21]
@@ -707,16 +707,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="demonImage" type="TextureButton" parent="howToPlayPanel/page2"]
-margin_left = 591.0
-margin_top = 225.0
-margin_right = 656.0
-margin_bottom = 290.0
-rect_rotation = 180.0
-texture_normal = ExtResource( 18 )
-expand = true
-stretch_mode = 5
-
 [node name="healthImage" type="TextureButton" parent="howToPlayPanel/page2"]
 margin_left = 298.394
 margin_top = 332.995
@@ -807,6 +797,18 @@ custom_colors/font_color = Color( 0.92549, 0.0901961, 0, 1 )
 text = "Demon"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="demonImage" type="TextureButton" parent="howToPlayPanel/page2"]
+margin_left = 527.36
+margin_top = 164.189
+margin_right = 592.36
+margin_bottom = 229.189
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }

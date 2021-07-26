@@ -86,6 +86,9 @@ margin_right = 42.0
 margin_bottom = -41.0
 texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="usernameLabel" type="Label" parent="."]
 margin_left = 1106.58
