@@ -35,29 +35,18 @@ func _ready():
 	player.connect("fakewall_num_update", self, "fakewall_update")
 	player.connect("barrel_num_update", self, "barrel_update")
 	screensize = get_viewport_rect().size
+
+
+# Update the UI of number of monster remain
+func _process(delta):
+	demon_remainding_label.text = str(num_of_demon_left)
+	zombie_remainding_label.text = str(num_of_zombie_left)
 	grenade_num_label.text = str(player.num_grenade)
 	landmine_num_label.text = str(player.num_landmine)
 	fakewall_num_label.text = str(player.num_fakewall)
 	barrel_num_label.text = str(player.num_barrel)
-#	demon_remainding_label.text = str(num_of_demon_left)
-#	zombie_remainding_label.text = str(num_of_zombie_left)
 
-func _process(delta):
-	demon_remainding_label.text = str(num_of_demon_left)
-	zombie_remainding_label.text = str(num_of_zombie_left)
-
-func grenade_update(num):
-	grenade_num_label.text = str(num)
-
-func landmine_update(num):
-	landmine_num_label.text = str(num)
-
-func fakewall_update(num):
-	fakewall_num_label.text = str(num)
-
-func barrel_update(num):
-	barrel_num_label.text = str(num)
-
+# Spawning zombies
 func zombie_wave():
 	for i in range(0, zombie_spawn_number):
 		var nextLoc = getNextSpawnLoc()
@@ -65,6 +54,7 @@ func zombie_wave():
 		add_child(zombie_instance)
 		zombie_instance.global_position = nextLoc
 
+# Spawning Demons
 func demon_wave():
 	for j in range(0, demon_spawn_number):
 		var nextLoc = getNextSpawnLoc()
@@ -72,6 +62,7 @@ func demon_wave():
 		add_child(demon_instance)
 		demon_instance.global_position = nextLoc
 
+# Spawn monster locations
 func getNextSpawnLoc():
 	while true:
 		var pos = Vector2(rand_range(-180, screensize.x + 170), rand_range(-180, screensize.y + 170))

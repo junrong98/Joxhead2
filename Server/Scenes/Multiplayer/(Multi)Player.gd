@@ -12,19 +12,23 @@ var barrel = preload("res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Barrel.ts
 
 var grenade_count = 0
 
+#Update player movement in the Multiplayer world
 remote func update_player(transform):
 	rpc_unreliable("update_remote_player", transform)
 
+#Update player direction in the Multiplayer world
 remote func update_player_sprite_dir(dir):
 	rpc_unreliable("update_remote_player_dir", dir)
 
+# Update the world when player died
 remote func die():
 	rpc("player_died")
 
+# Remove the player sprite from the world
 remote func remove_player(player_id):
 	players.remove_child(players.get_node(player_id))
 
-
+# Spawn Items in the Multiplayer world
 remote func throw_grenades(num, uuid):
 	var player_id = get_tree().get_rpc_sender_id()
 	var grenade_instance = grenade.instance()
@@ -33,7 +37,6 @@ remote func throw_grenades(num, uuid):
 	world.add_child(grenade_instance)
 	rpc("throw_grenade", grenade_instance.name)
 	rpc_unreliable_id(player_id, "grenade_update", num, uuid)
-
 
 remote func plant_landmine(num, uuid):
 	var player_id = get_tree().get_rpc_sender_id()

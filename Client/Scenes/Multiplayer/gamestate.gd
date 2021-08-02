@@ -29,18 +29,25 @@ var spawn_num = 0
 var screensize
 
 func _ready():
+	#List of monsters position in the world
 	zombie_position_list = zombie_spawn.get_children()
 	demon_position_list = demon_spawn.get_children()
+	
+	#Calling the server to spawn player
 	rpc_id(1, "spawn_players", get_tree().get_network_unique_id(), Global.username)
+	
 	screensize = get_viewport_rect().size
 
+# To add points to the the score UI
 func add_score(score):
 	rpc_id(1, "current_scores", score)
 
+# Updating the score UI for both players
 sync func update_score(score):
 	Global.game_highscore = score
 	get_node("GUI/ScoreContainer/ScoreLabel").set_text(str(score))
 
+#Spawn player in the world
 remote func spawn_player(id, username):
 	var player = PLAYER.instance()
 	player.name = str(id)
@@ -51,7 +58,7 @@ remote func spawn_player(id, username):
 	spawn_num += 1
 	player.position = spawn_pos.position
 
-
+#Spawn demons in the world
 remote func spawn_demon(idx, demon_name):
 	var new_destination = demon_position_list[idx]
 	var demon_instance = DEMONS.instance()
@@ -59,6 +66,7 @@ remote func spawn_demon(idx, demon_name):
 	demons.add_child(demon_instance)
 	demon_instance.position = new_destination.position
 
+#Spawn zombies in the world
 remote func spawn_zombie(idx, zombie_name):
 	var new_destination = zombie_position_list[idx]
 	var zombie_instance = ZOMBIES.instance()
@@ -66,14 +74,12 @@ remote func spawn_zombie(idx, zombie_name):
 	zombies.add_child(zombie_instance)
 	zombie_instance.position = new_destination.position
 
+#Call the server to spawn monster when timer reach 0
 func _on_Difficulty_spawn_timer_timeout():
-	#if get_tree().get_nodes_in_group("Enemy").size() == 0:
-		#if Global.isLeader:
-			#for i in range(0, zombie_spawn_number):
 	rpc_id(1, "spawn_zombies", zombie_position_list.size())
 	rpc_id(1, "spawn_demons", demon_position_list.size())
 
-
+# Spawn drop loots items
 func spawn_medkit(pos):
 	rpc_id(1, "spawn_medkit", pos)
 
@@ -83,6 +89,7 @@ func spawn_ammopack(pos):
 func spawn_coins(pos):
 	rpc_id(1, "spawn_coins", pos)
 
+# Spawn drop loots in the multiplayer world
 remote func add_medkit(pos, medkit_id):
 	var medkit = med_kit_scene.instance()
 	medkit.name = medkit_id
@@ -101,11 +108,13 @@ remote func add_coins(pos, coin_id):
 	add_child(coins)
 	coins.position = pos
 
+# Display of gameover menu when both player died
 func show_gameover():
 	if players.get_children().size() == 0:
 		$GameOverGui/GameOverGui.visible = true
 		get_tree().paused = true
 
+# Remove player when player is disconnected from game
 remote func player_disconnected(player_id):
 	players.get_node(str(player_id)).queue_free()
 

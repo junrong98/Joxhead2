@@ -7,10 +7,8 @@ var direction
 onready var AOEdmg = $AOEAttack
 onready var bomb_time = $Bomb_Timer
 
-
 func _ready():
 	apply_impulse(Vector2(), Vector2(300, 0).rotated(rotation))
-
 
 func AOEAttack():
 	var targets = AOEdmg.get_overlapping_bodies()

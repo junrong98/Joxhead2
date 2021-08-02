@@ -2,7 +2,6 @@ extends Node2D
 
 var previous_weapon = "Basic"
 
-
 remote func player_bullet():
 	rpc("spawn_bullet")
 

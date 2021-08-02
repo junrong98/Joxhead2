@@ -6,7 +6,6 @@ onready var fakewall40 = load("res://Sprites/BombItem/fakewall(30).png")
 onready var fakewall30 = load("res://Sprites/BombItem/fakewall(20).png")
 onready var fakewall20 = load("res://Sprites/BombItem/fakewall(10).png")
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

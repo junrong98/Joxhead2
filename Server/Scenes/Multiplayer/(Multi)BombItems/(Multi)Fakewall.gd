@@ -6,7 +6,6 @@ onready var fakewall40 = load("res://Scenes/Multiplayer/(Multi)BombItems/fakewal
 onready var fakewall30 = load("res://Scenes/Multiplayer/(Multi)BombItems/fakewall(20).png")
 onready var fakewall20 = load("res://Scenes/Multiplayer/(Multi)BombItems/fakewall(10).png")
 
-
 remote func remove_wall():
 	rpc("wall_removed")
 	world.remove_child(self)

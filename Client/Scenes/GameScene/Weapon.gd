@@ -31,6 +31,7 @@ func shoot():
 	elif num_ammo == 0:
 		$Out_of_ammo_sound.play()
 
+#Update the number of ammo of the weapon
 func set_current_ammo(new_ammo: int):
 	var actual_ammo = new_ammo
 	if actual_ammo != num_ammo:

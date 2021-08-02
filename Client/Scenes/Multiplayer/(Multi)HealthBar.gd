@@ -9,9 +9,7 @@ var healthy_colour = Color.green
 var caution_colour = Color.yellow
 var danger_colour = Color.red
 
-func _ready():
-	pass
-
+#Add health
 func health_added(add_health):
 	if players_health + add_health > 100:
 		players_health = 100
@@ -20,16 +18,16 @@ func health_added(add_health):
 	
 	rpc_id(get_tree().get_rpc_sender_id(), "players_health", players_health)
 
-
+# Reduce health
 func health_deducted(deduct_health):
 	players_health -= deduct_health
 	rpc_id(get_tree().get_rpc_sender_id(), "players_health", players_health)
 
-
+# Update the healthbar colour for the player
 sync func update_player_health(health):
 	rpc_id(get_tree().get_rpc_sender_id(), "update_healthbar_colours", players_health)
 
-
+# Update the healthbar colour for all clients
 sync func update_healthbars_colour(health):
 	players_health = health
 	if health < 60 && health > 30:

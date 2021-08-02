@@ -12,6 +12,5 @@ func _process(delta):
 		if alpha < 0.005:
 			queue_free()
 
-
 func _on_Fade_out_blood_timeout():
 	fade = true

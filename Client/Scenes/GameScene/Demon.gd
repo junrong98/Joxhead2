@@ -25,7 +25,6 @@ func _ready() -> void:
 	nav_2d = get_parent().get_node("Navigation2D")
 	#set_process(false)
 	randomize()
-	
 
 # Movement of the demon. move_along_path() and set_path() is part of the pathfinding algo
 # for the monster to find the players and avoid the wall. Note: the floor in tilemap(In Map scence) must 

@@ -9,7 +9,6 @@ onready var SPAS12 = $SPAS12
 onready var weapon_name = get_parent().get_parent().get_node("weapon_GUI/Weapon_name_Label")
 onready var weapon_ammo = get_parent().get_parent().get_node("weapon_GUI/Weapon_ammo_Label")
 
-
 var num_ammo
 var invStartPos = 0
 var curr_weapon = Global.invArr[invStartPos]
@@ -17,7 +16,6 @@ onready var currWeapon = get_node(curr_weapon)
 var previousWeapon
 var invData = Global.gamedata
 var currPlayerInv = []
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,7 +43,7 @@ func set_current_ammo(new_ammo):
 func shoot(bullet_instance, location: Vector2, direction: Vector2):
 	emit_signal("fired_bullet", bullet_instance, location, direction)
 
-# When the client press left mouse button
+# When the client press the buttons
 func _unhandled_input(event):
 	if is_network_master():
 		if event.is_action_pressed("shoot"):
@@ -81,6 +79,7 @@ sync func change_next_weapon():
 	if not currWeapon.is_connected("weapon_ammo", self, "set_current_ammo"):
 		currWeapon.connect("weapon_ammo", self, "set_current_ammo")
 
+# Update on the weapon text for that player in Multiplayer mode
 remote func update_weapon_text(curr_weapon_name, curr_weapon_texture, previous_weapon):
 	if not is_network_master():
 		get_parent().get_parent().get_node("weapon_GUI/Weapon_name_Label").set_text(curr_weapon_name)
@@ -90,6 +89,7 @@ remote func update_weapon_text(curr_weapon_name, curr_weapon_texture, previous_w
 		currWeapon.visible = true
 		currWeapon.connect("weapon_fired", self, "shoot")
 
+# Update on the weapon ammo text for that player in Multiplayer mode
 remote func update_weapon_ammo(weapon_ammo):
 	if not is_network_master():
 		get_parent().get_parent().get_node("weapon_GUI/Weapon_ammo_Label").set_text(weapon_ammo)
@@ -120,7 +120,6 @@ func Basic_stat():
 	Basic.weapon_range = invData["Basic"]["Range"]
 
 func AK_47_stat():
-	rpc_id(get_tree().get_rpc_sender_id(),"AK_47_stats", invData["AK47"]["Range"])
 	AK47.num_ammo = invData["AK47"]["Ammo"]
 	AK47.weapon_dmg = invData["AK47"]["Dmg"]
 	AK47.weapon_range = invData["AK47"]["Range"]

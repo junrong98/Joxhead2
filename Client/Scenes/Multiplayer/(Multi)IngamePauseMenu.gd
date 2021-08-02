@@ -17,7 +17,6 @@ func _ready() -> void:
 	possible_player = multi_player.get_children()
 	num_of_player = multi_player.get_child_count()
 
-
 func _process(delta):
 	coin_earned_value.text = str(Global.coin_earn)
 

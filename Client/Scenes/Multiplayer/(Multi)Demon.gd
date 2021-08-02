@@ -6,8 +6,6 @@ export (int) var attackDistance = 150
 var player 
 var nav_2d 
 onready var fire_ball = preload("res://Scenes/GameScene/DemonFireBall.tscn")
-#onready var gun_end = $EndOfGun
-#onready var gun_direction = $GunDirection
 onready var multi_player = get_tree().get_root().find_node("Players", true, false)
 onready var world = get_tree().root.get_node("(Multi)World")
 onready var demon_parent =  get_tree().get_root().find_node("Demons", true, false)
@@ -139,7 +137,6 @@ func death_drop_loots():
 		world.spawn_ammopack(global_position)
 	elif i > 4 and i <= 5.5:
 		world.spawn_coins(global_position)
-
 
 func _on_DetectPlayer_body_entered(body):
 	if body.is_in_group("Players"):

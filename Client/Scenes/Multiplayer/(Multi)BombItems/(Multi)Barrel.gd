@@ -5,14 +5,9 @@ var dmg = 60
 onready var AOEdmg = $AOEAttack
 onready var barrel_base = load("res://Sprites/BombItem/explodedbarrel.png")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func destroy_object(dmg):
 	barrel_health -= dmg
 	rpc_id(1, "barrel_explode", barrel_health)
-	
 
 func bomb_hit(dmg):
 	destroy_object(dmg)

@@ -3,8 +3,6 @@ extends Node2D
 signal weapon_ammo(new_ammo_count)
 signal weapon_fired(bullet, location, direction)
 
-
-
 var num_ammo = 0 setget set_current_ammo
 var weapon_range
 var weapon_dmg

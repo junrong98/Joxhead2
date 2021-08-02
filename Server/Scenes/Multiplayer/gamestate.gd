@@ -19,7 +19,6 @@ var ammo_count = 0
 var coin_count = 0
 var current_score = 0
 
-
 remote func spawn_players(id, username):
 	var player = PLAYER.instance()
 	player.name = str(id)
@@ -35,16 +34,6 @@ remote func spawn_zombies(pos):
 	zombies.add_child(zombie_instance)
 	rpc("spawn_zombie",idx, zombie_instance.name)
 
-#remote func spawn_zombies(pos):
-#	var zombie_instance = ZOMBIES.instance()
-#	#var idx = randi() % pos
-#	zombie_instance.name = str(zombie_count)
-#	print(zombie_count)
-#	zombie_instance.health = 60
-#	zombies.add_child(zombie_instance)
-#	rpc("spawn_zombie",zombie_count, zombie_instance.name)
-#	zombie_count += 1
-
 remote func spawn_demons(pos):
 	var demon_instance = DEMONS.instance()
 	var idx = randi() % pos
@@ -54,6 +43,7 @@ remote func spawn_demons(pos):
 	demons.add_child(demon_instance)
 	rpc("spawn_demon",idx, demon_instance.name)
 
+# Spawn drop loots
 remote func spawn_medkit(pos):
 	var medkit_instance = medkit.instance()
 	medkit_instance.name = str(medkit_count)
@@ -75,15 +65,13 @@ remote func spawn_coins(pos):
 	add_child(coin_instance)
 	rpc("add_coins", pos, coin_instance.name)
 
+# Update the score on both clients
 remote func current_scores(score):
 	current_score += score
 	rpc("update_score", current_score)
 
+#Remove player from the world
 func delete_player(player_id):
 	players.get_node(str(player_id)).queue_free()
 	rpc("player_disconnected", player_id)
 
-remote func remove_barrel(barrel_id):
-	print("barrel")
-	get_node(str(barrel_id)).queue_free()
-	rpc("barrel_removed", barrel_id)

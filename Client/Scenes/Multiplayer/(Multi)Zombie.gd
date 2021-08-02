@@ -24,9 +24,7 @@ var isAttack = false
 var health_stat = 60
 var zombie_dmg = 10
 var blood_particles = preload("res://Scenes/GameScene/BloodParticles.tscn")
-#var med_kit_scene = preload("res://Scenes/GameScene/DropItems/MedKitItem.tscn")
-#var ammo_pack_scence = preload("res://Scenes/GameScene/DropItems/AmmoPackItem.tscn")
-#var coins_scence = preload("res://Scenes/GameScene/DropItems/CoinsItem.tscn")
+
 
 # randomised() function to truely radomised the drop loots rate. Set_process for pathfinding algo
 func _ready():
@@ -51,7 +49,6 @@ func _physics_process(delta):
 	var move_distance = speed * delta
 	zomebie_movement()
 	move_along_path(move_distance)
-
 
 func move_along_path(distance):
 	var start_position = position
@@ -122,13 +119,6 @@ func attack_player():
 	players.zombie_attack(zombie_dmg)
 	isAttack = false
 
-# Instance of blood particles
-#func instance_blood_particles():
-#	var blood_instance = blood_particles.instance()
-#	world.add_child(blood_instance)
-#	blood_instance.global_position = global_position
-#	blood_instance.rotation = global_position.angle_to_point(players.global_position)
-
 remote func spawn_blood(pos):
 	var blood_instance = blood_particles.instance()
 	blood_instance.global_position = global_position
@@ -145,6 +135,7 @@ func death_drop_loots():
 	elif i > 3.5 and i <= 4.5:
 		world.spawn_coins(global_position)
 
+# To change target
 func _on_DetectPlayer_body_entered(body):
 	if body.is_in_group("Players"):
 		rpc_id(1, "select_target")
