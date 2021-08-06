@@ -114,8 +114,13 @@ func show_gameover():
 		$GameOverGui/GameOverGui.visible = true
 		get_tree().paused = true
 
+func change_targets():
+	for zombie in zombies:
+		zombie.change_target()
+	for demon in demons:
+		demon.change_target()
+
 # Remove player when player is disconnected from game
 remote func player_disconnected(player_id):
 	players.get_node(str(player_id)).queue_free()
-
 

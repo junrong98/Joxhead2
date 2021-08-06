@@ -21,6 +21,7 @@ onready var players = get_tree().get_root().find_node("Players", true, false)
 onready var dead_players = get_tree().get_root().find_node("Dead_player", true, false)
 onready var world = get_tree().root.get_node("(Multi)World")
 
+
 var gameoverscreen = preload("res://Scenes/GameScene/GameOverScreen.tscn")
 onready var grenade_bomb = preload("res://Scenes/GameScene/BombItems/Grenade.tscn")
 onready var landmine_bomb = preload("res://Scenes/Multiplayer/(Multi)BombItems/(Multi)Landmine.tscn")
@@ -182,7 +183,6 @@ func demon_fireball(fireball_dmg):
 	if $HealthBar.players_health <= 0:
 		rpc_id(1, "die")
 
-
 sync func player_died():
 	set_physics_process(false)
 	collision.disabled = true
@@ -192,6 +192,8 @@ sync func player_died():
 	players.remove_child(self)
 	dead_players.add_child(self)
 	world.show_gameover()
+	world.change_targets()
+	
 
 func set_player_name(username):
 	get_node("Player_name_Label").set_text(username)

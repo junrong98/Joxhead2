@@ -72,7 +72,6 @@ func set_path(value):
 func handle_hit(dmg_amt):
 	health_stat -= dmg_amt
 	rpc_id(1, "zombie_get_hit", get_name(), dmg_amt)
-	#var blood_particle_instance = instance_blood_particles()
 	rpc_id(1, "blood", global_position)
 	if health_stat <= 0:
 		world.add_score(1)
@@ -82,7 +81,6 @@ func handle_hit(dmg_amt):
 func bomb_hit(dmg):
 	health_stat -= dmg
 	rpc_id(1, "zombie_get_hit", get_name(), dmg)
-	#var blood_particle_instance = instance_blood_particles()
 	rpc_id(1, "blood", global_position)
 	if health_stat <= 0:
 		world.add_score(1)
@@ -106,7 +104,6 @@ func zomebie_movement():
 		play_zombie_ani(0)
 		self.rotation = dir.angle()
 	elif !isAttack:
-		#pass
 		attack_player()
 
 # When the zombie attak player
@@ -139,3 +136,6 @@ func death_drop_loots():
 func _on_DetectPlayer_body_entered(body):
 	if body.is_in_group("Players"):
 		rpc_id(1, "select_target")
+
+func change_target():
+	rpc_id(1, "select_target")

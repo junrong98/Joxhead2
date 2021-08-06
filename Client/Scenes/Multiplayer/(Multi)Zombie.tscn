@@ -29,14 +29,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 16 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 10 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 8 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 16 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Attack",
 "speed": 5.0
 } ]
 
@@ -60,7 +60,7 @@ position = Vector2( 1.86867, 0.311493 )
 scale = Vector2( 0.366, 0.341 )
 frames = SubResource( 1 )
 animation = "Attack"
-frame = 3
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

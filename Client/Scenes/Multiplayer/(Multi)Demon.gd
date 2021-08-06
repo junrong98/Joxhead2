@@ -141,3 +141,6 @@ func death_drop_loots():
 func _on_DetectPlayer_body_entered(body):
 	if body.is_in_group("Players"):
 		rpc_id(1, "select_target")
+
+func change_target():
+	rpc_id(1, "select_target")
